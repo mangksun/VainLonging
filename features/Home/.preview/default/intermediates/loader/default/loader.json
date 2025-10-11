@@ -1,0 +1,49 @@
+{
+  "modulePathMap": {
+    "phone": "C:\\Users\\ASUS\\Desktop\\Harmony\\wangningmei\\wangningmei\\products\\phone",
+    "utils": "C:\\Users\\ASUS\\Desktop\\Harmony\\wangningmei\\wangningmei\\commons\\utils",
+    "uicomponents": "C:\\Users\\ASUS\\Desktop\\Harmony\\wangningmei\\wangningmei\\commons\\uicomponents",
+    "Home": "C:\\Users\\ASUS\\Desktop\\Harmony\\wangningmei\\wangningmei\\features\\Home",
+    "MyMusicLib": "C:\\Users\\ASUS\\Desktop\\Harmony\\wangningmei\\wangningmei\\features\\MyMusicLib",
+    "Search": "C:\\Users\\ASUS\\Desktop\\Harmony\\wangningmei\\wangningmei\\features\\Search",
+    "PlayDisplay": "C:\\Users\\ASUS\\Desktop\\Harmony\\wangningmei\\wangningmei\\features\\PlayDisplay",
+    "Setting": "C:\\Users\\ASUS\\Desktop\\Harmony\\wangningmei\\wangningmei\\features\\Setting",
+    "MusicPlayer": "C:\\Users\\ASUS\\Desktop\\Harmony\\wangningmei\\wangningmei\\features\\MusicPlayer",
+    "MusicInfoCommon": "C:\\Users\\ASUS\\Desktop\\Harmony\\wangningmei\\wangningmei\\commons\\MusicInfoCommon"
+  },
+  "compileMode": "esmodule",
+  "projectRootPath": "C:\\Users\\ASUS\\Desktop\\Harmony\\wangningmei\\wangningmei",
+  "nodeModulesPath": "C:\\Users\\ASUS\\Desktop\\Harmony\\wangningmei\\wangningmei\\features\\Home\\.preview\\default\\intermediates\\loader_out\\default\\node_modules",
+  "byteCodeHarInfo": {},
+  "declarationEntry": [],
+  "moduleName": "Home",
+  "hspNameOhmMap": {},
+  "harNameOhmMap": {},
+  "packageManagerType": "ohpm",
+  "compileEntry": [
+    "C:\\Users\\ASUS\\Desktop\\Harmony\\wangningmei\\wangningmei\\features\\Home\\src\\main\\ets\\components\\ListItemHuge.ets",
+    "C:\\Users\\ASUS\\Desktop\\Harmony\\wangningmei\\wangningmei\\features\\Home\\src\\main\\ets\\components\\ListItemSmall.ets",
+    "C:\\Users\\ASUS\\Desktop\\Harmony\\wangningmei\\wangningmei\\features\\Home\\src\\main\\ets\\view\\AlbumInfoPage.ets",
+    "C:\\Users\\ASUS\\Desktop\\Harmony\\wangningmei\\wangningmei\\features\\Home\\src\\main\\ets\\view\\GridShow.ets",
+    "C:\\Users\\ASUS\\Desktop\\Harmony\\wangningmei\\wangningmei\\features\\Home\\src\\main\\ets\\view\\HomePage.ets",
+    "C:\\Users\\ASUS\\Desktop\\Harmony\\wangningmei\\wangningmei\\features\\Home\\src\\main\\ets\\viewmodel\\ListData.ets",
+    "C:\\Users\\ASUS\\Desktop\\Harmony\\wangningmei\\wangningmei\\features\\Home\\src\\main\\ets\\viewmodel\\ListDataViewModel.ets"
+  ],
+  "otherCompileFiles": [],
+  "dynamicImportLibInfo": {},
+  "routerMap": [
+    {
+      "name": "HomePage",
+      "pageSourceFile": "C:\\Users\\ASUS\\Desktop\\Harmony\\wangningmei\\wangningmei\\features\\Home\\src\\main\\ets\\view\\HomePage.ets",
+      "buildFunction": "HomePageBuilder"
+    },
+    {
+      "name": "GridShow",
+      "pageSourceFile": "C:\\Users\\ASUS\\Desktop\\Harmony\\wangningmei\\wangningmei\\features\\Home\\src\\main\\ets\\view\\GridShow.ets",
+      "buildFunction": "GridShowBuilder"
+    }
+  ],
+  "hspResourcesMap": {},
+  "updateVersionInfo": {},
+  "buildConfigPath": ".preview\\config\\buildConfig.json"
+}

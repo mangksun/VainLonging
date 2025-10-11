@@ -1,0 +1,666 @@
+Ôr@Ÿªassertions¤code´customTransformCache¬dependencies¢id¤meta±moduleSideEffects¬originalCode±originalSourcemap«resolvedIds®sourcemapChainµsyntheticNamedExportsµtransformDependencies®transformFiles¨cacheAstÔrAÚ8şif (!("finalizeConstruction" in ViewPU.prototype)) {
+    Reflect.set(ViewPU.prototype, "finalizeConstruction", () => { });
+}
+import { ListDataViewModel } from '../viewmodel/ListDataViewModel';
+export class ListItemSmall extends ViewPU {
+    constructor(parent, params, __localStorage, elmtId = -1, paramsLambda = undefined, extraInfo) {
+        super(parent, __localStorage, elmtId, extraInfo);
+        if (typeof paramsLambda === "function") {
+            this.paramsGenerator_ = paramsLambda;
+        }
+        this.__listData = new ObservedPropertyObjectPU(new ListDataViewModel().getHisMoreList(), this, "listData");
+        this.scrollerForList = new Scroller();
+        this.__centerIndex = new ObservedPropertySimplePU(0, this, "centerIndex");
+        this.__myOffset = new ObservedPropertySimplePU(6, this, "myOffset");
+        this.__listWidth = new ObservedPropertySimplePU(179, this, "listWidth");
+        this.__listOffset = new ObservedPropertySimplePU(0
+        // onScrollStop(){
+        //   let rect = this.scrollerForList.getItemRect(this.currentIndex);
+        //   if (this.velocity > 10) {
+        //     this.scrollerForList.scrollToIndex(this.currentIndex, true, ScrollAlign.START);
+        //   } else if (this.velocity < -10) {
+        //     this.scrollerForList.scrollToIndex(this.currentIndex + 1, true, ScrollAlign.START);
+        //   }
+        // }
+        , this, "listOffset");
+        this.setInitiallyProvidedValue(params);
+        this.finalizeConstruction();
+    }
+    setInitiallyProvidedValue(params) {
+        if (params.listData !== undefined) {
+            this.listData = params.listData;
+        }
+        if (params.scrollerForList !== undefined) {
+            this.scrollerForList = params.scrollerForList;
+        }
+        if (params.centerIndex !== undefined) {
+            this.centerIndex = params.centerIndex;
+        }
+        if (params.myOffset !== undefined) {
+            this.myOffset = params.myOffset;
+        }
+        if (params.listWidth !== undefined) {
+            this.listWidth = params.listWidth;
+        }
+        if (params.listOffset !== undefined) {
+            this.listOffset = params.listOffset;
+        }
+    }
+    updateStateVars(params) {
+    }
+    purgeVariableDependenciesOnElmtId(rmElmtId) {
+        this.__listData.purgeDependencyOnElmtId(rmElmtId);
+        this.__centerIndex.purgeDependencyOnElmtId(rmElmtId);
+        this.__myOffset.purgeDependencyOnElmtId(rmElmtId);
+        this.__listWidth.purgeDependencyOnElmtId(rmElmtId);
+        this.__listOffset.purgeDependencyOnElmtId(rmElmtId);
+    }
+    aboutToBeDeleted() {
+        this.__listData.aboutToBeDeleted();
+        this.__centerIndex.aboutToBeDeleted();
+        this.__myOffset.aboutToBeDeleted();
+        this.__listWidth.aboutToBeDeleted();
+        this.__listOffset.aboutToBeDeleted();
+        SubscriberManager.Get().delete(this.id__());
+        this.aboutToBeDeletedInternal();
+    }
+    get listData() {
+        return this.__listData.get();
+    }
+    set listData(newValue) {
+        this.__listData.set(newValue);
+    }
+    get centerIndex() {
+        return this.__centerIndex.get();
+    }
+    set centerIndex(newValue) {
+        this.__centerIndex.set(newValue);
+    }
+    get myOffset() {
+        return this.__myOffset.get();
+    }
+    set myOffset(newValue) {
+        this.__myOffset.set(newValue);
+    }
+    get listWidth() {
+        return this.__listWidth.get();
+    }
+    set listWidth(newValue) {
+        this.__listWidth.set(newValue);
+    }
+    get listOffset() {
+        return this.__listOffset.get();
+    }
+    set listOffset(newValue) {
+        this.__listOffset.set(newValue);
+    }
+    // onScrollStop(){
+    //   let rect = this.scrollerForList.getItemRect(this.currentIndex);
+    //   if (this.velocity > 10) {
+    //     this.scrollerForList.scrollToIndex(this.currentIndex, true, ScrollAlign.START);
+    //   } else if (this.velocity < -10) {
+    //     this.scrollerForList.scrollToIndex(this.currentIndex + 1, true, ScrollAlign.START);
+    //   }
+    // }
+    aboutToAppear() {
+        this.listData.shift();
+    }
+    initialRender() {
+        this.observeComponentCreation2((elmtId, isInitialRender) => {
+            List.create({ space: '6vp', scroller: this.scrollerForList });
+            List.debugLine("features/Home/src/main/ets/components/ListItemSmall.ets(31:7)", "home");
+            List.chainAnimation(true);
+            List.edgeEffect(EdgeEffect.None);
+            List.listDirection(Axis.Horizontal);
+            List.scrollBar(BarState.Off);
+            List.width('100%');
+            List.height(230);
+            List.onTouch((event) => {
+                if (event.type === TouchType.Down) {
+                    this.listOffset = this.scrollerForList.currentOffset().xOffset;
+                    console.info(`this.currentOffset ${this.listOffset}`);
+                }
+                if (event.type === TouchType.Up || event.type === TouchType.Cancel) {
+                    let curOffset = this.scrollerForList.currentOffset().xOffset - this.listOffset;
+                    let listNum = Math.floor(curOffset / this.listWidth);
+                    let targetOffset = this.listOffset;
+                    if (listNum > 0) {
+                        //å‘æ­£æ–¹å‘æ»‘åŠ¨è¶…è¿‡ä¸€ä¸ªåˆ—è¡¨é¡¹å®½åº¦å¤„ç†
+                        if (Math.abs(curOffset - this.listWidth) < this.listWidth / 3) {
+                            targetOffset = this.listOffset + this.listWidth + this.myOffset;
+                        }
+                        else {
+                            targetOffset = this.listOffset + (this.listWidth + this.myOffset) * 2;
+                        }
+                    }
+                    else if (listNum <= -1) {
+                        //å‘è´Ÿæ–¹å‘æ»‘åŠ¨è¶…è¿‡ä¸€ä¸ªåˆ—è¡¨é¡¹å®½åº¦å¤„ç†
+                        if (Math.abs(curOffset + this.listWidth) < this.listWidth / 3) {
+                            targetOffset = this.listOffset - this.listWidth - this.myOffset;
+                        }
+                        else {
+                            targetOffset = this.listOffset - (this.listWidth + this.myOffset) * 2;
+                        }
+                    }
+                    else 
+                    //ä¸è¶…è¿‡ä¸€ä¸ªåˆ—è¡¨é¡¹å®½åº¦å¤„ç†
+                    if (Math.abs(curOffset) < this.listWidth / 3) {
+                        targetOffset = this.listOffset;
+                    }
+                    else if (curOffset > 0) {
+                        targetOffset = this.listOffset + this.listWidth + this.myOffset;
+                    }
+                    else if (curOffset < 0) {
+                        targetOffset = this.listOffset - this.listWidth - this.myOffset;
+                    }
+                    console.info(`targetOffset ${targetOffset} listOffset ${curOffset} `);
+                    this.scrollerForList.scrollTo({
+                        xOffset: targetOffset,
+                        yOffset: 0,
+                        animation: true
+                    });
+                }
+            });
+        }, List);
+        {
+            const itemCreation = (elmtId, isInitialRender) => {
+                ViewStackProcessor.StartGetAccessRecordingFor(elmtId);
+                itemCreation2(elmtId, isInitialRender);
+                if (!isInitialRender) {
+                    ListItem.pop();
+                }
+                ViewStackProcessor.StopGetAccessRecording();
+            };
+            const itemCreation2 = (elmtId, isInitialRender) => {
+                ListItem.create(deepRenderFunction, true);
+                ListItem.width('6vp');
+                ListItem.height('100%');
+                ListItem.debugLine("features/Home/src/main/ets/components/ListItemSmall.ets(32:9)", "home");
+            };
+            const deepRenderFunction = (elmtId, isInitialRender) => {
+                itemCreation(elmtId, isInitialRender);
+                ListItem.pop();
+            };
+            this.observeComponentCreation2(itemCreation2, ListItem);
+            ListItem.pop();
+        }
+        this.observeComponentCreation2((elmtId, isInitialRender) => {
+            ForEach.create();
+            const forEachItemGenFunction = _item => {
+                const item = _item;
+                {
+                    const itemCreation = (elmtId, isInitialRender) => {
+                        ViewStackProcessor.StartGetAccessRecordingFor(elmtId);
+                        itemCreation2(elmtId, isInitialRender);
+                        if (!isInitialRender) {
+                            ListItem.pop();
+                        }
+                        ViewStackProcessor.StopGetAccessRecording();
+                    };
+                    const itemCreation2 = (elmtId, isInitialRender) => {
+                        ListItem.create(deepRenderFunction, true);
+                        ListItem.height('100%');
+                        ListItem.width('179vp');
+                        ListItem.debugLine("features/Home/src/main/ets/components/ListItemSmall.ets(37:11)", "home");
+                    };
+                    const deepRenderFunction = (elmtId, isInitialRender) => {
+                        itemCreation(elmtId, isInitialRender);
+                        this.observeComponentCreation2((elmtId, isInitialRender) => {
+                            Column.create();
+                            Column.debugLine("features/Home/src/main/ets/components/ListItemSmall.ets(38:13)", "home");
+                            Column.clip(true);
+                            Column.height('100%');
+                            Column.width('100%');
+                            Column.alignItems(HorizontalAlign.Start);
+                        }, Column);
+                        this.observeComponentCreation2((elmtId, isInitialRender) => {
+                            Image.create({ "id": -1, "type": -1, params: [item.pic], "bundleName": "com.example.wangningmei", "moduleName": "Home" });
+                            Image.debugLine("features/Home/src/main/ets/components/ListItemSmall.ets(39:15)", "home");
+                            Image.width('100%');
+                            Image.objectFit(ImageFit.Cover);
+                            Image.borderRadius(12);
+                            Image.border({ width: 1, color: Color.Gray });
+                        }, Image);
+                        this.observeComponentCreation2((elmtId, isInitialRender) => {
+                            // .margin({ left: '12vp' })
+                            Column.create();
+                            Column.debugLine("features/Home/src/main/ets/components/ListItemSmall.ets(46:15)", "home");
+                            // .margin({ left: '12vp' })
+                            Column.width('100%');
+                            // .margin({ left: '12vp' })
+                            Column.height(31);
+                            // .margin({ left: '12vp' })
+                            Column.alignItems(HorizontalAlign.Start);
+                            // .margin({ left: '12vp' })
+                            Column.margin({ top: '8vp' });
+                        }, Column);
+                        this.observeComponentCreation2((elmtId, isInitialRender) => {
+                            Text.create(item.name);
+                            Text.debugLine("features/Home/src/main/ets/components/ListItemSmall.ets(47:17)", "home");
+                            Text.fontSize('18vp');
+                            Text.fontColor(Color.Black);
+                            Text.width('100%');
+                            Text.textOverflow({ overflow: TextOverflow.Ellipsis });
+                            Text.maxLines(1);
+                        }, Text);
+                        Text.pop();
+                        this.observeComponentCreation2((elmtId, isInitialRender) => {
+                            // .textAlign(TextAlign.Start)
+                            Text.create(item.artist);
+                            Text.debugLine("features/Home/src/main/ets/components/ListItemSmall.ets(54:17)", "home");
+                            // .textAlign(TextAlign.Start)
+                            Text.fontSize('13vp');
+                            // .textAlign(TextAlign.Start)
+                            Text.fontColor(Color.Gray);
+                            // .textAlign(TextAlign.Start)
+                            Text.textOverflow({ overflow: TextOverflow.Ellipsis });
+                            // .textAlign(TextAlign.Start)
+                            Text.maxLines(1);
+                        }, Text);
+                        // .textAlign(TextAlign.Start)
+                        Text.pop();
+                        // .margin({ left: '12vp' })
+                        Column.pop();
+                        Column.pop();
+                        ListItem.pop();
+                    };
+                    this.observeComponentCreation2(itemCreation2, ListItem);
+                    ListItem.pop();
+                }
+            };
+            this.forEachUpdateFunction(elmtId, this.listData, forEachItemGenFunction, (item) => JSON.stringify(item), false, false);
+        }, ForEach);
+        ForEach.pop();
+        {
+            const itemCreation = (elmtId, isInitialRender) => {
+                ViewStackProcessor.StartGetAccessRecordingFor(elmtId);
+                itemCreation2(elmtId, isInitialRender);
+                if (!isInitialRender) {
+                    ListItem.pop();
+                }
+                ViewStackProcessor.StopGetAccessRecording();
+            };
+            const itemCreation2 = (elmtId, isInitialRender) => {
+                ListItem.create(deepRenderFunction, true);
+                ListItem.width('6vp');
+                ListItem.height('100%');
+                ListItem.debugLine("features/Home/src/main/ets/components/ListItemSmall.ets(77:9)", "home");
+            };
+            const deepRenderFunction = (elmtId, isInitialRender) => {
+                itemCreation(elmtId, isInitialRender);
+                ListItem.pop();
+            };
+            this.observeComponentCreation2(itemCreation2, ListItem);
+            ListItem.pop();
+        }
+        List.pop();
+    }
+    rerender() {
+        this.updateDirtyElements();
+    }
+}
+//# sourceMappingURL=ListItemSmall.js.mapÂ‘ÙpC:\Users\ASUS\Desktop\Harmony\wangningmei\wangningmei\features\Home\src\main\ets\viewmodel\ListDataViewModel.etsÙmC:\Users\ASUS\Desktop\Harmony\wangningmei\wangningmei\features\Home\src\main\ets\components\ListItemSmall.etsÔrB›ªmoduleName±isLocalDependency¯isNodeEntryFile§pkgPath±belongProjectPath§pkgNameªpkgVersion±dependencyPkgInfo°belongModulePath¬shouldEmitJs¯hostModulesInfo¤HomeÃÂÙCC:\Users\ASUS\Desktop\Harmony\wangningmei\wangningmei\features\HomeÙ5C:\Users\ASUS\Desktop\Harmony\wangningmei\wangningmei¤home¥1.0.0Ô  ÙCC:\Users\ASUS\Desktop\Harmony\wangningmei\wangningmei\features\HomeÃ‘ÔrC’²hostDependencyName®hostModuleName»../components/ListItemSmall¤HomeÃÚµimport { ListData } from '../viewmodel/ListData'
+import { ListDataViewModel } from '../viewmodel/ListDataViewModel'
+
+
+// @Entry
+@Component
+export struct ListItemSmall {
+  @State listData: ListData[] = new ListDataViewModel().getHisMoreList();
+  private scrollerForList: Scroller = new Scroller();
+  @State centerIndex: number = 0
+  @State myOffset: number = 6
+  @State listWidth: number = 179
+  @State listOffset: number = 0
+
+  // onScrollStop(){
+  //   let rect = this.scrollerForList.getItemRect(this.currentIndex);
+  //   if (this.velocity > 10) {
+  //     this.scrollerForList.scrollToIndex(this.currentIndex, true, ScrollAlign.START);
+  //   } else if (this.velocity < -10) {
+  //     this.scrollerForList.scrollToIndex(this.currentIndex + 1, true, ScrollAlign.START);
+  //   }
+  // }
+
+
+
+  aboutToAppear(): void {
+    this.listData.shift();
+  }
+
+  build() {
+      List({ space:'6vp',scroller: this.scrollerForList},){
+        ListItem()
+          .width('6vp')
+          // .backgroundColor(Color.Red)
+          .height('100%')
+        ForEach(this.listData, (item: ListData) => {
+          ListItem() {
+            Column(){
+              Image($r(item.pic))
+                .width('100%')
+                // .height('160vp')
+                .objectFit(ImageFit.Cover)
+                .borderRadius(12)
+                .border({ width: 1, color: Color.Gray})
+                // .margin({ left: '12vp' })
+              Column(){
+                Text(item.name)
+                  .fontSize('18vp')
+                  .fontColor(Color.Black)
+                  .width('100%')
+                  .textOverflow({ overflow: TextOverflow.Ellipsis })
+                  .maxLines(1)
+                // .textAlign(TextAlign.Start)
+                Text(item.artist)
+                  .fontSize('13vp')
+                  .fontColor(Color.Gray)
+                  .textOverflow({ overflow: TextOverflow.Ellipsis })
+                  .maxLines(1)
+              }
+              .width('100%')
+              .height(31)
+              .alignItems(HorizontalAlign.Start)
+              .margin({top: '8vp'})
+
+            }
+            .clip(true)
+            .height('100%')
+            .width('100%')
+            .alignItems(HorizontalAlign.Start)
+
+          }
+          .height('100%')
+          .width('179vp')
+          // .margin({left: '12vp'})
+          // .backgroundColor(Color.Red)
+        }, (item: ListData) => JSON.stringify(item))
+        ListItem()
+          .width('6vp')
+          .height('100%')
+      }
+      // .alignListItem(ListItemAlign.Center)
+      // .visualEffect( true)
+
+      .chainAnimation(true)
+      // .scrollSnapAlign(ScrollSnapAlign.START)
+      .edgeEffect(EdgeEffect.None)
+      .listDirection(Axis.Horizontal)
+      .scrollBar(BarState.Off)
+      .width('100%')
+      .height(230)
+      // .onAreaChange((oldValue: Area, newValue: Area) => {
+      //   this.listHeight = newValue.height as number
+      //   this.listWidth = newValue.width as number
+      // })
+      .onTouch((event: TouchEvent) => {
+        if (event.type === TouchType.Down) {
+          this.listOffset = this.scrollerForList.currentOffset().xOffset
+          console.info(`this.currentOffset ${this.listOffset}`)
+        }
+        if (event.type === TouchType.Up || event.type === TouchType.Cancel) {
+          let curOffset: number = this.scrollerForList.currentOffset().xOffset - this.listOffset
+          let listNum: number = Math.floor(curOffset / this.listWidth)
+          let targetOffset = this.listOffset
+          if (listNum > 0) {
+            //å‘æ­£æ–¹å‘æ»‘åŠ¨è¶…è¿‡ä¸€ä¸ªåˆ—è¡¨é¡¹å®½åº¦å¤„ç†
+            if (Math.abs(curOffset - this.listWidth) < this.listWidth / 3) {
+              targetOffset = this.listOffset + this.listWidth + this.myOffset
+            } else {
+              targetOffset = this.listOffset + (this.listWidth + this.myOffset) * 2
+            }
+
+          } else if (listNum <= -1) {
+            //å‘è´Ÿæ–¹å‘æ»‘åŠ¨è¶…è¿‡ä¸€ä¸ªåˆ—è¡¨é¡¹å®½åº¦å¤„ç†
+            if (Math.abs(curOffset + this.listWidth) < this.listWidth / 3) {
+              targetOffset = this.listOffset - this.listWidth - this.myOffset
+            } else {
+              targetOffset = this.listOffset - (this.listWidth + this.myOffset) * 2
+            }
+
+          } else
+            //ä¸è¶…è¿‡ä¸€ä¸ªåˆ—è¡¨é¡¹å®½åº¦å¤„ç†
+            if(Math.abs(curOffset) < this.listWidth / 3) {
+            targetOffset = this.listOffset
+          } else if (curOffset > 0) {
+            targetOffset = this.listOffset + this.listWidth + this.myOffset
+          } else if (curOffset < 0) {
+            targetOffset = this.listOffset - this.listWidth - this.myOffset
+          }
+          console.info(`targetOffset ${targetOffset} listOffset ${curOffset} `)
+          this.scrollerForList.scrollTo({
+            xOffset: targetOffset ,
+            yOffset: 0,
+            animation: true
+          })
+        }
+
+ })
+}
+}ÔrD•§version¨mappings¥names§sources®sourcesContentÜ.‘”   ‘”   ‘”   ‘”   ‘”  &‘”  ÌB‘”  ‘”  ‘”  ‘”  ‘”  ‘”  ‘”  Ì_‘”  Ìb	‘”  Ìc‘”  Ìd
+‘”  Ìe
+‘”  Ìf
+‘”  Ìi‘”  Ìj‘”  Ìk‘”  Ìk‘”  Ìl‘”  Ìm‘”  Ìo‘”  Ìo‘”  Ìq‘”  Ìr‘”  Ìs‘”  Ìs‘”  Ìt‘”  Ìu‘”  Ìw‘”  Ìy‘”  Ìz‘”  Ì{‘”  Ì|‘”  Ì}‘”  Ì~‘”  Ì‘”  Ì
+‘”  Ì‚‘”  Ìƒ‘”  Ì„‘”  Ì…‘”  Ì†	‘”  %‘”  &‘”  &‘”  -‘”  -‘”  .‘”  5‘”  #‘”  Ì‰‘ÙmC:\Users\ASUS\Desktop\Harmony\wangningmei\wangningmei\features\Home\src\main\ets\components\ListItemSmall.ets‘Úµimport { ListData } from '../viewmodel/ListData'
+import { ListDataViewModel } from '../viewmodel/ListDataViewModel'
+
+
+// @Entry
+@Component
+export struct ListItemSmall {
+  @State listData: ListData[] = new ListDataViewModel().getHisMoreList();
+  private scrollerForList: Scroller = new Scroller();
+  @State centerIndex: number = 0
+  @State myOffset: number = 6
+  @State listWidth: number = 179
+  @State listOffset: number = 0
+
+  // onScrollStop(){
+  //   let rect = this.scrollerForList.getItemRect(this.currentIndex);
+  //   if (this.velocity > 10) {
+  //     this.scrollerForList.scrollToIndex(this.currentIndex, true, ScrollAlign.START);
+  //   } else if (this.velocity < -10) {
+  //     this.scrollerForList.scrollToIndex(this.currentIndex + 1, true, ScrollAlign.START);
+  //   }
+  // }
+
+
+
+  aboutToAppear(): void {
+    this.listData.shift();
+  }
+
+  build() {
+      List({ space:'6vp',scroller: this.scrollerForList},){
+        ListItem()
+          .width('6vp')
+          // .backgroundColor(Color.Red)
+          .height('100%')
+        ForEach(this.listData, (item: ListData) => {
+          ListItem() {
+            Column(){
+              Image($r(item.pic))
+                .width('100%')
+                // .height('160vp')
+                .objectFit(ImageFit.Cover)
+                .borderRadius(12)
+                .border({ width: 1, color: Color.Gray})
+                // .margin({ left: '12vp' })
+              Column(){
+                Text(item.name)
+                  .fontSize('18vp')
+                  .fontColor(Color.Black)
+                  .width('100%')
+                  .textOverflow({ overflow: TextOverflow.Ellipsis })
+                  .maxLines(1)
+                // .textAlign(TextAlign.Start)
+                Text(item.artist)
+                  .fontSize('13vp')
+                  .fontColor(Color.Gray)
+                  .textOverflow({ overflow: TextOverflow.Ellipsis })
+                  .maxLines(1)
+              }
+              .width('100%')
+              .height(31)
+              .alignItems(HorizontalAlign.Start)
+              .margin({top: '8vp'})
+
+            }
+            .clip(true)
+            .height('100%')
+            .width('100%')
+            .alignItems(HorizontalAlign.Start)
+
+          }
+          .height('100%')
+          .width('179vp')
+          // .margin({left: '12vp'})
+          // .backgroundColor(Color.Red)
+        }, (item: ListData) => JSON.stringify(item))
+        ListItem()
+          .width('6vp')
+          .height('100%')
+      }
+      // .alignListItem(ListItemAlign.Center)
+      // .visualEffect( true)
+
+      .chainAnimation(true)
+      // .scrollSnapAlign(ScrollSnapAlign.START)
+      .edgeEffect(EdgeEffect.None)
+      .listDirection(Axis.Horizontal)
+      .scrollBar(BarState.Off)
+      .width('100%')
+      .height(230)
+      // .onAreaChange((oldValue: Area, newValue: Area) => {
+      //   this.listHeight = newValue.height as number
+      //   this.listWidth = newValue.width as number
+      // })
+      .onTouch((event: TouchEvent) => {
+        if (event.type === TouchType.Down) {
+          this.listOffset = this.scrollerForList.currentOffset().xOffset
+          console.info(`this.currentOffset ${this.listOffset}`)
+        }
+        if (event.type === TouchType.Up || event.type === TouchType.Cancel) {
+          let curOffset: number = this.scrollerForList.currentOffset().xOffset - this.listOffset
+          let listNum: number = Math.floor(curOffset / this.listWidth)
+          let targetOffset = this.listOffset
+          if (listNum > 0) {
+            //å‘æ­£æ–¹å‘æ»‘åŠ¨è¶…è¿‡ä¸€ä¸ªåˆ—è¡¨é¡¹å®½åº¦å¤„ç†
+            if (Math.abs(curOffset - this.listWidth) < this.listWidth / 3) {
+              targetOffset = this.listOffset + this.listWidth + this.myOffset
+            } else {
+              targetOffset = this.listOffset + (this.listWidth + this.myOffset) * 2
+            }
+
+          } else if (listNum <= -1) {
+            //å‘è´Ÿæ–¹å‘æ»‘åŠ¨è¶…è¿‡ä¸€ä¸ªåˆ—è¡¨é¡¹å®½åº¦å¤„ç†
+            if (Math.abs(curOffset + this.listWidth) < this.listWidth / 3) {
+              targetOffset = this.listOffset - this.listWidth - this.myOffset
+            } else {
+              targetOffset = this.listOffset - (this.listWidth + this.myOffset) * 2
+            }
+
+          } else
+            //ä¸è¶…è¿‡ä¸€ä¸ªåˆ—è¡¨é¡¹å®½åº¦å¤„ç†
+            if(Math.abs(curOffset) < this.listWidth / 3) {
+            targetOffset = this.listOffset
+          } else if (curOffset > 0) {
+            targetOffset = this.listOffset + this.listWidth + this.myOffset
+          } else if (curOffset < 0) {
+            targetOffset = this.listOffset - this.listWidth - this.myOffset
+          }
+          console.info(`targetOffset ${targetOffset} listOffset ${curOffset} `)
+          this.scrollerForList.scrollTo({
+            xOffset: targetOffset ,
+            yOffset: 0,
+            animation: true
+          })
+        }
+
+ })
+}
+}ÔrE‘¾../viewmodel/ListDataViewModelÔrF—ªassertions¨external¢id¤meta±moduleSideEffectsªresolvedByµsyntheticNamedExportsAÂÙpC:\Users\ASUS\Desktop\Harmony\wangningmei\wangningmei\features\Home\src\main\ets\viewmodel\ListDataViewModel.etsAÃªoh-resolveÂ‘ÔrG’§missing¦pluginÃ¦genAbcÂÔ  ÔrH”²dynamicImportCache¹exportAllDeclarationCache»exportNamedDeclarationCache«importCache‘ÔrI–¤type¥start£end«declarationªspecifiers¦source¶ExportNamedDeclarationÌÅÍ8wÔrJ–¤type¥start£end¢idªsuperClass¤body°ClassDeclarationÌÌÍ8wÔrK”¤type¥start£end¤nameªIdentifierÌÒÌß­ListItemSmallKªIdentifierÌèÌî¦ViewPUÔrL”¤type¥start£end¤body©ClassBodyÌïÍ8wÜ ÔrM˜¤type¥start£end¦static¨computed£key¤kind¥value°MethodDefinitionÌöÍøÂÂKªIdentifierÌöÍ«constructor«constructorÔrN™¤type¥start£end¢idªexpression©generator¥async¦params¤body²FunctionExpressionÍÍøÀÂÂÂ–KªIdentifierÍÍ¦parentKªIdentifierÍ
+Í¦paramsKªIdentifierÍÍ ®__localStorageÔrO•¤type¥start£end¤left¥right±AssignmentPatternÍ"Í-KªIdentifierÍ"Í(¦elmtIdÔrP–¤type¥start£end¨operator¦prefix¨argument¯UnaryExpressionÍ+Í-¡-ÃÔrQ•¤type¥start£end¥value£raw§LiteralÍ,Í-¡1O±AssignmentPatternÍ/ÍGKªIdentifierÍ/Í;¬paramsLambdaKªIdentifierÍ>ÍG©undefinedKªIdentifierÍIÍR©extraInfoL®BlockStatementÍTÍøšÔrR”¤type¥start£endªexpression³ExpressionStatementÍ_ÍÔrS–¤type¥start£end¦callee©arguments¨optional®CallExpressionÍ_ÍÔrT“¤type¥start£end¥SuperÍ_Íd”KªIdentifierÍeÍk¦parentKªIdentifierÍmÍ{®__localStorageKªIdentifierÍ}Íƒ¦elmtIdKªIdentifierÍ…Í©extraInfoÂÔrU–¤type¥start£end¤testªconsequent©alternate«IfStatementÍšÍÔrV–¤type¥start£end¤left¨operator¥right°BinaryExpressionÍÍÀP¯UnaryExpressionÍÍ±¦typeofÃKªIdentifierÍ¥Í±¬paramsLambda£===Q§LiteralÍ¶ÍÀ¨functionª"function"L®BlockStatementÍÂÍ‘R³ExpressionStatementÍÑÍöÔrW–¤type¥start£end¨operator¤left¥right´AssignmentExpressionÍÑÍõ¡=ÔrX—¤type¥start£end¦object¨property¨computed¨optional°MemberExpressionÍÑÍæT®ThisExpressionÍÑÍÕKªIdentifierÍÖÍæ°paramsGenerator_ÂÂKªIdentifierÍéÍõ¬paramsLambdaÀR³ExpressionStatementÍÍvW´AssignmentExpressionÍÍu¡=X°MemberExpressionÍÍT®ThisExpressionÍÍKªIdentifierÍÍª__listDataÂÂÔrY•¤type¥start£end¦callee©arguments­NewExpressionÍÍuKªIdentifierÍ!Í9¸ObservedPropertyObjectPU“S®CallExpressionÍ:ÍbX°MemberExpressionÍ:Í`Y­NewExpressionÍ:ÍQKªIdentifierÍ>ÍO±ListDataViewModelKªIdentifierÍRÍ`®getHisMoreListÂÂÂT®ThisExpressionÍdÍhQ§LiteralÍjÍt¨listDataª"listData"R³ExpressionStatementÍ€Í¦W´AssignmentExpressionÍ€Í¥¡=X°MemberExpressionÍ€Í”T®ThisExpressionÍ€Í„KªIdentifierÍ…Í”¯scrollerForListÂÂY­NewExpressionÍ—Í¥KªIdentifierÍ›Í£¨ScrollerR³ExpressionStatementÍ°ÍúW´AssignmentExpressionÍ°Íù¡=X°MemberExpressionÍ°ÍÂT®ThisExpressionÍ°Í´KªIdentifierÍµÍÂ­__centerIndexÂÂY­NewExpressionÍÅÍùKªIdentifierÍÉÍá¸ObservedPropertySimplePU“Q§LiteralÍâÍã ¡0T®ThisExpressionÍåÍéQ§LiteralÍëÍø«centerIndex­"centerIndex"R³ExpressionStatementÍÍHW´AssignmentExpressionÍÍG¡=X°MemberExpressionÍÍT®ThisExpressionÍÍKªIdentifierÍ	Íª__myOffsetÂÂY­NewExpressionÍÍGKªIdentifierÍÍ2¸ObservedPropertySimplePU“Q§LiteralÍ3Í4¡6T®ThisExpressionÍ6Í:Q§LiteralÍ<ÍF¨myOffsetª"myOffset"R³ExpressionStatementÍRÍšW´AssignmentExpressionÍRÍ™¡=X°MemberExpressionÍRÍbT®ThisExpressionÍRÍVKªIdentifierÍWÍb«__listWidthÂÂY­NewExpressionÍeÍ™KªIdentifierÍiÍ¸ObservedPropertySimplePU“Q§LiteralÍ‚Í…Ì³£179T®ThisExpressionÍ‡Í‹Q§LiteralÍÍ˜©listWidth«"listWidth"R³ExpressionStatementÍ¤ÍšW´AssignmentExpressionÍ¤Í™¡=X°MemberExpressionÍ¤ÍµT®ThisExpressionÍ¤Í¨KªIdentifierÍ©Íµ¬__listOffsetÂÂY­NewExpressionÍ¸Í™KªIdentifierÍ¼ÍÔ¸ObservedPropertySimplePU“Q§LiteralÍÕÍÖ ¡0T®ThisExpressionÍ†ÍŠQ§LiteralÍŒÍ˜ªlistOffset¬"listOffset"R³ExpressionStatementÍ¤ÍËS®CallExpressionÍ¤ÍÊX°MemberExpressionÍ¤ÍÂT®ThisExpressionÍ¤Í¨KªIdentifierÍ©ÍÂ¹setInitiallyProvidedValueÂÂ‘KªIdentifierÍÃÍÉ¦paramsÂR³ExpressionStatementÍÕÍñS®CallExpressionÍÕÍğX°MemberExpressionÍÕÍîT®ThisExpressionÍÕÍÙKªIdentifierÍÚÍî´finalizeConstructionÂÂÂM°MethodDefinitionÍşÍ¹ÂÂKªIdentifierÍşÍ¹setInitiallyProvidedValue¦methodN²FunctionExpressionÍÍ¹ÀÂÂÂ‘KªIdentifierÍÍ¦paramsL®BlockStatementÍ Í¹–U«IfStatementÍ+ÍˆV°BinaryExpressionÍ/ÍLX°MemberExpressionÍ/Í>KªIdentifierÍ/Í5¦paramsKªIdentifierÍ6Í>¨listDataÂÂ£!==KªIdentifierÍCÍL©undefinedL®BlockStatementÍNÍˆ‘R³ExpressionStatementÍ]Í}W´AssignmentExpressionÍ]Í|¡=X°MemberExpressionÍ]ÍjT®ThisExpressionÍ]ÍaKªIdentifierÍbÍj¨listDataÂÂX°MemberExpressionÍmÍ|KªIdentifierÍmÍs¦paramsKªIdentifierÍtÍ|¨listDataÂÂÀU«IfStatementÍ’ÍV°BinaryExpressionÍ–ÍºX°MemberExpressionÍ–Í¬KªIdentifierÍ–Íœ¦paramsKªIdentifierÍÍ¬¯scrollerForListÂÂ£!==KªIdentifierÍ±Íº©undefinedL®BlockStatementÍ¼Í‘R³ExpressionStatementÍËÍùW´AssignmentExpressionÍËÍø¡=X°MemberExpressionÍËÍßT®ThisExpressionÍËÍÏKªIdentifierÍĞÍß¯scrollerForListÂÂX°MemberExpressionÍâÍøKªIdentifierÍâÍè¦paramsKªIdentifierÍéÍø¯scrollerForListÂÂÀU«IfStatementÍÍtV°BinaryExpressionÍÍ2X°MemberExpressionÍÍ$KªIdentifierÍÍ¦paramsKªIdentifierÍÍ$«centerIndexÂÂ£!==KªIdentifierÍ)Í2©undefinedL®BlockStatementÍ4Ít‘R³ExpressionStatementÍCÍiW´AssignmentExpressionÍCÍh¡=X°MemberExpressionÍCÍST®ThisExpressionÍCÍGKªIdentifierÍHÍS«centerIndexÂÂX°MemberExpressionÍVÍhKªIdentifierÍVÍ\¦paramsKªIdentifierÍ]Íh«centerIndexÂÂÀU«IfStatementÍ~ÍÛV°BinaryExpressionÍ‚ÍŸX°MemberExpressionÍ‚Í‘KªIdentifierÍ‚Íˆ¦paramsKªIdentifierÍ‰Í‘¨myOffsetÂÂ£!==KªIdentifierÍ–ÍŸ©undefinedL®BlockStatementÍ¡ÍÛ‘R³ExpressionStatementÍ°ÍĞW´AssignmentExpressionÍ°ÍÏ¡=X°MemberExpressionÍ°Í½T®ThisExpressionÍ°Í´KªIdentifierÍµÍ½¨myOffsetÂÂX°MemberExpressionÍÀÍÏKªIdentifierÍÀÍÆ¦paramsKªIdentifierÍÇÍÏ¨myOffsetÂÂÀU«IfStatementÍåÍEV°BinaryExpressionÍéÍX°MemberExpressionÍéÍùKªIdentifierÍéÍï¦paramsKªIdentifierÍğÍù©listWidthÂÂ£!==KªIdentifierÍşÍ©undefinedL®BlockStatementÍ	ÍE‘R³ExpressionStatementÍÍ:W´AssignmentExpressionÍÍ9¡=X°MemberExpressionÍÍ&T®ThisExpressionÍÍKªIdentifierÍÍ&©listWidthÂÂX°MemberExpressionÍ)Í9KªIdentifierÍ)Í/¦paramsKªIdentifierÍ0Í9©listWidthÂÂÀU«IfStatementÍOÍ²V°BinaryExpressionÍSÍrX°MemberExpressionÍSÍdKªIdentifierÍSÍY¦paramsKªIdentifierÍZÍdªlistOffsetÂÂ£!==KªIdentifierÍiÍr©undefinedL®BlockStatementÍtÍ²‘R³ExpressionStatementÍƒÍ§W´AssignmentExpressionÍƒÍ¦¡=X°MemberExpressionÍƒÍ’T®ThisExpressionÍƒÍ‡KªIdentifierÍˆÍ’ªlistOffsetÂÂX°MemberExpressionÍ•Í¦KªIdentifierÍ•Í›¦paramsKªIdentifierÍœÍ¦ªlistOffsetÂÂÀM°MethodDefinitionÍ¿ÍßÂÂKªIdentifierÍ¿ÍÎ¯updateStateVars¦methodN²FunctionExpressionÍÎÍßÀÂÂÂ‘KªIdentifierÍÏÍÕ¦paramsL®BlockStatementÍ×ÍßM°MethodDefinitionÍåÍ
+KÂÂKªIdentifierÍåÍ	Ù!purgeVariableDependenciesOnElmtId¦methodN²FunctionExpressionÍ	Í
+KÀÂÂÂ‘KªIdentifierÍ	Í	¨rmElmtIdL®BlockStatementÍ	Í
+K•R³ExpressionStatementÍ	Í	NS®CallExpressionÍ	Í	MX°MemberExpressionÍ	Í	CX°MemberExpressionÍ	Í	+T®ThisExpressionÍ	Í	 KªIdentifierÍ	!Í	+ª__listDataÂÂKªIdentifierÍ	,Í	C·purgeDependencyOnElmtIdÂÂ‘KªIdentifierÍ	DÍ	L¨rmElmtIdÂR³ExpressionStatementÍ	XÍ	S®CallExpressionÍ	XÍ	ŒX°MemberExpressionÍ	XÍ	‚X°MemberExpressionÍ	XÍ	jT®ThisExpressionÍ	XÍ	\KªIdentifierÍ	]Í	j­__centerIndexÂÂKªIdentifierÍ	kÍ	‚·purgeDependencyOnElmtIdÂÂ‘KªIdentifierÍ	ƒÍ	‹¨rmElmtIdÂR³ExpressionStatementÍ	—Í	ÉS®CallExpressionÍ	—Í	ÈX°MemberExpressionÍ	—Í	¾X°MemberExpressionÍ	—Í	¦T®ThisExpressionÍ	—Í	›KªIdentifierÍ	œÍ	¦ª__myOffsetÂÂKªIdentifierÍ	§Í	¾·purgeDependencyOnElmtIdÂÂ‘KªIdentifierÍ	¿Í	Ç¨rmElmtIdÂR³ExpressionStatementÍ	ÓÍ
+S®CallExpressionÍ	ÓÍ
+X°MemberExpressionÍ	ÓÍ	ûX°MemberExpressionÍ	ÓÍ	ãT®ThisExpressionÍ	ÓÍ	×KªIdentifierÍ	ØÍ	ã«__listWidthÂÂKªIdentifierÍ	äÍ	û·purgeDependencyOnElmtIdÂÂ‘KªIdentifierÍ	üÍ
+¨rmElmtIdÂR³ExpressionStatementÍ
+Í
+DS®CallExpressionÍ
+Í
+CX°MemberExpressionÍ
+Í
+9X°MemberExpressionÍ
+Í
+!T®ThisExpressionÍ
+Í
+KªIdentifierÍ
+Í
+!¬__listOffsetÂÂKªIdentifierÍ
+"Í
+9·purgeDependencyOnElmtIdÂÂ‘KªIdentifierÍ
+:Í
+B¨rmElmtIdÂM°MethodDefinitionÍ
+QÍ³ÂÂKªIdentifierÍ
+QÍ
+a°aboutToBeDeleted¦methodN²FunctionExpressionÍ
+aÍ³ÀÂÂÂL®BlockStatementÍ
+dÍ³—R³ExpressionStatementÍ
+oÍ
+’S®CallExpressionÍ
+oÍ
+‘X°MemberExpressionÍ
+oÍ
+X°MemberExpressionÍ
+oÍ
+~T®ThisExpressionÍ
+oÍ
+sKªIdentifierÍ
+tÍ
+~ª__listDataÂÂKªIdentifierÍ
+Í
+°aboutToBeDeletedÂÂÂR³ExpressionStatementÍ
+œÍ
+ÂS®CallExpressionÍ
+œÍ
+ÁX°MemberExpressionÍ
+œÍ
+¿X°MemberExpressionÍ
+œÍ
+®T®ThisExpressionÍ
+œÍ
+ KªIdentifierÍ
+¡Í
+®­__centerIndexÂÂKªIdentifierÍ
+¯Í
+¿°aboutToBeDeletedÂÂÂR³ExpressionStatementÍ
+ÌÍ
+ïS®CallExpressionÍ
+ÌÍ
+îX°MemberExpressionÍ
+ÌÍ
+ìX°MemberExpressionÍ
+ÌÍ
+ÛT®ThisExpressionÍ
+ÌÍ
+ĞKªIdentifierÍ
+ÑÍ
+Ûª__myOffsetÂÂKªIdentifierÍ
+ÜÍ
+ì°aboutToBeDeletedÂÂÂR³ExpressionStatementÍ
+ùÍS®CallExpressionÍ
+ùÍX°MemberExpressionÍ
+ùÍX°MemberExpressionÍ
+ùÍ	T®ThisExpressionÍ
+ùÍ
+ıKªIdentifierÍ
+şÍ	«__listWidthÂÂKªIdentifierÍ
+Í°aboutToBeDeletedÂÂÂR³ExpressionStatementÍ'ÍLS®CallExpressionÍ'ÍKX°MemberExpressionÍ'ÍIX°MemberExpressionÍ'Í8T®ThisExpressionÍ'Í+KªIdentifierÍ,Í8¬__listOffsetÂÂKªIdentifierÍ9ÍI°aboutToBeDeletedÂÂÂR³ExpressionStatementÍVÍ‚S®CallExpressionÍVÍX°MemberExpressionÍVÍtS®CallExpressionÍVÍmX°MemberExpressionÍVÍkKªIdentifierÍVÍg±SubscriberManagerKªIdentifierÍhÍk£GetÂÂÂKªIdentifierÍnÍt¦deleteÂÂ‘S®CallExpressionÍuÍ€X°MemberExpressionÍuÍ~T®ThisExpressionÍuÍyKªIdentifierÍzÍ~¤id__ÂÂÂÂR³ExpressionStatementÍŒÍ¬S®CallExpressionÍŒÍ«X°MemberExpressionÍŒÍ©T®ThisExpressionÍŒÍKªIdentifierÍ‘Í©¸aboutToBeDeletedInternalÂÂÂM°MethodDefinitionÍ¹Í÷ÂÂKªIdentifierÍ½ÍÅ¨listData£getN²FunctionExpressionÍÅÍ÷ÀÂÂÂL®BlockStatementÍÈÍ÷‘ÔrZ”¤type¥start£end¨argument¯ReturnStatementÍÓÍğS®CallExpressionÍÚÍïX°MemberExpressionÍÚÍíX°MemberExpressionÍÚÍéT®ThisExpressionÍÚÍŞKªIdentifierÍßÍéª__listDataÂÂKªIdentifierÍêÍí£getÂÂÂM°MethodDefinitionÍıÍDÂÂKªIdentifierÍÍ	¨listData£setN²FunctionExpressionÍ	ÍDÀÂÂÂ‘KªIdentifierÍ
+Í¨newValueL®BlockStatementÍÍD‘R³ExpressionStatementÍÍ=S®CallExpressionÍÍ<X°MemberExpressionÍÍ2X°MemberExpressionÍÍ.T®ThisExpressionÍÍ#KªIdentifierÍ$Í.ª__listDataÂÂKªIdentifierÍ/Í2£setÂÂ‘KªIdentifierÍ3Í;¨newValueÂM°MethodDefinitionÍJÍÂÂKªIdentifierÍNÍY«centerIndex£getN²FunctionExpressionÍYÍÀÂÂÂL®BlockStatementÍ\Í‘Z¯ReturnStatementÍgÍ‡S®CallExpressionÍnÍ†X°MemberExpressionÍnÍ„X°MemberExpressionÍnÍ€T®ThisExpressionÍnÍrKªIdentifierÍsÍ€­__centerIndexÂÂKªIdentifierÍÍ„£getÂÂÂM°MethodDefinitionÍ”ÍáÂÂKªIdentifierÍ˜Í£«centerIndex£setN²FunctionExpressionÍ£ÍáÀÂÂÂ‘KªIdentifierÍ¤Í¬¨newValueL®BlockStatementÍ®Íá‘R³ExpressionStatementÍ¹ÍÚS®CallExpressionÍ¹ÍÙX°MemberExpressionÍ¹ÍÏX°MemberExpressionÍ¹ÍËT®ThisExpressionÍ¹Í½KªIdentifierÍ¾ÍË­__centerIndexÂÂKªIdentifierÍÌÍÏ£setÂÂ‘KªIdentifierÍĞÍØ¨newValueÂM°MethodDefinitionÍçÍ%ÂÂKªIdentifierÍëÍó¨myOffset£getN²FunctionExpressionÍóÍ%ÀÂÂÂL®BlockStatementÍöÍ%‘Z¯ReturnStatementÍÍS®CallExpressionÍÍX°MemberExpressionÍÍX°MemberExpressionÍÍT®ThisExpressionÍÍKªIdentifierÍÍª__myOffsetÂÂKªIdentifierÍÍ£getÂÂÂM°MethodDefinitionÍ+ÍrÂÂKªIdentifierÍ/Í7¨myOffset£setN²FunctionExpressionÍ7ÍrÀÂÂÂ‘KªIdentifierÍ8Í@¨newValueL®BlockStatementÍBÍr‘R³ExpressionStatementÍMÍkS®CallExpressionÍMÍjX°MemberExpressionÍMÍ`X°MemberExpressionÍMÍ\T®ThisExpressionÍMÍQKªIdentifierÍRÍ\ª__myOffsetÂÂKªIdentifierÍ]Í`£setÂÂ‘KªIdentifierÍaÍi¨newValueÂM°MethodDefinitionÍxÍ¸ÂÂKªIdentifierÍ|Í…©listWidth£getN²FunctionExpressionÍ…Í¸ÀÂÂÂL®BlockStatementÍˆÍ¸‘Z¯ReturnStatementÍ“Í±S®CallExpressionÍšÍ°X°MemberExpressionÍšÍ®X°MemberExpressionÍšÍªT®ThisExpressionÍšÍKªIdentifierÍŸÍª«__listWidthÂÂKªIdentifierÍ«Í®£getÂÂÂM°MethodDefinitionÍ¾ÍÂÂKªIdentifierÍÂÍË©listWidth£setN²FunctionExpressionÍËÍÀÂÂÂ‘KªIdentifierÍÌÍÔ¨newValueL®BlockStatementÍÖÍ‘R³ExpressionStatementÍáÍ S®CallExpressionÍáÍÿX°MemberExpressionÍáÍõX°MemberExpressionÍáÍñT®ThisExpressionÍáÍåKªIdentifierÍæÍñ«__listWidthÂÂKªIdentifierÍòÍõ£setÂÂ‘KªIdentifierÍöÍş¨newValueÂM°MethodDefinitionÍÍOÂÂKªIdentifierÍÍªlistOffset£getN²FunctionExpressionÍÍOÀÂÂÂL®BlockStatementÍÍO‘Z¯ReturnStatementÍ)ÍHS®CallExpressionÍ0ÍGX°MemberExpressionÍ0ÍEX°MemberExpressionÍ0ÍAT®ThisExpressionÍ0Í4KªIdentifierÍ5ÍA¬__listOffsetÂÂKªIdentifierÍBÍE£getÂÂÂM°MethodDefinitionÍUÍ ÂÂKªIdentifierÍYÍcªlistOffset£setN²FunctionExpressionÍcÍ ÀÂÂÂ‘KªIdentifierÍdÍl¨newValueL®BlockStatementÍnÍ ‘R³ExpressionStatementÍyÍ™S®CallExpressionÍyÍ˜X°MemberExpressionÍyÍX°MemberExpressionÍyÍŠT®ThisExpressionÍyÍ}KªIdentifierÍ~ÍŠ¬__listOffsetÂÂKªIdentifierÍ‹Í£setÂÂ‘KªIdentifierÍÍ—¨newValueÂM°MethodDefinitionÍ*ÍbÂÂKªIdentifierÍ*Í7­aboutToAppear¦methodN²FunctionExpressionÍ7ÍbÀÂÂÂL®BlockStatementÍ:Íb‘R³ExpressionStatementÍEÍ[S®CallExpressionÍEÍZX°MemberExpressionÍEÍXX°MemberExpressionÍEÍRT®ThisExpressionÍEÍIKªIdentifierÍJÍR¨listDataÂÂKªIdentifierÍSÍX¥shiftÂÂÂM°MethodDefinitionÍhÍ86ÂÂKªIdentifierÍhÍu­initialRender¦methodN²FunctionExpressionÍuÍ86ÀÂÂÂL®BlockStatementÍxÍ86–R³ExpressionStatementÍƒÍíS®CallExpressionÍƒÍìX°MemberExpressionÍƒÍ¡T®ThisExpressionÍƒÍ‡KªIdentifierÍˆÍ¡¹observeComponentCreation2ÂÂ’N·ArrowFunctionExpressionÍ¢ÍåÀÂÂÂ’KªIdentifierÍ£Í©¦elmtIdKªIdentifierÍ«Íº¯isInitialRenderL®BlockStatementÍ¿Íå™R³ExpressionStatementÍÎÍS®CallExpressionÍÎÍX°MemberExpressionÍÎÍÙKªIdentifierÍÎÍÒ¤ListKªIdentifierÍÓÍÙ¦createÂÂ‘Ôr[”¤type¥start£endªproperties°ObjectExpressionÍÚÍ
+’Ôr\™¤type¥start£end¦method©shorthand¨computed£key¥value¤kind¨PropertyÍÜÍèÂÂÂKªIdentifierÍÜÍá¥spaceQ§LiteralÍãÍè£6vp¥'6vp'¤init\¨PropertyÍêÍÂÂÂKªIdentifierÍêÍò¨scrollerX°MemberExpressionÍôÍT®ThisExpressionÍôÍøKªIdentifierÍùÍ¯scrollerForListÂÂ¤initÂR³ExpressionStatementÍÍrS®CallExpressionÍÍqX°MemberExpressionÍÍ(KªIdentifierÍÍ¤ListKªIdentifierÍÍ(©debugLineÂÂ’Q§LiteralÍ)ÍhÙ=features/Home/src/main/ets/components/ListItemSmall.ets(31:7)Ù?"features/Home/src/main/ets/components/ListItemSmall.ets(31:7)"Q§LiteralÍjÍp¤home¦"home"ÂR³ExpressionStatementÍ€ÍšS®CallExpressionÍ€Í™X°MemberExpressionÍ€Í“KªIdentifierÍ€Í„¤ListKªIdentifierÍ…Í“®chainAnimationÂÂ‘Q§LiteralÍ”Í˜Ã¤trueÂR³ExpressionStatementÍ¨ÍÉS®CallExpressionÍ¨ÍÈX°MemberExpressionÍ¨Í·KªIdentifierÍ¨Í¬¤ListKªIdentifierÍ­Í·ªedgeEffectÂÂ‘X°MemberExpressionÍ¸ÍÇKªIdentifierÍ¸ÍÂªEdgeEffectKªIdentifierÍÃÍÇ¤NoneÂÂÂR³ExpressionStatementÍ×ÍûS®CallExpressionÍ×ÍúX°MemberExpressionÍ×ÍéKªIdentifierÍ×ÍÛ¤ListKªIdentifierÍÜÍé­listDirectionÂÂ‘X°MemberExpressionÍêÍùKªIdentifierÍêÍî¤AxisKªIdentifierÍïÍùªHorizontalÂÂÂR³ExpressionStatementÍ	Í&S®CallExpressionÍ	Í%X°MemberExpressionÍ	ÍKªIdentifierÍ	Í¤ListKªIdentifierÍÍ©scrollBarÂÂ‘X°MemberExpressionÍÍ$KªIdentifierÍÍ ¨BarStateKªIdentifierÍ!Í$£OffÂÂÂR³ExpressionStatementÍ4ÍGS®CallExpressionÍ4ÍFX°MemberExpressionÍ4Í>KªIdentifierÍ4Í8¤ListKªIdentifierÍ9Í>¥widthÂÂ‘Q§LiteralÍ?ÍE¤100%¦'100%'ÂR³ExpressionStatementÍUÍfS®CallExpressionÍUÍeX°MemberExpressionÍUÍ`KªIdentifierÍUÍY¤ListKªIdentifierÍZÍ`¦heightÂÂ‘Q§LiteralÍaÍdÌæ£230ÂR³ExpressionStatementÍtÍÚS®CallExpressionÍtÍÙX°MemberExpressionÍtÍ€KªIdentifierÍtÍx¤ListKªIdentifierÍyÍ€§onTouchÂÂ‘N·ArrowFunctionExpressionÍÍØÀÂÂÂ‘KªIdentifierÍ‚Í‡¥eventL®BlockStatementÍŒÍØ’U«IfStatementÍŸÍwV°BinaryExpressionÍ£ÍÀX°MemberExpressionÍ£Í­KªIdentifierÍ£Í¨¥eventKªIdentifierÍ©Í­¤typeÂÂ£===X°MemberExpressionÍ²ÍÀKªIdentifierÍ²Í»©TouchTypeKªIdentifierÍ¼ÍÀ¤DownÂÂL®BlockStatementÍÂÍw’R³ExpressionStatementÍÙÍW´AssignmentExpressionÍÙÍ¡=X°MemberExpressionÍÙÍèT®ThisExpressionÍÙÍİKªIdentifierÍŞÍèªlistOffsetÂÂX°MemberExpressionÍëÍS®CallExpressionÍëÍX°MemberExpressionÍëÍX°MemberExpressionÍëÍÿT®ThisExpressionÍëÍïKªIdentifierÍğÍÿ¯scrollerForListÂÂKªIdentifierÍ Í­currentOffsetÂÂÂKªIdentifierÍÍ§xOffsetÂÂR³ExpressionStatementÍ.ÍdS®CallExpressionÍ.ÍcX°MemberExpressionÍ.Í:KªIdentifierÍ.Í5§consoleKªIdentifierÍ6Í:¤infoÂÂ‘Ôr]•¤type¥start£end«expressions¦quasis¯TemplateLiteralÍ;Íb‘X°MemberExpressionÍQÍ`T®ThisExpressionÍQÍUKªIdentifierÍVÍ`ªlistOffsetÂÂ’Ôr^•¤type¥start£end¥value¤tail¯TemplateElementÍ<ÍOÔr_’£raw¦cooked³this.currentOffset ³this.currentOffset Â^¯TemplateElementÍaÍa_  ÃÂÀU«IfStatementÍ‰ÍÉV±LogicalExpressionÍÍËV°BinaryExpressionÍÍ¨X°MemberExpressionÍÍ—KªIdentifierÍÍ’¥eventKªIdentifierÍ“Í—¤typeÂÂ£===X°MemberExpressionÍœÍ¨KªIdentifierÍœÍ¥©TouchTypeKªIdentifierÍ¦Í¨¢UpÂÂ¢||V°BinaryExpressionÍ¬ÍËX°MemberExpressionÍ¬Í¶KªIdentifierÍ¬Í±¥eventKªIdentifierÍ²Í¶¤typeÂÂ£===X°MemberExpressionÍ»ÍËKªIdentifierÍ»ÍÄ©TouchTypeKªIdentifierÍÅÍË¦CancelÂÂL®BlockStatementÍÍÍÉ–Ôr`•¤type¥start£end¬declarations¤kind³VariableDeclarationÍäÍ3‘Ôra•¤type¥start£end¢id¤init²VariableDeclaratorÍèÍ2KªIdentifierÍèÍñ©curOffsetV°BinaryExpressionÍôÍ2X°MemberExpressionÍôÍ S®CallExpressionÍôÍX°MemberExpressionÍôÍX°MemberExpressionÍôÍT®ThisExpressionÍôÍøKªIdentifierÍùÍ¯scrollerForListÂÂKªIdentifierÍ	Í­currentOffsetÂÂÂKªIdentifierÍÍ §xOffsetÂÂ¡-X°MemberExpressionÍ#Í2T®ThisExpressionÍ#Í'KªIdentifierÍ(Í2ªlistOffsetÂÂ£let`³VariableDeclarationÍIÍ~‘a²VariableDeclaratorÍMÍ}KªIdentifierÍMÍT§listNumS®CallExpressionÍWÍ}X°MemberExpressionÍWÍaKªIdentifierÍWÍ[¤MathKªIdentifierÍ\Ía¥floorÂÂ‘V°BinaryExpressionÍbÍ|KªIdentifierÍbÍk©curOffset¡/X°MemberExpressionÍnÍ|T®ThisExpressionÍnÍrKªIdentifierÍsÍ|©listWidthÂÂÂ£let`³VariableDeclarationÍ”Í·‘a²VariableDeclaratorÍ˜Í¶KªIdentifierÍ˜Í¤¬targetOffsetX°MemberExpressionÍ§Í¶T®ThisExpressionÍ§Í«KªIdentifierÍ¬Í¶ªlistOffsetÂÂ£letU«IfStatementÍÍÍV°BinaryExpressionÍÑÍÜKªIdentifierÍÑÍØ§listNum¡>Q§LiteralÍÛÍÜ ¡0L®BlockStatementÍŞÍ•‘U«IfStatementÍ&Í~V°BinaryExpressionÍ*ÍcS®CallExpressionÍ*ÍNX°MemberExpressionÍ*Í2KªIdentifierÍ*Í.¤MathKªIdentifierÍ/Í2£absÂÂ‘V°BinaryExpressionÍ3ÍMKªIdentifierÍ3Í<©curOffset¡-X°MemberExpressionÍ?ÍMT®ThisExpressionÍ?ÍCKªIdentifierÍDÍM©listWidthÂÂÂ¡<V°BinaryExpressionÍQÍcX°MemberExpressionÍQÍ_T®ThisExpressionÍQÍUKªIdentifierÍVÍ_©listWidthÂÂ¡/Q§LiteralÍbÍc¡3L®BlockStatementÍeÍß‘R³ExpressionStatementÍ„ÍÄW´AssignmentExpressionÍ„ÍÃ¡=KªIdentifierÍ„Í¬targetOffsetV°BinaryExpressionÍ“ÍÃV°BinaryExpressionÍ“Í³X°MemberExpressionÍ“Í¢T®ThisExpressionÍ“Í—KªIdentifierÍ˜Í¢ªlistOffsetÂÂ¡+X°MemberExpressionÍ¥Í³T®ThisExpressionÍ¥Í©KªIdentifierÍªÍ³©listWidthÂÂ¡+X°MemberExpressionÍ¶ÍÃT®ThisExpressionÍ¶ÍºKªIdentifierÍ»ÍÃ¨myOffsetÂÂL®BlockStatementÍşÍ~‘R³ExpressionStatementÍÍcW´AssignmentExpressionÍÍb¡=KªIdentifierÍÍ)¬targetOffsetV°BinaryExpressionÍ,ÍbX°MemberExpressionÍ,Í;T®ThisExpressionÍ,Í0KªIdentifierÍ1Í;ªlistOffsetÂÂ¡+V°BinaryExpressionÍ>ÍbV°BinaryExpressionÍ?Í]X°MemberExpressionÍ?ÍMT®ThisExpressionÍ?ÍCKªIdentifierÍDÍM©listWidthÂÂ¡+X°MemberExpressionÍPÍ]T®ThisExpressionÍPÍTKªIdentifierÍUÍ]¨myOffsetÂÂ¡*Q§LiteralÍaÍb¡2U«IfStatementÍ°ÍV°BinaryExpressionÍ´ÍÁKªIdentifierÍ´Í»§listNum¢<=P¯UnaryExpressionÍ¿ÍÁ¡-ÃQ§LiteralÍÀÍÁ¡1L®BlockStatementÍÃÍz‘U«IfStatementÍÍcV°BinaryExpressionÍÍHS®CallExpressionÍÍ3X°MemberExpressionÍÍKªIdentifierÍÍ¤MathKªIdentifierÍÍ£absÂÂ‘V°BinaryExpressionÍÍ2KªIdentifierÍÍ!©curOffset¡+X°MemberExpressionÍ$Í2T®ThisExpressionÍ$Í(KªIdentifierÍ)Í2©listWidthÂÂÂ¡<V°BinaryExpressionÍ6ÍHX°MemberExpressionÍ6ÍDT®ThisExpressionÍ6Í:KªIdentifierÍ;ÍD©listWidthÂÂ¡/Q§LiteralÍGÍH¡3L®BlockStatementÍJÍÄ‘R³ExpressionStatementÍiÍ©W´AssignmentExpressionÍiÍ¨¡=KªIdentifierÍiÍu¬targetOffsetV°BinaryExpressionÍxÍ¨V°BinaryExpressionÍxÍ˜X°MemberExpressionÍxÍ‡T®ThisExpressionÍxÍ|KªIdentifierÍ}Í‡ªlistOffsetÂÂ¡-X°MemberExpressionÍŠÍ˜T®ThisExpressionÍŠÍKªIdentifierÍÍ˜©listWidthÂÂ¡-X°MemberExpressionÍ›Í¨T®ThisExpressionÍ›ÍŸKªIdentifierÍ Í¨¨myOffsetÂÂL®BlockStatementÍãÍc‘R³ExpressionStatementÍÍHW´AssignmentExpressionÍÍG¡=KªIdentifierÍÍ¬targetOffsetV°BinaryExpressionÍÍGX°MemberExpressionÍÍ T®ThisExpressionÍÍKªIdentifierÍÍ ªlistOffsetÂÂ¡-V°BinaryExpressionÍ#ÍGV°BinaryExpressionÍ$ÍBX°MemberExpressionÍ$Í2T®ThisExpressionÍ$Í(KªIdentifierÍ)Í2©listWidthÂÂ¡+X°MemberExpressionÍ5ÍBT®ThisExpressionÍ5Í9KªIdentifierÍ:ÍB¨myOffsetÂÂ¡*Q§LiteralÍFÍG¡2U«IfStatementÍÏÍV°BinaryExpressionÍÓÍûS®CallExpressionÍÓÍæX°MemberExpressionÍÓÍÛKªIdentifierÍÓÍ×¤MathKªIdentifierÍØÍÛ£absÂÂ‘KªIdentifierÍÜÍå©curOffsetÂ¡<V°BinaryExpressionÍéÍûX°MemberExpressionÍéÍ÷T®ThisExpressionÍéÍíKªIdentifierÍîÍ÷©listWidthÂÂ¡/Q§LiteralÍúÍû¡3L®BlockStatementÍıÍN‘R³ExpressionStatementÍÍ7W´AssignmentExpressionÍÍ6¡=KªIdentifierÍÍ$¬targetOffsetX°MemberExpressionÍ'Í6T®ThisExpressionÍ'Í+KªIdentifierÍ,Í6ªlistOffsetÂÂU«IfStatementÍiÍV°BinaryExpressionÍmÍzKªIdentifierÍmÍv©curOffset¡>Q§LiteralÍyÍz ¡0L®BlockStatementÍ|Íî‘R³ExpressionStatementÍ—Í×W´AssignmentExpressionÍ—ÍÖ¡=KªIdentifierÍ—Í£¬targetOffsetV°BinaryExpressionÍ¦ÍÖV°BinaryExpressionÍ¦ÍÆX°MemberExpressionÍ¦ÍµT®ThisExpressionÍ¦ÍªKªIdentifierÍ«ÍµªlistOffsetÂÂ¡+X°MemberExpressionÍ¸ÍÆT®ThisExpressionÍ¸Í¼KªIdentifierÍ½ÍÆ©listWidthÂÂ¡+X°MemberExpressionÍÉÍÖT®ThisExpressionÍÉÍÍKªIdentifierÍÎÍÖ¨myOffsetÂÂU«IfStatementÍ	ÍV°BinaryExpressionÍÍKªIdentifierÍÍ©curOffset¡<Q§LiteralÍÍ ¡0L®BlockStatementÍÍ‘R³ExpressionStatementÍ7ÍwW´AssignmentExpressionÍ7Ív¡=KªIdentifierÍ7ÍC¬targetOffsetV°BinaryExpressionÍFÍvV°BinaryExpressionÍFÍfX°MemberExpressionÍFÍUT®ThisExpressionÍFÍJKªIdentifierÍKÍUªlistOffsetÂÂ¡-X°MemberExpressionÍXÍfT®ThisExpressionÍXÍ\KªIdentifierÍ]Íf©listWidthÂÂ¡-X°MemberExpressionÍiÍvT®ThisExpressionÍiÍmKªIdentifierÍnÍv¨myOffsetÂÂÀR³ExpressionStatementÍ¤ÍêS®CallExpressionÍ¤ÍéX°MemberExpressionÍ¤Í°KªIdentifierÍ¤Í«§consoleKªIdentifierÍ¬Í°¤infoÂÂ‘]¯TemplateLiteralÍ±Íè’KªIdentifierÍÁÍÍ¬targetOffsetKªIdentifierÍÜÍå©curOffset“^¯TemplateElementÍ²Í¿_­targetOffset ­targetOffset Â^¯TemplateElementÍÎÍÚ_¬ listOffset ¬ listOffset Â^¯TemplateElementÍæÍç_¡ ¡ ÃÂR³ExpressionStatementÍ Í¶S®CallExpressionÍ ÍµX°MemberExpressionÍ ÍX°MemberExpressionÍ ÍT®ThisExpressionÍ ÍKªIdentifierÍÍ¯scrollerForListÂÂKªIdentifierÍÍ¨scrollToÂÂ‘[°ObjectExpressionÍÍ´“\¨PropertyÍ9ÍNÂÂÂKªIdentifierÍ9Í@§xOffsetKªIdentifierÍBÍN¬targetOffset¤init\¨PropertyÍiÍsÂÂÂKªIdentifierÍiÍp§yOffsetQ§LiteralÍrÍs ¡0¤init\¨PropertyÍÍÂÂÂKªIdentifierÍÍ—©animationQ§LiteralÍ™ÍÃ¤true¤initÂÀÂKªIdentifierÍçÍë¤ListÂL®BlockStatementÍ÷ÍÕ•`³VariableDeclarationÍÍi‘a²VariableDeclaratorÍÍhKªIdentifierÍÍ¬itemCreationN·ArrowFunctionExpressionÍÍhÀÂÂÂ’KªIdentifierÍÍ"¦elmtIdKªIdentifierÍ$Í3¯isInitialRenderL®BlockStatementÍ8Íh”R³ExpressionStatementÍKÍS®CallExpressionÍKÍ€X°MemberExpressionÍKÍxKªIdentifierÍKÍ]²ViewStackProcessorKªIdentifierÍ^ÍxºStartGetAccessRecordingForÂÂ‘KªIdentifierÍyÍ¦elmtIdÂR³ExpressionStatementÍ“ÍºS®CallExpressionÍ“Í¹KªIdentifierÍ“Í ­itemCreation2’KªIdentifierÍ¡Í§¦elmtIdKªIdentifierÍ©Í¸¯isInitialRenderÂU«IfStatementÍÌÍP¯UnaryExpressionÍĞÍà¡!ÃKªIdentifierÍÑÍà¯isInitialRenderL®BlockStatementÍâÍ‘R³ExpressionStatementÍùÍS®CallExpressionÍùÍX°MemberExpressionÍùÍKªIdentifierÍùÍ¨ListItemKªIdentifierÍÍ£popÂÂÂÀR³ExpressionStatementÍ-ÍYS®CallExpressionÍ-ÍXX°MemberExpressionÍ-ÍVKªIdentifierÍ-Í?²ViewStackProcessorKªIdentifierÍ@ÍV¶StopGetAccessRecordingÂÂÂ¥const`³VariableDeclarationÍwÍ·‘a²VariableDeclaratorÍ}Í¶KªIdentifierÍ}ÍŠ­itemCreation2N·ArrowFunctionExpressionÍÍ¶ÀÂÂÂ’KªIdentifierÍÍ”¦elmtIdKªIdentifierÍ–Í¥¯isInitialRenderL®BlockStatementÍªÍ¶”R³ExpressionStatementÍ½ÍçS®CallExpressionÍ½ÍæX°MemberExpressionÍ½ÍÌKªIdentifierÍ½ÍÅ¨ListItemKªIdentifierÍÆÍÌ¦createÂÂ’KªIdentifierÍÍÍß²deepRenderFunctionQ§LiteralÍáÍåÃ¤trueÂR³ExpressionStatementÍùÍS®CallExpressionÍùÍX°MemberExpressionÍùÍKªIdentifierÍùÍ¨ListItemKªIdentifierÍÍ¥widthÂÂ‘Q§LiteralÍÍ£6vp¥'6vp'ÂR³ExpressionStatementÍ!Í9S®CallExpressionÍ!Í8X°MemberExpressionÍ!Í0KªIdentifierÍ!Í)¨ListItemKªIdentifierÍ*Í0¦heightÂÂ‘Q§LiteralÍ1Í7¤100%¦'100%'ÂR³ExpressionStatementÍKÍ§S®CallExpressionÍKÍ¦X°MemberExpressionÍKÍ]KªIdentifierÍKÍS¨ListItemKªIdentifierÍTÍ]©debugLineÂÂ’Q§LiteralÍ^ÍÙ=features/Home/src/main/ets/components/ListItemSmall.ets(32:9)Ù?"features/Home/src/main/ets/components/ListItemSmall.ets(32:9)"Q§LiteralÍŸÍ¥¤home¦"home"Â¥const`³VariableDeclarationÍÅÍg‘a²VariableDeclaratorÍËÍfKªIdentifierÍËÍİ²deepRenderFunctionN·ArrowFunctionExpressionÍàÍfÀÂÂÂ’KªIdentifierÍáÍç¦elmtIdKªIdentifierÍéÍø¯isInitialRenderL®BlockStatementÍıÍf’R³ExpressionStatementÍÍ6S®CallExpressionÍÍ5KªIdentifierÍÍ¬itemCreation’KªIdentifierÍÍ#¦elmtIdKªIdentifierÍ%Í4¯isInitialRenderÂR³ExpressionStatementÍHÍWS®CallExpressionÍHÍVX°MemberExpressionÍHÍTKªIdentifierÍHÍP¨ListItemKªIdentifierÍQÍT£popÂÂÂ¥constR³ExpressionStatementÍuÍ­S®CallExpressionÍuÍ¬X°MemberExpressionÍuÍ“T®ThisExpressionÍuÍyKªIdentifierÍzÍ“¹observeComponentCreation2ÂÂ’KªIdentifierÍ”Í¡­itemCreation2KªIdentifierÍ£Í«¨ListItemÂR³ExpressionStatementÍ»ÍÊS®CallExpressionÍ»ÍÉX°MemberExpressionÍ»ÍÇKªIdentifierÍ»ÍÃ¨ListItemKªIdentifierÍÄÍÇ£popÂÂÂR³ExpressionStatementÍßÍ4S®CallExpressionÍßÍ4X°MemberExpressionÍßÍıT®ThisExpressionÍßÍãKªIdentifierÍäÍı¹observeComponentCreation2ÂÂ’N·ArrowFunctionExpressionÍşÍ4ÀÂÂÂ’KªIdentifierÍÿÍ ¦elmtIdKªIdentifierÍ Í ¯isInitialRenderL®BlockStatementÍ Í4“R³ExpressionStatementÍ *Í ;S®CallExpressionÍ *Í :X°MemberExpressionÍ *Í 8KªIdentifierÍ *Í 1§ForEachKªIdentifierÍ 2Í 8¦createÂÂÂ`³VariableDeclarationÍ IÍ3~‘a²VariableDeclaratorÍ OÍ3}KªIdentifierÍ OÍ e¶forEachItemGenFunctionN·ArrowFunctionExpressionÍ hÍ3}ÀÂÂÂ‘KªIdentifierÍ hÍ m¥_itemL®BlockStatementÍ qÍ3}’`³VariableDeclarationÍ „Í —‘a²VariableDeclaratorÍ ŠÍ –KªIdentifierÍ ŠÍ ¤itemKªIdentifierÍ ‘Í –¥_item¥constL®BlockStatementÍ ©Í3n•`³VariableDeclarationÍ ÀÍ"[‘a²VariableDeclaratorÍ ÆÍ"ZKªIdentifierÍ ÆÍ Ò¬itemCreationN·ArrowFunctionExpressionÍ ÕÍ"ZÀÂÂÂ’KªIdentifierÍ ÖÍ Ü¦elmtIdKªIdentifierÍ ŞÍ í¯isInitialRenderL®BlockStatementÍ òÍ"Z”R³ExpressionStatementÍ!Í!CS®CallExpressionÍ!Í!BX°MemberExpressionÍ!Í!:KªIdentifierÍ!Í!²ViewStackProcessorKªIdentifierÍ! Í!:ºStartGetAccessRecordingForÂÂ‘KªIdentifierÍ!;Í!A¦elmtIdÂR³ExpressionStatementÍ!]Í!„S®CallExpressionÍ!]Í!ƒKªIdentifierÍ!]Í!j­itemCreation2’KªIdentifierÍ!kÍ!q¦elmtIdKªIdentifierÍ!sÍ!‚¯isInitialRenderÂU«IfStatementÍ!Í!ıP¯UnaryExpressionÍ!¢Í!²¡!ÃKªIdentifierÍ!£Í!²¯isInitialRenderL®BlockStatementÍ!´Í!ı‘R³ExpressionStatementÍ!ÓÍ!âS®CallExpressionÍ!ÓÍ!áX°MemberExpressionÍ!ÓÍ!ßKªIdentifierÍ!ÓÍ!Û¨ListItemKªIdentifierÍ!ÜÍ!ß£popÂÂÂÀR³ExpressionStatementÍ"Í"CS®CallExpressionÍ"Í"BX°MemberExpressionÍ"Í"@KªIdentifierÍ"Í")²ViewStackProcessorKªIdentifierÍ"*Í"@¶StopGetAccessRecordingÂÂÂ¥const`³VariableDeclarationÍ"qÍ#Ü‘a²VariableDeclaratorÍ"wÍ#ÛKªIdentifierÍ"wÍ"„­itemCreation2N·ArrowFunctionExpressionÍ"‡Í#ÛÀÂÂÂ’KªIdentifierÍ"ˆÍ"¦elmtIdKªIdentifierÍ"Í"Ÿ¯isInitialRenderL®BlockStatementÍ"¤Í#Û”R³ExpressionStatementÍ"¿Í"éS®CallExpressionÍ"¿Í"èX°MemberExpressionÍ"¿Í"ÎKªIdentifierÍ"¿Í"Ç¨ListItemKªIdentifierÍ"ÈÍ"Î¦createÂÂ’KªIdentifierÍ"ÏÍ"á²deepRenderFunctionQ§LiteralÍ"ãÍ"çÃ¤trueÂR³ExpressionStatementÍ#Í#S®CallExpressionÍ#Í#X°MemberExpressionÍ#Í#KªIdentifierÍ#Í#¨ListItemKªIdentifierÍ#Í#¦heightÂÂ‘Q§LiteralÍ#Í#¤100%¦'100%'ÂR³ExpressionStatementÍ#5Í#MS®CallExpressionÍ#5Í#LX°MemberExpressionÍ#5Í#CKªIdentifierÍ#5Í#=¨ListItemKªIdentifierÍ#>Í#C¥widthÂÂ‘Q§LiteralÍ#DÍ#K¥179vp§'179vp'ÂR³ExpressionStatementÍ#gÍ#ÄS®CallExpressionÍ#gÍ#ÃX°MemberExpressionÍ#gÍ#yKªIdentifierÍ#gÍ#o¨ListItemKªIdentifierÍ#pÍ#y©debugLineÂÂ’Q§LiteralÍ#zÍ#ºÙ>features/Home/src/main/ets/components/ListItemSmall.ets(37:11)Ù@"features/Home/src/main/ets/components/ListItemSmall.ets(37:11)"Q§LiteralÍ#¼Í#Â¤home¦"home"Â¥const`³VariableDeclarationÍ#òÍ2è‘a²VariableDeclaratorÍ#øÍ2çKªIdentifierÍ#øÍ$
+²deepRenderFunctionN·ArrowFunctionExpressionÍ$Í2çÀÂÂÂ’KªIdentifierÍ$Í$¦elmtIdKªIdentifierÍ$Í$%¯isInitialRenderL®BlockStatementÍ$*Í2ç›R³ExpressionStatementÍ$EÍ$kS®CallExpressionÍ$EÍ$jKªIdentifierÍ$EÍ$Q¬itemCreation’KªIdentifierÍ$RÍ$X¦elmtIdKªIdentifierÍ$ZÍ$i¯isInitialRenderÂR³ExpressionStatementÍ$…Í&lS®CallExpressionÍ$…Í&kX°MemberExpressionÍ$…Í$£T®ThisExpressionÍ$…Í$‰KªIdentifierÍ$ŠÍ$£¹observeComponentCreation2ÂÂ’N·ArrowFunctionExpressionÍ$¤Í&bÀÂÂÂ’KªIdentifierÍ$¥Í$«¦elmtIdKªIdentifierÍ$­Í$¼¯isInitialRenderL®BlockStatementÍ$ÁÍ&b–R³ExpressionStatementÍ$àÍ$ğS®CallExpressionÍ$àÍ$ïX°MemberExpressionÍ$àÍ$íKªIdentifierÍ$àÍ$æ¦ColumnKªIdentifierÍ$çÍ$í¦createÂÂÂR³ExpressionStatementÍ%Í%iS®CallExpressionÍ%Í%hX°MemberExpressionÍ%Í%KªIdentifierÍ%Í%¦ColumnKªIdentifierÍ%Í%©debugLineÂÂ’Q§LiteralÍ%Í%_Ù>features/Home/src/main/ets/components/ListItemSmall.ets(38:13)Ù@"features/Home/src/main/ets/components/ListItemSmall.ets(38:13)"Q§LiteralÍ%aÍ%g¤home¦"home"ÂR³ExpressionStatementÍ%‡Í%™S®CallExpressionÍ%‡Í%˜X°MemberExpressionÍ%‡Í%’KªIdentifierÍ%‡Í%¦ColumnKªIdentifierÍ%Í%’¤clipÂÂ‘Q§LiteralÍ%“Í%—Ã¤trueÂR³ExpressionStatementÍ%·Í%ÍS®CallExpressionÍ%·Í%ÌX°MemberExpressionÍ%·Í%ÄKªIdentifierÍ%·Í%½¦ColumnKªIdentifierÍ%¾Í%Ä¦heightÂÂ‘Q§LiteralÍ%ÅÍ%Ë¤100%¦'100%'ÂR³ExpressionStatementÍ%ëÍ& S®CallExpressionÍ%ëÍ%ÿX°MemberExpressionÍ%ëÍ%÷KªIdentifierÍ%ëÍ%ñ¦ColumnKªIdentifierÍ%òÍ%÷¥widthÂÂ‘Q§LiteralÍ%øÍ%ş¤100%¦'100%'ÂR³ExpressionStatementÍ&Í&GS®CallExpressionÍ&Í&FX°MemberExpressionÍ&Í&/KªIdentifierÍ&Í&$¦ColumnKªIdentifierÍ&%Í&/ªalignItemsÂÂ‘X°MemberExpressionÍ&0Í&EKªIdentifierÍ&0Í&?¯HorizontalAlignKªIdentifierÍ&@Í&E¥StartÂÂÂKªIdentifierÍ&dÍ&j¦ColumnÂR³ExpressionStatementÍ&†Í(èS®CallExpressionÍ&†Í(çX°MemberExpressionÍ&†Í&¤T®ThisExpressionÍ&†Í&ŠKªIdentifierÍ&‹Í&¤¹observeComponentCreation2ÂÂ’N·ArrowFunctionExpressionÍ&¥Í(ßÀÂÂÂ’KªIdentifierÍ&¦Í&¬¦elmtIdKªIdentifierÍ&®Í&½¯isInitialRenderL®BlockStatementÍ&ÂÍ(ß–R³ExpressionStatementÍ&áÍ'[S®CallExpressionÍ&áÍ'ZX°MemberExpressionÍ&áÍ&íKªIdentifierÍ&áÍ&æ¥ImageKªIdentifierÍ&çÍ&í¦createÂÂ‘[°ObjectExpressionÍ&îÍ'Y•\¨PropertyÍ&ğÍ&øÂÂÂQ§LiteralÍ&ğÍ&ô¢id¤"id"P¯UnaryExpressionÍ&öÍ&ø¡-ÃQ§LiteralÍ&÷Í&ø¡1¤init\¨PropertyÍ&úÍ'ÂÂÂQ§LiteralÍ&úÍ' ¤type¦"type"P¯UnaryExpressionÍ'Í'¡-ÃQ§LiteralÍ'Í'¡1¤init\¨PropertyÍ'Í'ÂÂÂKªIdentifierÍ'Í'¦paramsÔrb”¤type¥start£end¨elements¯ArrayExpressionÍ'Í'‘X°MemberExpressionÍ'Í'KªIdentifierÍ'Í'¤itemKªIdentifierÍ'Í'£picÂÂ¤init\¨PropertyÍ'Í'AÂÂÂQ§LiteralÍ'Í'&ªbundleName¬"bundleName"Q§LiteralÍ'(Í'A·com.example.wangningmei¹"com.example.wangningmei"¤init\¨PropertyÍ'CÍ'WÂÂÂQ§LiteralÍ'CÍ'OªmoduleName¬"moduleName"Q§LiteralÍ'QÍ'W¤Home¦"Home"¤initÂR³ExpressionStatementÍ'yÍ'ÓS®CallExpressionÍ'yÍ'ÒX°MemberExpressionÍ'yÍ'ˆKªIdentifierÍ'yÍ'~¥ImageKªIdentifierÍ'Í'ˆ©debugLineÂÂ’Q§LiteralÍ'‰Í'ÉÙ>features/Home/src/main/ets/components/ListItemSmall.ets(39:15)Ù@"features/Home/src/main/ets/components/ListItemSmall.ets(39:15)"Q§LiteralÍ'ËÍ'Ñ¤home¦"home"ÂR³ExpressionStatementÍ'ñÍ(S®CallExpressionÍ'ñÍ(X°MemberExpressionÍ'ñÍ'üKªIdentifierÍ'ñÍ'ö¥ImageKªIdentifierÍ'÷Í'ü¥widthÂÂ‘Q§LiteralÍ'ıÍ(¤100%¦'100%'ÂR³ExpressionStatementÍ(#Í(CS®CallExpressionÍ(#Í(BX°MemberExpressionÍ(#Í(2KªIdentifierÍ(#Í((¥ImageKªIdentifierÍ()Í(2©objectFitÂÂ‘X°MemberExpressionÍ(3Í(AKªIdentifierÍ(3Í(;¨ImageFitKªIdentifierÍ(<Í(A¥CoverÂÂÂR³ExpressionStatementÍ(aÍ(xS®CallExpressionÍ(aÍ(wX°MemberExpressionÍ(aÍ(sKªIdentifierÍ(aÍ(f¥ImageKªIdentifierÍ(gÍ(s¬borderRadiusÂÂ‘Q§LiteralÍ(tÍ(v¢12ÂR³ExpressionStatementÍ(–Í(ÄS®CallExpressionÍ(–Í(ÃX°MemberExpressionÍ(–Í(¢KªIdentifierÍ(–Í(›¥ImageKªIdentifierÍ(œÍ(¢¦borderÂÂ‘[°ObjectExpressionÍ(£Í(Â’\¨PropertyÍ(¥Í(­ÂÂÂKªIdentifierÍ(¥Í(ª¥widthQ§LiteralÍ(¬Í(­¡1¤init\¨PropertyÍ(¯Í(ÀÂÂÂKªIdentifierÍ(¯Í(´¥colorX°MemberExpressionÍ(¶Í(ÀKªIdentifierÍ(¶Í(»¥ColorKªIdentifierÍ(¼Í(À¤GrayÂÂ¤initÂKªIdentifierÍ(áÍ(æ¥ImageÂR³ExpressionStatementÍ)Í,S®CallExpressionÍ)Í,X°MemberExpressionÍ)Í) T®ThisExpressionÍ)Í)KªIdentifierÍ)Í) ¹observeComponentCreation2ÂÂ’N·ArrowFunctionExpressionÍ)!Í,	ÀÂÂÂ’KªIdentifierÍ)"Í)(¦elmtIdKªIdentifierÍ)*Í)9¯isInitialRenderL®BlockStatementÍ)>Í,	–R³ExpressionStatementÍ)—Í)§S®CallExpressionÍ)—Í)¦X°MemberExpressionÍ)—Í)¤KªIdentifierÍ)—Í)¦ColumnKªIdentifierÍ)Í)¤¦createÂÂÂR³ExpressionStatementÍ)ÅÍ* S®CallExpressionÍ)ÅÍ*X°MemberExpressionÍ)ÅÍ)ÕKªIdentifierÍ)ÅÍ)Ë¦ColumnKªIdentifierÍ)ÌÍ)Õ©debugLineÂÂ’Q§LiteralÍ)ÖÍ*Ù>features/Home/src/main/ets/components/ListItemSmall.ets(46:15)Ù@"features/Home/src/main/ets/components/ListItemSmall.ets(46:15)"Q§LiteralÍ*Í*¤home¦"home"ÂR³ExpressionStatementÍ*xÍ*S®CallExpressionÍ*xÍ*ŒX°MemberExpressionÍ*xÍ*„KªIdentifierÍ*xÍ*~¦ColumnKªIdentifierÍ*Í*„¥widthÂÂ‘Q§LiteralÍ*…Í*‹¤100%¦'100%'ÂR³ExpressionStatementÍ*åÍ*÷S®CallExpressionÍ*åÍ*öX°MemberExpressionÍ*åÍ*òKªIdentifierÍ*åÍ*ë¦ColumnKªIdentifierÍ*ìÍ*ò¦heightÂÂ‘Q§LiteralÍ*óÍ*õ¢31ÂR³ExpressionStatementÍ+OÍ+xS®CallExpressionÍ+OÍ+wX°MemberExpressionÍ+OÍ+`KªIdentifierÍ+OÍ+U¦ColumnKªIdentifierÍ+VÍ+`ªalignItemsÂÂ‘X°MemberExpressionÍ+aÍ+vKªIdentifierÍ+aÍ+p¯HorizontalAlignKªIdentifierÍ+qÍ+v¥StartÂÂÂR³ExpressionStatementÍ+ĞÍ+îS®CallExpressionÍ+ĞÍ+íX°MemberExpressionÍ+ĞÍ+İKªIdentifierÍ+ĞÍ+Ö¦ColumnKªIdentifierÍ+×Í+İ¦marginÂÂ‘[°ObjectExpressionÍ+ŞÍ+ì‘\¨PropertyÍ+àÍ+êÂÂÂKªIdentifierÍ+àÍ+ã£topQ§LiteralÍ+åÍ+ê£8vp¥'8vp'¤initÂKªIdentifierÍ,Í,¦ColumnÂR³ExpressionStatementÍ,-Í.\S®CallExpressionÍ,-Í.[X°MemberExpressionÍ,-Í,KT®ThisExpressionÍ,-Í,1KªIdentifierÍ,2Í,K¹observeComponentCreation2ÂÂ’N·ArrowFunctionExpressionÍ,LÍ.TÀÂÂÂ’KªIdentifierÍ,MÍ,S¦elmtIdKªIdentifierÍ,UÍ,d¯isInitialRenderL®BlockStatementÍ,iÍ.T—R³ExpressionStatementÍ,ˆÍ,ŸS®CallExpressionÍ,ˆÍ,X°MemberExpressionÍ,ˆÍ,“KªIdentifierÍ,ˆÍ,Œ¤TextKªIdentifierÍ,Í,“¦createÂÂ‘X°MemberExpressionÍ,”Í,KªIdentifierÍ,”Í,˜¤itemKªIdentifierÍ,™Í,¤nameÂÂÂR³ExpressionStatementÍ,½Í-S®CallExpressionÍ,½Í-X°MemberExpressionÍ,½Í,ËKªIdentifierÍ,½Í,Á¤TextKªIdentifierÍ,ÂÍ,Ë©debugLineÂÂ’Q§LiteralÍ,ÌÍ-Ù>features/Home/src/main/ets/components/ListItemSmall.ets(47:17)Ù@"features/Home/src/main/ets/components/ListItemSmall.ets(47:17)"Q§LiteralÍ-Í-¤home¦"home"ÂR³ExpressionStatementÍ-4Í-JS®CallExpressionÍ-4Í-IX°MemberExpressionÍ-4Í-AKªIdentifierÍ-4Í-8¤TextKªIdentifierÍ-9Í-A¨fontSizeÂÂ‘Q§LiteralÍ-BÍ-H¤18vp¦'18vp'ÂR³ExpressionStatementÍ-hÍ-„S®CallExpressionÍ-hÍ-ƒX°MemberExpressionÍ-hÍ-vKªIdentifierÍ-hÍ-l¤TextKªIdentifierÍ-mÍ-v©fontColorÂÂ‘X°MemberExpressionÍ-wÍ-‚KªIdentifierÍ-wÍ-|¥ColorKªIdentifierÍ-}Í-‚¥BlackÂÂÂR³ExpressionStatementÍ-¢Í-µS®CallExpressionÍ-¢Í-´X°MemberExpressionÍ-¢Í-¬KªIdentifierÍ-¢Í-¦¤TextKªIdentifierÍ-§Í-¬¥widthÂÂ‘Q§LiteralÍ-­Í-³¤100%¦'100%'ÂR³ExpressionStatementÍ-ÓÍ.
+S®CallExpressionÍ-ÓÍ.	X°MemberExpressionÍ-ÓÍ-äKªIdentifierÍ-ÓÍ-×¤TextKªIdentifierÍ-ØÍ-ä¬textOverflowÂÂ‘[°ObjectExpressionÍ-åÍ.‘\¨PropertyÍ-çÍ.ÂÂÂKªIdentifierÍ-çÍ-ï¨overflowX°MemberExpressionÍ-ñÍ.KªIdentifierÍ-ñÍ-ı¬TextOverflowKªIdentifierÍ-şÍ.¨EllipsisÂÂ¤initÂR³ExpressionStatementÍ.(Í.9S®CallExpressionÍ.(Í.8X°MemberExpressionÍ.(Í.5KªIdentifierÍ.(Í.,¤TextKªIdentifierÍ.-Í.5¨maxLinesÂÂ‘Q§LiteralÍ.6Í.7¡1ÂKªIdentifierÍ.VÍ.Z¤TextÂR³ExpressionStatementÍ.vÍ.S®CallExpressionÍ.vÍ.€X°MemberExpressionÍ.vÍ.~KªIdentifierÍ.vÍ.z¤TextKªIdentifierÍ.{Í.~£popÂÂÂR³ExpressionStatementÍ.›Í1ÆS®CallExpressionÍ.›Í1ÅX°MemberExpressionÍ.›Í.¹T®ThisExpressionÍ.›Í.ŸKªIdentifierÍ. Í.¹¹observeComponentCreation2ÂÂ’N·ArrowFunctionExpressionÍ.ºÍ1¾ÀÂÂÂ’KªIdentifierÍ.»Í.Á¦elmtIdKªIdentifierÍ.ÃÍ.Ò¯isInitialRenderL®BlockStatementÍ.×Í1¾–R³ExpressionStatementÍ/2Í/KS®CallExpressionÍ/2Í/JX°MemberExpressionÍ/2Í/=KªIdentifierÍ/2Í/6¤TextKªIdentifierÍ/7Í/=¦createÂÂ‘X°MemberExpressionÍ/>Í/IKªIdentifierÍ/>Í/B¤itemKªIdentifierÍ/CÍ/I¦artistÂÂÂR³ExpressionStatementÍ/iÍ/ÂS®CallExpressionÍ/iÍ/ÁX°MemberExpressionÍ/iÍ/wKªIdentifierÍ/iÍ/m¤TextKªIdentifierÍ/nÍ/w©debugLineÂÂ’Q§LiteralÍ/xÍ/¸Ù>features/Home/src/main/ets/components/ListItemSmall.ets(54:17)Ù@"features/Home/src/main/ets/components/ListItemSmall.ets(54:17)"Q§LiteralÍ/ºÍ/À¤home¦"home"ÂR³ExpressionStatementÍ0Í02S®CallExpressionÍ0Í01X°MemberExpressionÍ0Í0)KªIdentifierÍ0Í0 ¤TextKªIdentifierÍ0!Í0)¨fontSizeÂÂ‘Q§LiteralÍ0*Í00¤13vp¦'13vp'ÂR³ExpressionStatementÍ0ŒÍ0§S®CallExpressionÍ0ŒÍ0¦X°MemberExpressionÍ0ŒÍ0šKªIdentifierÍ0ŒÍ0¤TextKªIdentifierÍ0‘Í0š©fontColorÂÂ‘X°MemberExpressionÍ0›Í0¥KªIdentifierÍ0›Í0 ¥ColorKªIdentifierÍ0¡Í0¥¤GrayÂÂÂR³ExpressionStatementÍ1Í18S®CallExpressionÍ1Í17X°MemberExpressionÍ1Í1KªIdentifierÍ1Í1¤TextKªIdentifierÍ1Í1¬textOverflowÂÂ‘[°ObjectExpressionÍ1Í16‘\¨PropertyÍ1Í14ÂÂÂKªIdentifierÍ1Í1¨overflowX°MemberExpressionÍ1Í14KªIdentifierÍ1Í1+¬TextOverflowKªIdentifierÍ1,Í14¨EllipsisÂÂ¤initÂR³ExpressionStatementÍ1’Í1£S®CallExpressionÍ1’Í1¢X°MemberExpressionÍ1’Í1ŸKªIdentifierÍ1’Í1–¤TextKªIdentifierÍ1—Í1Ÿ¨maxLinesÂÂ‘Q§LiteralÍ1 Í1¡¡1ÂKªIdentifierÍ1ÀÍ1Ä¤TextÂR³ExpressionStatementÍ2Í2#S®CallExpressionÍ2Í2"X°MemberExpressionÍ2Í2 KªIdentifierÍ2Í2¤TextKªIdentifierÍ2Í2 £popÂÂÂR³ExpressionStatementÍ2sÍ2€S®CallExpressionÍ2sÍ2X°MemberExpressionÍ2sÍ2}KªIdentifierÍ2sÍ2y¦ColumnKªIdentifierÍ2zÍ2}£popÂÂÂR³ExpressionStatementÍ2šÍ2§S®CallExpressionÍ2šÍ2¦X°MemberExpressionÍ2šÍ2¤KªIdentifierÍ2šÍ2 ¦ColumnKªIdentifierÍ2¡Í2¤£popÂÂÂR³ExpressionStatementÍ2ÁÍ2ĞS®CallExpressionÍ2ÁÍ2ÏX°MemberExpressionÍ2ÁÍ2ÍKªIdentifierÍ2ÁÍ2É¨ListItemKªIdentifierÍ2ÊÍ2Í£popÂÂÂ¥constR³ExpressionStatementÍ2şÍ36S®CallExpressionÍ2şÍ35X°MemberExpressionÍ2şÍ3T®ThisExpressionÍ2şÍ3KªIdentifierÍ3Í3¹observeComponentCreation2ÂÂ’KªIdentifierÍ3Í3*­itemCreation2KªIdentifierÍ3,Í34¨ListItemÂR³ExpressionStatementÍ3LÍ3[S®CallExpressionÍ3LÍ3ZX°MemberExpressionÍ3LÍ3XKªIdentifierÍ3LÍ3T¨ListItemKªIdentifierÍ3UÍ3X£popÂÂÂ¥constR³ExpressionStatementÍ3ŒÍ4S®CallExpressionÍ3ŒÍ4X°MemberExpressionÍ3ŒÍ3¦T®ThisExpressionÍ3ŒÍ3KªIdentifierÍ3‘Í3¦µforEachUpdateFunctionÂÂ–KªIdentifierÍ3§Í3­¦elmtIdX°MemberExpressionÍ3¯Í3¼T®ThisExpressionÍ3¯Í3³KªIdentifierÍ3´Í3¼¨listDataÂÂKªIdentifierÍ3¾Í3Ô¶forEachItemGenFunctionN·ArrowFunctionExpressionÍ3ÖÍ3ôÀÃÂÂ‘KªIdentifierÍ3×Í3Û¤itemS®CallExpressionÍ3àÍ3ôX°MemberExpressionÍ3àÍ3îKªIdentifierÍ3àÍ3ä¤JSONKªIdentifierÍ3åÍ3î©stringifyÂÂ‘KªIdentifierÍ3ïÍ3ó¤itemÂQ§LiteralÍ3öÍ3ûÂ¥falseQ§LiteralÍ3ıÍ4Â¥falseÂKªIdentifierÍ4Í4§ForEachÂR³ExpressionStatementÍ4$Í42S®CallExpressionÍ4$Í41X°MemberExpressionÍ4$Í4/KªIdentifierÍ4$Í4+§ForEachKªIdentifierÍ4,Í4/£popÂÂÂL®BlockStatementÍ4<Í8•`³VariableDeclarationÍ4KÍ5®‘a²VariableDeclaratorÍ4QÍ5­KªIdentifierÍ4QÍ4]¬itemCreationN·ArrowFunctionExpressionÍ4`Í5­ÀÂÂÂ’KªIdentifierÍ4aÍ4g¦elmtIdKªIdentifierÍ4iÍ4x¯isInitialRenderL®BlockStatementÍ4}Í5­”R³ExpressionStatementÍ4Í4ÆS®CallExpressionÍ4Í4ÅX°MemberExpressionÍ4Í4½KªIdentifierÍ4Í4¢²ViewStackProcessorKªIdentifierÍ4£Í4½ºStartGetAccessRecordingForÂÂ‘KªIdentifierÍ4¾Í4Ä¦elmtIdÂR³ExpressionStatementÍ4ØÍ4ÿS®CallExpressionÍ4ØÍ4şKªIdentifierÍ4ØÍ4å­itemCreation2’KªIdentifierÍ4æÍ4ì¦elmtIdKªIdentifierÍ4îÍ4ı¯isInitialRenderÂU«IfStatementÍ5Í5`P¯UnaryExpressionÍ5Í5%¡!ÃKªIdentifierÍ5Í5%¯isInitialRenderL®BlockStatementÍ5'Í5`‘R³ExpressionStatementÍ5>Í5MS®CallExpressionÍ5>Í5LX°MemberExpressionÍ5>Í5JKªIdentifierÍ5>Í5F¨ListItemKªIdentifierÍ5GÍ5J£popÂÂÂÀR³ExpressionStatementÍ5rÍ5S®CallExpressionÍ5rÍ5X°MemberExpressionÍ5rÍ5›KªIdentifierÍ5rÍ5„²ViewStackProcessorKªIdentifierÍ5…Í5›¶StopGetAccessRecordingÂÂÂ¥const`³VariableDeclarationÍ5¼Í6ü‘a²VariableDeclaratorÍ5ÂÍ6ûKªIdentifierÍ5ÂÍ5Ï­itemCreation2N·ArrowFunctionExpressionÍ5ÒÍ6ûÀÂÂÂ’KªIdentifierÍ5ÓÍ5Ù¦elmtIdKªIdentifierÍ5ÛÍ5ê¯isInitialRenderL®BlockStatementÍ5ïÍ6û”R³ExpressionStatementÍ6Í6,S®CallExpressionÍ6Í6+X°MemberExpressionÍ6Í6KªIdentifierÍ6Í6
+¨ListItemKªIdentifierÍ6Í6¦createÂÂ’KªIdentifierÍ6Í6$²deepRenderFunctionQ§LiteralÍ6&Í6*Ã¤trueÂR³ExpressionStatementÍ6>Í6TS®CallExpressionÍ6>Í6SX°MemberExpressionÍ6>Í6LKªIdentifierÍ6>Í6F¨ListItemKªIdentifierÍ6GÍ6L¥widthÂÂ‘Q§LiteralÍ6MÍ6R£6vp¥'6vp'ÂR³ExpressionStatementÍ6fÍ6~S®CallExpressionÍ6fÍ6}X°MemberExpressionÍ6fÍ6uKªIdentifierÍ6fÍ6n¨ListItemKªIdentifierÍ6oÍ6u¦heightÂÂ‘Q§LiteralÍ6vÍ6|¤100%¦'100%'ÂR³ExpressionStatementÍ6Í6ìS®CallExpressionÍ6Í6ëX°MemberExpressionÍ6Í6¢KªIdentifierÍ6Í6˜¨ListItemKªIdentifierÍ6™Í6¢©debugLineÂÂ’Q§LiteralÍ6£Í6âÙ=features/Home/src/main/ets/components/ListItemSmall.ets(77:9)Ù?"features/Home/src/main/ets/components/ListItemSmall.ets(77:9)"Q§LiteralÍ6äÍ6ê¤home¦"home"Â¥const`³VariableDeclarationÍ7
+Í7¬‘a²VariableDeclaratorÍ7Í7«KªIdentifierÍ7Í7"²deepRenderFunctionN·ArrowFunctionExpressionÍ7%Í7«ÀÂÂÂ’KªIdentifierÍ7&Í7,¦elmtIdKªIdentifierÍ7.Í7=¯isInitialRenderL®BlockStatementÍ7BÍ7«’R³ExpressionStatementÍ7UÍ7{S®CallExpressionÍ7UÍ7zKªIdentifierÍ7UÍ7a¬itemCreation’KªIdentifierÍ7bÍ7h¦elmtIdKªIdentifierÍ7jÍ7y¯isInitialRenderÂR³ExpressionStatementÍ7Í7œS®CallExpressionÍ7Í7›X°MemberExpressionÍ7Í7™KªIdentifierÍ7Í7•¨ListItemKªIdentifierÍ7–Í7™£popÂÂÂ¥constR³ExpressionStatementÍ7ºÍ7òS®CallExpressionÍ7ºÍ7ñX°MemberExpressionÍ7ºÍ7ØT®ThisExpressionÍ7ºÍ7¾KªIdentifierÍ7¿Í7Ø¹observeComponentCreation2ÂÂ’KªIdentifierÍ7ÙÍ7æ­itemCreation2KªIdentifierÍ7èÍ7ğ¨ListItemÂR³ExpressionStatementÍ8 Í8S®CallExpressionÍ8 Í8X°MemberExpressionÍ8 Í8KªIdentifierÍ8 Í8¨ListItemKªIdentifierÍ8	Í8£popÂÂÂR³ExpressionStatementÍ8$Í8/S®CallExpressionÍ8$Í8.X°MemberExpressionÍ8$Í8,KªIdentifierÍ8$Í8(¤ListKªIdentifierÍ8)Í8,£popÂÂÂM°MethodDefinitionÍ8<Í8tÂÂKªIdentifierÍ8<Í8D¨rerender¦methodN²FunctionExpressionÍ8DÍ8tÀÂÂÂL®BlockStatementÍ8GÍ8t‘R³ExpressionStatementÍ8RÍ8mS®CallExpressionÍ8RÍ8lX°MemberExpressionÍ8RÍ8jT®ThisExpressionÍ8RÍ8VKªIdentifierÍ8WÍ8j³updateDirtyElementsÂÂÂÀ‘Ôrc•¤type¥start£endªspecifiers¦source±ImportDeclarationÌ€ÌÃ‘Ôrd•¤type¥start£end¨imported¥local¯ImportSpecifierÌ‰ÌšKªIdentifierÌ‰Ìš±ListDataViewModelKªIdentifierÌ‰Ìš±ListDataViewModelQ§LiteralÌ¢ÌÂ¾../viewmodel/ListDataViewModelÙ '../viewmodel/ListDataViewModel'

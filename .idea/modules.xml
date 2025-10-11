@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Home/Home.iml" filepath="$PROJECT_DIR$/.idea/modules/Home/Home.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/MusicInfoCommon/MusicInfoCommon.iml" filepath="$PROJECT_DIR$/.idea/modules/MusicInfoCommon/MusicInfoCommon.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/MusicPlayer/MusicPlayer.iml" filepath="$PROJECT_DIR$/.idea/modules/MusicPlayer/MusicPlayer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/MyMusicLib/MyMusicLib.iml" filepath="$PROJECT_DIR$/.idea/modules/MyMusicLib/MyMusicLib.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/PlayDisplay/PlayDisplay.iml" filepath="$PROJECT_DIR$/.idea/modules/PlayDisplay/PlayDisplay.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Search/Search.iml" filepath="$PROJECT_DIR$/.idea/modules/Search/Search.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Setting/Setting.iml" filepath="$PROJECT_DIR$/.idea/modules/Setting/Setting.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/phone/phone.iml" filepath="$PROJECT_DIR$/.idea/modules/phone/phone.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/uicomponents/uicomponents.iml" filepath="$PROJECT_DIR$/.idea/modules/uicomponents/uicomponents.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/utils/utils.iml" filepath="$PROJECT_DIR$/.idea/modules/utils/utils.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/wangningmei.iml" filepath="$PROJECT_DIR$/.idea/modules/wangningmei.iml" />
+    </modules>
+  </component>
+</project>

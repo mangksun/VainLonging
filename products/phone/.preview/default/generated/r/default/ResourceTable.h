@@ -1,0 +1,59 @@
+/*
+ * Copyright (c) 2023 Huawei Device Co., Ltd.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+#ifndef RESOURCE_TABLE_H
+#define RESOURCE_TABLE_H
+
+#include<stdint.h>
+
+namespace OHOS {
+const int32_t STRING_ENTRYABILITY_DESC = 0x08000007;
+const int32_t STRING_ENTRYABILITY_LABEL = 0x08000008;
+const int32_t STRING_INTERNET = 0x09000010;
+const int32_t STRING_NETWORK_AVAILABLE = 0x09000011;
+const int32_t STRING_NETWORK_LOST = 0x09000012;
+const int32_t STRING_NETWORK_UNAVAILABLE = 0x09000013;
+const int32_t STRING_APP_NAME = 0x08000003;
+const int32_t STRING_MODULE_DESC = 0x08000009;
+const int32_t STRING_NETWORK_INFO = 0x09000014;
+const int32_t STRING_PAGE_SHOW = 0x09000009;
+const int32_t COLOR_START_WINDOW_BACKGROUND = 0x0800000b;
+const int32_t FLOAT_PAGE_TEXT_FONT_SIZE = 0x0800000a;
+const int32_t MEDIA_DAVIDTAO = 0x0900000e;
+const int32_t MEDIA_PLAGIARISM = 0x0900000f;
+const int32_t MEDIA_APP_BACKGROUND = 0x08000002;
+const int32_t MEDIA_APP_FOREGROUND = 0x08000000;
+const int32_t MEDIA_APP_LAYERED_IMAGE = 0x08000001;
+const int32_t MEDIA_BACKGROUND = 0x08000004;
+const int32_t MEDIA_FACE = 0x09000008;
+const int32_t MEDIA_FACE_SMILING = 0x09000004;
+const int32_t MEDIA_FOREGROUND = 0x0800000e;
+const int32_t MEDIA_GAOMU = 0x0900000c;
+const int32_t MEDIA_HOUSE = 0x09000000;
+const int32_t MEDIA_HOUSE_FILL = 0x09000007;
+const int32_t MEDIA_JINHUA = 0x0900000b;
+const int32_t MEDIA_LAYERED_IMAGE = 0x08000006;
+const int32_t MEDIA_LIB = 0x09000003;
+const int32_t MEDIA_LIB_FILL = 0x09000005;
+const int32_t MEDIA_LINGYA = 0x0900000a;
+const int32_t MEDIA_SEARCH = 0x09000002;
+const int32_t MEDIA_SEARCH_FILL = 0x09000001;
+const int32_t MEDIA_STARTICON = 0x0800000f;
+const int32_t MEDIA_WIND_AND_I = 0x0900000d;
+const int32_t PROFILE_BACKUP_CONFIG = 0x0800000c;
+const int32_t PROFILE_MAIN_PAGES = 0x08000005;
+const int32_t PROFILE_ROUTE_MAP = 0x09000006;
+}
+#endif

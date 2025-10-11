@@ -1,0 +1,85 @@
+{
+  "HVIGOR_OHOS_PLUGIN": {
+    "MODULES": [
+      {
+        "MODULE_NAME": "f7a42fe7211f98ac7a60a285ac3a9e87",
+        "API_TYPE": "stageMode"
+      },
+      {
+        "MODULE_NAME": "2b3583e6e17721c54496bd04e57a0c15",
+        "API_TYPE": "stageMode"
+      },
+      {
+        "MODULE_NAME": "4b9fd96ea9bad44c52cdc82569434346",
+        "API_TYPE": "stageMode"
+      },
+      {
+        "MODULE_NAME": "8cf04a9734132302f96da8e113e80ce5",
+        "API_TYPE": "stageMode"
+      },
+      {
+        "MODULE_NAME": "207375964c27a70796b633d00e69aec3",
+        "API_TYPE": "stageMode"
+      },
+      {
+        "MODULE_NAME": "13348442cc6a27032d2b4aa28b75a5d3",
+        "API_TYPE": "stageMode"
+      },
+      {
+        "MODULE_NAME": "ba6da323b9a11993871ee573de24b401",
+        "API_TYPE": "stageMode"
+      },
+      {
+        "MODULE_NAME": "51ac4bf63a0c6a9cefa7ba69b4154ef1",
+        "API_TYPE": "stageMode"
+      },
+      {
+        "MODULE_NAME": "a0f2eaa152ad6f1377047d2e994fdba7",
+        "API_TYPE": "stageMode"
+      },
+      {
+        "MODULE_NAME": "b902cca3eb5ee8ddb665786be43fea8f",
+        "API_TYPE": "stageMode"
+      }
+    ],
+    "BUILD_MODE": "debug"
+  },
+  "HVIGOR": {
+    "IS_INCREMENTAL": true,
+    "IS_DAEMON": true,
+    "IS_PARALLEL": true,
+    "IS_HVIGORFILE_TYPE_CHECK": false,
+    "TASK_TIME": {
+      "f7a42fe7211f98ac7a60a285ac3a9e87": {
+        "CreateModuleInfo": 1229800,
+        "PreCheckSyscap": 286200,
+        "GeneratePkgContextInfo": 8635100,
+        "ProcessRouterMap": 9105400,
+        "ProcessStartupConfig": 3318700,
+        "GenerateLoaderJson": 19586100,
+        "CreateBuildProfile": 2302700,
+        "MergeProfile": 7380400,
+        "ProcessProfile": 128775300,
+        "PreviewProcessResource": 2955900,
+        "PreviewCompileResource": 441762700,
+        "PreviewHookCompileResource": 313200,
+        "CopyPreviewProfile": 9204600,
+        "ReplacePreviewerPage": 439100,
+        "buildPreviewerResource": 163200,
+        "PreviewUpdateAssets": 2438600,
+        "PreviewArkTS": 6417843600,
+        "PreviewBuild": 192700
+      },
+      "a0f2eaa152ad6f1377047d2e994fdba7": {
+        "MergeProfile": 6201300
+      }
+    },
+    "CONFIG_PROPERTIES": {
+      "enableSignTask": true,
+      "skipNativeIncremental": false,
+      "hvigor_keepDependency": true
+    },
+    "TOTAL_TIME": 7482134300,
+    "BUILD_ID": "202510061849452320"
+  }
+}
