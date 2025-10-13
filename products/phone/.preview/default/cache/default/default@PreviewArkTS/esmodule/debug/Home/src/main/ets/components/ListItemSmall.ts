@@ -8,9 +8,13 @@ interface ListItemSmall_Params {
     myOffset?: number;
     listWidth?: number;
     listOffset?: number;
+    targetname?: string;
+    listSmallNavStack?: NavPathStack;
 }
 import type { ListData } from '../viewmodel/ListData';
 import { ListDataViewModel } from "@normalized:N&&&home/src/main/ets/viewmodel/ListDataViewModel&1.0.0";
+import { HttpUtils } from "@normalized:N&&&utils/Index&1.0.0";
+import type { SongItem } from "@normalized:N&&&utils/Index&1.0.0";
 export class ListItemSmall extends ViewPU {
     constructor(parent, params, __localStorage, elmtId = -1, paramsLambda = undefined, extraInfo) {
         super(parent, __localStorage, elmtId, extraInfo);
@@ -22,16 +26,9 @@ export class ListItemSmall extends ViewPU {
         this.__centerIndex = new ObservedPropertySimplePU(0, this, "centerIndex");
         this.__myOffset = new ObservedPropertySimplePU(6, this, "myOffset");
         this.__listWidth = new ObservedPropertySimplePU(179, this, "listWidth");
-        this.__listOffset = new ObservedPropertySimplePU(0
-        // onScrollStop(){
-        //   let rect = this.scrollerForList.getItemRect(this.currentIndex);
-        //   if (this.velocity > 10) {
-        //     this.scrollerForList.scrollToIndex(this.currentIndex, true, ScrollAlign.START);
-        //   } else if (this.velocity < -10) {
-        //     this.scrollerForList.scrollToIndex(this.currentIndex + 1, true, ScrollAlign.START);
-        //   }
-        // }
-        , this, "listOffset");
+        this.__listOffset = new ObservedPropertySimplePU(0, this, "listOffset");
+        this.__targetname = new ObservedPropertySimplePU('', this, "targetname");
+        this.__listSmallNavStack = this.initializeConsume('navStack', "listSmallNavStack");
         this.setInitiallyProvidedValue(params);
         this.finalizeConstruction();
     }
@@ -54,6 +51,9 @@ export class ListItemSmall extends ViewPU {
         if (params.listOffset !== undefined) {
             this.listOffset = params.listOffset;
         }
+        if (params.targetname !== undefined) {
+            this.targetname = params.targetname;
+        }
     }
     updateStateVars(params: ListItemSmall_Params) {
     }
@@ -63,6 +63,8 @@ export class ListItemSmall extends ViewPU {
         this.__myOffset.purgeDependencyOnElmtId(rmElmtId);
         this.__listWidth.purgeDependencyOnElmtId(rmElmtId);
         this.__listOffset.purgeDependencyOnElmtId(rmElmtId);
+        this.__targetname.purgeDependencyOnElmtId(rmElmtId);
+        this.__listSmallNavStack.purgeDependencyOnElmtId(rmElmtId);
     }
     aboutToBeDeleted() {
         this.__listData.aboutToBeDeleted();
@@ -70,6 +72,8 @@ export class ListItemSmall extends ViewPU {
         this.__myOffset.aboutToBeDeleted();
         this.__listWidth.aboutToBeDeleted();
         this.__listOffset.aboutToBeDeleted();
+        this.__targetname.aboutToBeDeleted();
+        this.__listSmallNavStack.aboutToBeDeleted();
         SubscriberManager.Get().delete(this.id__());
         this.aboutToBeDeletedInternal();
     }
@@ -109,6 +113,20 @@ export class ListItemSmall extends ViewPU {
     set listOffset(newValue: number) {
         this.__listOffset.set(newValue);
     }
+    private __targetname: ObservedPropertySimplePU<string>;
+    get targetname() {
+        return this.__targetname.get();
+    }
+    set targetname(newValue: string) {
+        this.__targetname.set(newValue);
+    }
+    private __listSmallNavStack: ObservedPropertyAbstractPU<NavPathStack>;
+    get listSmallNavStack() {
+        return this.__listSmallNavStack.get();
+    }
+    set listSmallNavStack(newValue: NavPathStack) {
+        this.__listSmallNavStack.set(newValue);
+    }
     // onScrollStop(){
     //   let rect = this.scrollerForList.getItemRect(this.currentIndex);
     //   if (this.velocity > 10) {
@@ -117,13 +135,20 @@ export class ListItemSmall extends ViewPU {
     //     this.scrollerForList.scrollToIndex(this.currentIndex + 1, true, ScrollAlign.START);
     //   }
     // }
-    aboutToAppear(): void {
+    async aboutToAppear(): Promise<void> {
         this.listData.shift();
+        let httpUtil: HttpUtils = new HttpUtils();
+        let targetUrl: string = 'https://music-api.gdstudio.xyz/api.php?types=search&source=netease&count=20&name=' + this.targetname;
+        await httpUtil.RedirectSearchRequest(targetUrl).then((value: Array<SongItem> | undefined) => {
+            if (value) {
+                console.log('httpSearchRequest ' + JSON.stringify(value[0].artist));
+            }
+        });
     }
     initialRender() {
         this.observeComponentCreation2((elmtId, isInitialRender) => {
             List.create({ space: '6vp', scroller: this.scrollerForList });
-            List.debugLine("features/Home/src/main/ets/components/ListItemSmall.ets(31:7)", "home");
+            List.debugLine("features/Home/src/main/ets/components/ListItemSmall.ets(43:7)", "home");
             List.chainAnimation(true);
             List.edgeEffect(EdgeEffect.None);
             List.listDirection(Axis.Horizontal);
@@ -190,7 +215,7 @@ export class ListItemSmall extends ViewPU {
                 ListItem.create(deepRenderFunction, true);
                 ListItem.width('6vp');
                 ListItem.height('100%');
-                ListItem.debugLine("features/Home/src/main/ets/components/ListItemSmall.ets(32:9)", "home");
+                ListItem.debugLine("features/Home/src/main/ets/components/ListItemSmall.ets(44:9)", "home");
             };
             const deepRenderFunction = (elmtId, isInitialRender) => {
                 itemCreation(elmtId, isInitialRender);
@@ -216,13 +241,16 @@ export class ListItemSmall extends ViewPU {
                         ListItem.create(deepRenderFunction, true);
                         ListItem.height('100%');
                         ListItem.width('179vp');
-                        ListItem.debugLine("features/Home/src/main/ets/components/ListItemSmall.ets(37:11)", "home");
+                        ListItem.onClick(() => {
+                            this.listSmallNavStack.pushPathByName('AlbumInfoPage', item.album.toString());
+                        });
+                        ListItem.debugLine("features/Home/src/main/ets/components/ListItemSmall.ets(49:11)", "home");
                     };
                     const deepRenderFunction = (elmtId, isInitialRender) => {
                         itemCreation(elmtId, isInitialRender);
                         this.observeComponentCreation2((elmtId, isInitialRender) => {
                             Column.create();
-                            Column.debugLine("features/Home/src/main/ets/components/ListItemSmall.ets(38:13)", "home");
+                            Column.debugLine("features/Home/src/main/ets/components/ListItemSmall.ets(50:13)", "home");
                             Column.clip(true);
                             Column.height('100%');
                             Column.width('100%');
@@ -230,7 +258,7 @@ export class ListItemSmall extends ViewPU {
                         }, Column);
                         this.observeComponentCreation2((elmtId, isInitialRender) => {
                             Image.create({ "id": -1, "type": -1, params: [item.pic], "bundleName": "com.example.wangningmei", "moduleName": "phone" });
-                            Image.debugLine("features/Home/src/main/ets/components/ListItemSmall.ets(39:15)", "home");
+                            Image.debugLine("features/Home/src/main/ets/components/ListItemSmall.ets(51:15)", "home");
                             Image.width('100%');
                             Image.objectFit(ImageFit.Cover);
                             Image.borderRadius(12);
@@ -239,7 +267,7 @@ export class ListItemSmall extends ViewPU {
                         this.observeComponentCreation2((elmtId, isInitialRender) => {
                             // .margin({ left: '12vp' })
                             Column.create();
-                            Column.debugLine("features/Home/src/main/ets/components/ListItemSmall.ets(46:15)", "home");
+                            Column.debugLine("features/Home/src/main/ets/components/ListItemSmall.ets(58:15)", "home");
                             // .margin({ left: '12vp' })
                             Column.width('100%');
                             // .margin({ left: '12vp' })
@@ -250,8 +278,8 @@ export class ListItemSmall extends ViewPU {
                             Column.margin({ top: '8vp' });
                         }, Column);
                         this.observeComponentCreation2((elmtId, isInitialRender) => {
-                            Text.create(item.name);
-                            Text.debugLine("features/Home/src/main/ets/components/ListItemSmall.ets(47:17)", "home");
+                            Text.create(item.album);
+                            Text.debugLine("features/Home/src/main/ets/components/ListItemSmall.ets(59:17)", "home");
                             Text.fontSize('18vp');
                             Text.fontColor(Color.Black);
                             Text.width('100%');
@@ -261,8 +289,8 @@ export class ListItemSmall extends ViewPU {
                         Text.pop();
                         this.observeComponentCreation2((elmtId, isInitialRender) => {
                             // .textAlign(TextAlign.Start)
-                            Text.create(item.artist);
-                            Text.debugLine("features/Home/src/main/ets/components/ListItemSmall.ets(54:17)", "home");
+                            Text.create(item.getStandardArtist(item.artist));
+                            Text.debugLine("features/Home/src/main/ets/components/ListItemSmall.ets(66:17)", "home");
                             // .textAlign(TextAlign.Start)
                             Text.fontSize('13vp');
                             // .textAlign(TextAlign.Start)
@@ -299,7 +327,7 @@ export class ListItemSmall extends ViewPU {
                 ListItem.create(deepRenderFunction, true);
                 ListItem.width('6vp');
                 ListItem.height('100%');
-                ListItem.debugLine("features/Home/src/main/ets/components/ListItemSmall.ets(77:9)", "home");
+                ListItem.debugLine("features/Home/src/main/ets/components/ListItemSmall.ets(92:9)", "home");
             };
             const deepRenderFunction = (elmtId, isInitialRender) => {
                 itemCreation(elmtId, isInitialRender);

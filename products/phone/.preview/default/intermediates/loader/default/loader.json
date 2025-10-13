@@ -1,19 +1,19 @@
 {
   "modulePathMap": {
-    "phone": "C:\\Users\\ASUS\\Desktop\\Harmony\\wangningmei\\wangningmei\\products\\phone",
-    "utils": "C:\\Users\\ASUS\\Desktop\\Harmony\\wangningmei\\wangningmei\\commons\\utils",
-    "uicomponents": "C:\\Users\\ASUS\\Desktop\\Harmony\\wangningmei\\wangningmei\\commons\\uicomponents",
-    "Home": "C:\\Users\\ASUS\\Desktop\\Harmony\\wangningmei\\wangningmei\\features\\Home",
-    "MyMusicLib": "C:\\Users\\ASUS\\Desktop\\Harmony\\wangningmei\\wangningmei\\features\\MyMusicLib",
-    "Search": "C:\\Users\\ASUS\\Desktop\\Harmony\\wangningmei\\wangningmei\\features\\Search",
-    "PlayDisplay": "C:\\Users\\ASUS\\Desktop\\Harmony\\wangningmei\\wangningmei\\features\\PlayDisplay",
-    "Setting": "C:\\Users\\ASUS\\Desktop\\Harmony\\wangningmei\\wangningmei\\features\\Setting",
-    "MusicPlayer": "C:\\Users\\ASUS\\Desktop\\Harmony\\wangningmei\\wangningmei\\features\\MusicPlayer",
-    "MusicInfoCommon": "C:\\Users\\ASUS\\Desktop\\Harmony\\wangningmei\\wangningmei\\commons\\MusicInfoCommon"
+    "phone": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\products\\phone",
+    "utils": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\commons\\utils",
+    "uicomponents": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\commons\\uicomponents",
+    "Home": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\features\\Home",
+    "MyMusicLib": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\features\\MyMusicLib",
+    "Search": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\features\\Search",
+    "PlayDisplay": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\features\\PlayDisplay",
+    "Setting": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\features\\Setting",
+    "MusicPlayer": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\features\\MusicPlayer",
+    "MusicInfoCommon": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\commons\\MusicInfoCommon"
   },
   "compileMode": "esmodule",
-  "projectRootPath": "C:\\Users\\ASUS\\Desktop\\Harmony\\wangningmei\\wangningmei",
-  "nodeModulesPath": "C:\\Users\\ASUS\\Desktop\\Harmony\\wangningmei\\wangningmei\\products\\phone\\.preview\\default\\intermediates\\loader_out\\default\\node_modules",
+  "projectRootPath": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging",
+  "nodeModulesPath": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\products\\phone\\.preview\\default\\intermediates\\loader_out\\default\\node_modules",
   "byteCodeHarInfo": {},
   "declarationEntry": [],
   "moduleName": "phone",
@@ -21,8 +21,9 @@
   "harNameOhmMap": {},
   "packageManagerType": "ohpm",
   "compileEntry": [
-    "C:\\Users\\ASUS\\Desktop\\Harmony\\wangningmei\\wangningmei\\features\\Home\\src\\main\\ets\\view\\HomePage.ets",
-    "C:\\Users\\ASUS\\Desktop\\Harmony\\wangningmei\\wangningmei\\features\\Home\\src\\main\\ets\\view\\GridShow.ets"
+    "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\features\\Home\\src\\main\\ets\\view\\HomePage.ets",
+    "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\features\\Home\\src\\main\\ets\\view\\GridShow.ets",
+    "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\features\\Home\\src\\main\\ets\\view\\AlbumInfoPage.ets"
   ],
   "otherCompileFiles": [],
   "dynamicImportLibInfo": {},
@@ -30,19 +31,25 @@
     {
       "ohmurl": "@normalized:N&&&home/src/main/ets/view/HomePage&1.0.0",
       "name": "HomePage",
-      "pageSourceFile": "C:\\Users\\ASUS\\Desktop\\Harmony\\wangningmei\\wangningmei\\features\\Home\\src\\main\\ets\\view\\HomePage.ets",
+      "pageSourceFile": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\features\\Home\\src\\main\\ets\\view\\HomePage.ets",
       "buildFunction": "HomePageBuilder"
     },
     {
       "ohmurl": "@normalized:N&&&home/src/main/ets/view/GridShow&1.0.0",
       "name": "GridShow",
-      "pageSourceFile": "C:\\Users\\ASUS\\Desktop\\Harmony\\wangningmei\\wangningmei\\features\\Home\\src\\main\\ets\\view\\GridShow.ets",
+      "pageSourceFile": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\features\\Home\\src\\main\\ets\\view\\GridShow.ets",
       "buildFunction": "GridShowBuilder"
+    },
+    {
+      "ohmurl": "@normalized:N&&&home/src/main/ets/view/AlbumInfoPage&1.0.0",
+      "name": "AlbumInfoPage",
+      "pageSourceFile": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\features\\Home\\src\\main\\ets\\view\\AlbumInfoPage.ets",
+      "buildFunction": "AlbumInfoPageBuilder"
     }
   ],
   "hspResourcesMap": {},
   "updateVersionInfo": {},
-  "anBuildOutPut": "C:\\Users\\ASUS\\Desktop\\Harmony\\wangningmei\\wangningmei\\products\\phone\\.preview\\default\\intermediates\\loader_out\\default\\an\\arm64-v8a",
+  "anBuildOutPut": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\products\\phone\\.preview\\default\\intermediates\\loader_out\\default\\an\\arm64-v8a",
   "anBuildMode": "type",
   "buildConfigPath": ".preview\\config\\buildConfig.json"
 }

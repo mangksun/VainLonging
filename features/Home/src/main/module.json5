@@ -1,0 +1,13 @@
+{
+  "module": {
+    "name": "Home",
+    "type": "har",
+    "deviceTypes": [
+      "default",
+      "tablet",
+      "2in1",
+      "wearable"
+    ],
+    "routerMap": "$profile:route_map"
+  }
+}

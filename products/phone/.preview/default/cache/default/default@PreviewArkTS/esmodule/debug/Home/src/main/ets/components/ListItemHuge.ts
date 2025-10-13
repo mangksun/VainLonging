@@ -260,7 +260,7 @@ export class ListItemHuge extends ViewPU {
                         Text.pop();
                         this.observeComponentCreation2((elmtId, isInitialRender) => {
                             // .maxLines(1)
-                            Text.create(item.artist);
+                            Text.create(item.getStandardArtist(item.artist));
                             Text.debugLine("features/Home/src/main/ets/components/ListItemHuge.ets(54:15)", "home");
                             // .maxLines(1)
                             Text.fontSize('13vp');

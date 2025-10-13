@@ -151,19 +151,19 @@
       "dynamic": false,
       "maskedByOverrideDependencyMap": false
     },
-    "home@file:features/Home": {
-      "storePath": "features/Home",
-      "dependencies": {
-        "utils": "commons/utils"
-      },
+    "musicplayer@file:features/MusicPlayer": {
+      "storePath": "features/MusicPlayer",
+      "dependencies": {},
       "dynamicDependencies": {},
       "dev": false,
       "dynamic": false,
       "maskedByOverrideDependencyMap": false
     },
-    "musicplayer@file:features/MusicPlayer": {
-      "storePath": "features/MusicPlayer",
-      "dependencies": {},
+    "home@file:features/Home": {
+      "storePath": "features/Home",
+      "dependencies": {
+        "utils": "commons/utils"
+      },
       "dynamicDependencies": {},
       "dev": false,
       "dynamic": false,

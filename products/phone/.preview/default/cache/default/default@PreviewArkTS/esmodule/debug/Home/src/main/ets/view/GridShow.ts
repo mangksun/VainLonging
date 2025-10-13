@@ -102,12 +102,12 @@ export class GridShow extends ViewPU {
     GridShowTitle(parent = null) {
         this.observeComponentCreation2((elmtId, isInitialRender) => {
             Row.create({ space: '24vp' });
-            Row.debugLine("features/Home/src/main/ets/view/GridShow.ets(20:5)", "home");
+            Row.debugLine("features/Home/src/main/ets/view/GridShow.ets(19:5)", "home");
             Row.alignItems(VerticalAlign.Bottom);
         }, Row);
         this.observeComponentCreation2((elmtId, isInitialRender) => {
             SymbolGlyph.create({ "id": 125832663, "type": 40000, params: [], "bundleName": "com.example.wangningmei", "moduleName": "phone" });
-            SymbolGlyph.debugLine("features/Home/src/main/ets/view/GridShow.ets(21:7)", "home");
+            SymbolGlyph.debugLine("features/Home/src/main/ets/view/GridShow.ets(20:7)", "home");
             SymbolGlyph.fontSize(35);
             SymbolGlyph.margin({ left: '12vp' });
             SymbolGlyph.onClick(() => {
@@ -116,7 +116,7 @@ export class GridShow extends ViewPU {
         }, SymbolGlyph);
         this.observeComponentCreation2((elmtId, isInitialRender) => {
             Text.create(this.title);
-            Text.debugLine("features/Home/src/main/ets/view/GridShow.ets(28:7)", "home");
+            Text.debugLine("features/Home/src/main/ets/view/GridShow.ets(27:7)", "home");
             Text.fontSize('24vp');
             Text.fontColor(Color.Black);
         }, Text);
@@ -146,18 +146,18 @@ export class GridShow extends ViewPU {
             NavDestination.create(() => {
                 this.observeComponentCreation2((elmtId, isInitialRender) => {
                     Column.create();
-                    Column.debugLine("features/Home/src/main/ets/view/GridShow.ets(55:7)", "home");
+                    Column.debugLine("features/Home/src/main/ets/view/GridShow.ets(54:7)", "home");
                     Column.size({ width: '100%', height: '100%' });
                 }, Column);
                 this.observeComponentCreation2((elmtId, isInitialRender) => {
                     Divider.create();
-                    Divider.debugLine("features/Home/src/main/ets/view/GridShow.ets(57:9)", "home");
+                    Divider.debugLine("features/Home/src/main/ets/view/GridShow.ets(56:9)", "home");
                     Divider.color(Color.Gray);
                     Divider.margin({ left: 16, right: 16 });
                 }, Divider);
                 this.observeComponentCreation2((elmtId, isInitialRender) => {
                     Grid.create();
-                    Grid.debugLine("features/Home/src/main/ets/view/GridShow.ets(60:9)", "home");
+                    Grid.debugLine("features/Home/src/main/ets/view/GridShow.ets(59:9)", "home");
                     Grid.padding({ left: '12vp', right: '12vp' });
                     Grid.columnsGap('12vp');
                     Grid.rowsGap('20vp');
@@ -172,20 +172,20 @@ export class GridShow extends ViewPU {
                         {
                             const itemCreation2 = (elmtId, isInitialRender) => {
                                 GridItem.create(() => { }, false);
-                                GridItem.debugLine("features/Home/src/main/ets/view/GridShow.ets(63:13)", "home");
+                                GridItem.debugLine("features/Home/src/main/ets/view/GridShow.ets(62:13)", "home");
                             };
                             const observedDeepRender = () => {
                                 this.observeComponentCreation2(itemCreation2, GridItem);
                                 this.observeComponentCreation2((elmtId, isInitialRender) => {
                                     Column.create();
-                                    Column.debugLine("features/Home/src/main/ets/view/GridShow.ets(64:15)", "home");
+                                    Column.debugLine("features/Home/src/main/ets/view/GridShow.ets(63:15)", "home");
                                     Column.clip(true);
                                     Column.width('100%');
                                     Column.alignItems(HorizontalAlign.Start);
                                 }, Column);
                                 this.observeComponentCreation2((elmtId, isInitialRender) => {
                                     Image.create({ "id": -1, "type": -1, params: [item.pic], "bundleName": "com.example.wangningmei", "moduleName": "phone" });
-                                    Image.debugLine("features/Home/src/main/ets/view/GridShow.ets(65:17)", "home");
+                                    Image.debugLine("features/Home/src/main/ets/view/GridShow.ets(64:17)", "home");
                                     Image.width('100%');
                                     Image.objectFit(ImageFit.Contain);
                                     Image.borderRadius('12vp');
@@ -194,7 +194,7 @@ export class GridShow extends ViewPU {
                                 this.observeComponentCreation2((elmtId, isInitialRender) => {
                                     // .margin({ left: '12vp' })
                                     Column.create();
-                                    Column.debugLine("features/Home/src/main/ets/view/GridShow.ets(72:17)", "home");
+                                    Column.debugLine("features/Home/src/main/ets/view/GridShow.ets(71:17)", "home");
                                     // .margin({ left: '12vp' })
                                     Column.alignItems(HorizontalAlign.Start);
                                     // .margin({ left: '12vp' })
@@ -202,7 +202,7 @@ export class GridShow extends ViewPU {
                                 }, Column);
                                 this.observeComponentCreation2((elmtId, isInitialRender) => {
                                     Text.create(item.name);
-                                    Text.debugLine("features/Home/src/main/ets/view/GridShow.ets(73:19)", "home");
+                                    Text.debugLine("features/Home/src/main/ets/view/GridShow.ets(72:19)", "home");
                                     Text.fontSize('18vp');
                                     Text.fontColor(Color.Black);
                                     Text.textOverflow({ overflow: TextOverflow.Ellipsis });
@@ -211,8 +211,8 @@ export class GridShow extends ViewPU {
                                 Text.pop();
                                 this.observeComponentCreation2((elmtId, isInitialRender) => {
                                     // .textAlign(TextAlign.Start)
-                                    Text.create(item.artist);
-                                    Text.debugLine("features/Home/src/main/ets/view/GridShow.ets(79:19)", "home");
+                                    Text.create(item.getStandardArtist(item.artist));
+                                    Text.debugLine("features/Home/src/main/ets/view/GridShow.ets(78:19)", "home");
                                     // .textAlign(TextAlign.Start)
                                     Text.fontSize('13vp');
                                     // .textAlign(TextAlign.Start)
@@ -245,7 +245,7 @@ export class GridShow extends ViewPU {
                 // NavDestinationContext获取当前所在的导航控制器
                 this.pathInfos = ctx.pathStack;
             });
-            NavDestination.debugLine("features/Home/src/main/ets/view/GridShow.ets(54:5)", "home");
+            NavDestination.debugLine("features/Home/src/main/ets/view/GridShow.ets(53:5)", "home");
         }, NavDestination);
         NavDestination.pop();
     }

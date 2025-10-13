@@ -9,10 +9,10 @@
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/PlayDisplay/PlayDisplay.iml" filepath="$PROJECT_DIR$/.idea/modules/PlayDisplay/PlayDisplay.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/Search/Search.iml" filepath="$PROJECT_DIR$/.idea/modules/Search/Search.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/Setting/Setting.iml" filepath="$PROJECT_DIR$/.idea/modules/Setting/Setting.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/VainLonging.iml" filepath="$PROJECT_DIR$/.idea/modules/VainLonging.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/phone/phone.iml" filepath="$PROJECT_DIR$/.idea/modules/phone/phone.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/uicomponents/uicomponents.iml" filepath="$PROJECT_DIR$/.idea/modules/uicomponents/uicomponents.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/utils/utils.iml" filepath="$PROJECT_DIR$/.idea/modules/utils/utils.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/wangningmei.iml" filepath="$PROJECT_DIR$/.idea/modules/wangningmei.iml" />
     </modules>
   </component>
 </project>
