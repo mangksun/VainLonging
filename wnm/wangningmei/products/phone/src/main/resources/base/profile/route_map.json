@@ -1,0 +1,12 @@
+{
+  "routerMap": [
+    {
+      "name": "PageTemp",
+      "pageSourceFile": "src/main/ets/pages/PageTemp.ets",
+      "buildFunction": "PageTempBuilder",
+      "data": {
+        "description" : "this is mainPage"
+      }
+    }
+  ]
+}

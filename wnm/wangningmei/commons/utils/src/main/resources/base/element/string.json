@@ -1,0 +1,28 @@
+{
+  "string": [
+    {
+      "name": "page_show",
+      "value": "page from package"
+    },
+    {
+      "name": "Network_Available",
+      "value": "Network Available"
+    },
+    {
+      "name": "Network_Lost",
+      "value": "Network Lost"
+    },
+    {
+      "name": "Network_Unavailable",
+      "value": "Network Unavailable"
+    },
+    {
+      "name": "Internet",
+      "value": "Internet Permission Request"
+    },
+    {
+      "name": "network_info",
+      "value": "NetWork Info Permission Request"
+    }
+  ]
+}
