@@ -9,7 +9,7 @@ import { ListDataViewModel } from '../viewmodel/ListDataViewModel'
 export struct ListItemHuge {
   @State listData: ListData[] = new ListDataViewModel().getListDataList();
   private scrollerForHugeList: Scroller = new Scroller();
-  @State bgColor: Color = Color.Grey;
+  @Consume('navStack') listHugeNavStack: NavPathStack;
   @State centerIndex: number = 0
   @State myOffset: number = 6
   @State listWidthHuge: number = 252.2
@@ -39,20 +39,20 @@ export struct ListItemHuge {
       ForEach(this.listData, (item: ListData) => {
         ListItem() {
           Column() {
-            Image($r(item.pic))
+            Image(item.pic)
               .width('100%')
               // .height('100%')
               .objectFit(ImageFit.Contain)
-              .border({ width: 1, color: Color.Gray })
+              .border({ width: 1, color: Color.White })
             Column({ space: '5vp' }) {
-              Text(item.name)
+              Text(item.album)
                 .fontSize('18vp')
                 .fontColor(Color.White)
                 .textAlign(TextAlign.Center)
                 .textOverflow({ overflow: TextOverflow.Ellipsis })
               // .maxLines(1)
-              Text(item.getStandardArtist(item.artist))
-                .fontSize('13vp')
+              Text(item.artist.join(' & ').toString())
+                .fontSize('15vp')
                 .fontColor('#DCDCDC')
                 .textAlign(TextAlign.Center)
                 .textOverflow({ overflow: TextOverflow.Ellipsis })
@@ -79,10 +79,13 @@ export struct ListItemHuge {
         }
         //listitem组件参数
         .clip(true)
-        .backgroundColor(this.bgColor)
-        .backgroundBlurStyle(BlurStyle.BACKGROUND_THIN)
+        .backgroundColor('#003153')
+        .backgroundBlurStyle(BlurStyle.Thin)
         .borderRadius('16vp')
         .height('100%')
+        .onClick(() => {
+          this.listHugeNavStack.pushPathByName('AlbumInfoPage', item.album.replace(/\s/g, "%20"));
+        })
       }, (item: ListData) => JSON.stringify(item))
       ListItem()
       // .backgroundColor(Color.Red)

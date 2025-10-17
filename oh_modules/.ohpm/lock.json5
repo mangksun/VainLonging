@@ -64,7 +64,12 @@
     },
     "features/MusicPlayer": {
       "name": "MusicPlayer",
-      "dependencies": {},
+      "dependencies": {
+        "utils": {
+          "specifier": "file:commons/utils",
+          "version": "file:commons/utils"
+        }
+      },
       "devDependencies": {},
       "dynamicDependencies": {},
       "maskedByOverrideDependencyMap": false
@@ -153,7 +158,9 @@
     },
     "musicplayer@file:features/MusicPlayer": {
       "storePath": "features/MusicPlayer",
-      "dependencies": {},
+      "dependencies": {
+        "utils": "commons/utils"
+      },
       "dynamicDependencies": {},
       "dev": false,
       "dynamic": false,

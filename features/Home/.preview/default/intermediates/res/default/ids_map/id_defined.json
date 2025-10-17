@@ -55,5 +55,13 @@
 			"type":	"media",
 			"name":	"Davidtao",
 			"id":	"0x0100000D"
+		}, {
+			"type":	"media",
+			"name":	"arrow_left",
+			"id":	"0x0100000E"
+		}, {
+			"type":	"media",
+			"name":	"dot_grid_1x2",
+			"id":	"0x0100000F"
 		}]
 }

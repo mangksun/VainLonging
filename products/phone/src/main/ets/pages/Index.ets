@@ -1,5 +1,6 @@
 import { HomePage } from 'home'
-import { Player } from 'musicplayer'
+import { FullScreenPlayer, Player} from 'musicplayer'
+
 @Entry
 @Component
 struct Index {
@@ -8,18 +9,21 @@ struct Index {
   private arr: number[] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
   private tabsController: TabsController = new TabsController();
   @State currentIndex: number = 0;
+  @StorageLink('isPlay') isPlay: boolean = false;
+  @StorageLink('isFold') isFold: boolean = true;
 
   @Builder
   tabBuilder(title: ResourceStr, targetIndex: number, selectedImg: Resource, normalImg: Resource) {
     Column() {
       Image(this.currentIndex === targetIndex ? selectedImg : normalImg)
         .size({ width: 25, height: 25 })
+        .colorFilter('#003153')
       Text(title)
         .fontColor(this.currentIndex === targetIndex ? '#FF0000' : '#6B6B6B')
         .fontSize(12)
     }
     .width('100%')
-    .height(30)
+    .height(25)
     .justifyContent(FlexAlign.Center)
     .onClick(() => {
       this.currentIndex = targetIndex;
@@ -47,6 +51,10 @@ struct Index {
         Tabs({ barPosition: BarPosition.End, index: this.currentIndex, controller: this.tabsController }){
           TabContent(){
             Stack(){
+              if(!this.isFold){
+                FullScreenPlayer().zIndex(2)
+
+              }
               HomePage().zIndex(0)
               Player().zIndex(1)
             }
@@ -72,7 +80,9 @@ struct Index {
               .fontSize(30)
               .fontWeight(FontWeight.Bold)
           }.tabBar(this.tabBuilder('我的', 3, $r('app.media.face_smiling'), $r('app.media.face')))
-        }.onAnimationStart((index: number, targetIndex: number) => {
+        }
+        .barHeight(50)
+        .onAnimationStart((index: number, targetIndex: number) => {
           // hilog.info(0x0000, 'index', index.toString());
           this.currentIndex = targetIndex;
         })

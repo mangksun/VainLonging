@@ -8,9 +8,9 @@ export function GridShowBuilder(name: string, listData: ListData[]) {
 // @Entry
 @Component
 export struct GridShow {
-  pathInfos: NavPathStack = new NavPathStack();
+  @Consume('navStack') pathInfos: NavPathStack;
   @State listData: ListData[] = [];
-  @State templistData: ListData[] = new ListDataViewModel().getRecentlyPlayedList();
+  // @State templistData: ListData[] = new ListDataViewModel().getRecentlyPlayedList();
   @State title: string = '';
   name: string = '';
 
@@ -34,16 +34,16 @@ export struct GridShow {
   }
 
   aboutToAppear(): void {
-    if(this.listData[0].name == '0'){
+    if (this.listData[0].name == '0') {
       this.title = '最近播放'
       this.listData.shift()
-    }else if (this.listData[0].name == '1'){
+    } else if (this.listData[0].name == '1') {
       this.title = '最近热门'
       this.listData.shift()
-    }else if (this.listData[0].name == '2'){
+    } else if (this.listData[0].name == '2') {
       this.title = '最近发行'
       this.listData.shift()
-    }else {
+    } else if (this.listData[0].name == '3') {
       this.title = '为您推荐'
       this.listData.shift()
     }
@@ -52,16 +52,11 @@ export struct GridShow {
   build() {
     NavDestination() {
       Column() {
-
-        Divider()
-          .color(Color.Gray)
-          .margin({left: 16, right: 16})
         Grid() {
           ForEach(this.listData, (item: ListData) => {
-
             GridItem() {
               Column(){
-                Image($r(item.pic))
+                Image(item.pic)
                   .width('100%')
                   // .height('160vp')
                   .objectFit(ImageFit.Contain)
@@ -69,22 +64,24 @@ export struct GridShow {
                   .border({ width: 1, color: Color.Gray})
                 // .margin({ left: '12vp' })
                 Column(){
-                  Text(item.name)
+                  Text(item.album)
                     .fontSize('18vp')
                     .fontColor(Color.Black)
                     .textOverflow({ overflow: TextOverflow.Ellipsis })
                     .maxLines(1)
                   // .textAlign(TextAlign.Start)
-                  Text(item.getStandardArtist(item.artist))
+                  Text(item.artist.join(' & ').toString())
                     .fontSize('13vp')
                     .fontColor(Color.Gray)
                     .textOverflow({ overflow: TextOverflow.Ellipsis })
                     .maxLines(1)
                 }
-                // .height(31)
                 .alignItems(HorizontalAlign.Start)
                 .margin({top: '8vp'})
               }
+              .onClick(() => {
+                this.pathInfos.pushPathByName('AlbumInfoPage', item.album.replace(/\s/g, "%20"));
+              })
               .clip(true)
               // .height('250vp')
               .width('100%')
@@ -99,8 +96,11 @@ export struct GridShow {
         .columnsTemplate('1fr 1fr')
         .layoutDirection(GridDirection.Row)
         .scrollBar(BarState.Off)
+        Blank()
+          .height(90)
       }
       .size({ width: '100%', height: '100%' })
+
     }
     .title(this.GridShowTitle)
     .hideBackButton(true)

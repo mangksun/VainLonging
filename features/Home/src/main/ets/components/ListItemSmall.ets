@@ -7,35 +7,19 @@ import { HttpUtils, SongItem } from 'utils'
 // @Entry
 @Component
 export struct ListItemSmall {
-  @State listData: ListData[] = new ListDataViewModel().getHisMoreList();
+  @State listData: ListData[] = new ListDataViewModel().getListDataList()
   private scrollerForList: Scroller = new Scroller();
   @State centerIndex: number = 0
   @State myOffset: number = 6
   @State listWidth: number = 179
   @State listOffset: number = 0
-  @State targetname: string = ''
   @Consume('navStack') listSmallNavStack: NavPathStack;
 
-  // onScrollStop(){
-  //   let rect = this.scrollerForList.getItemRect(this.currentIndex);
-  //   if (this.velocity > 10) {
-  //     this.scrollerForList.scrollToIndex(this.currentIndex, true, ScrollAlign.START);
-  //   } else if (this.velocity < -10) {
-  //     this.scrollerForList.scrollToIndex(this.currentIndex + 1, true, ScrollAlign.START);
-  //   }
-  // }
 
 
 
   async aboutToAppear(): Promise<void> {
     this.listData.shift();
-    let httpUtil: HttpUtils = new HttpUtils();
-    let targetUrl: string = 'https://music-api.gdstudio.xyz/api.php?types=search&source=netease&count=20&name=' + this.targetname;
-    await httpUtil.RedirectSearchRequest(targetUrl).then((value: Array<SongItem> | undefined) => {
-      if(value){
-        console.log('httpSearchRequest ' + JSON.stringify(value[0].artist));
-      }
-    });
 
   }
 
@@ -48,13 +32,12 @@ export struct ListItemSmall {
         ForEach(this.listData, (item: ListData) => {
           ListItem() {
             Column(){
-              Image($r(item.pic))
+              Image(item.pic)
                 .width('100%')
-                // .height('160vp')
                 .objectFit(ImageFit.Cover)
                 .borderRadius(12)
-                .border({ width: 1, color: Color.Gray})
-                // .margin({ left: '12vp' })
+                .border({ width: 1, color: Color.White})
+                .shadow(ShadowStyle.OUTER_DEFAULT_XS)
               Column(){
                 Text(item.album)
                   .fontSize('18vp')
@@ -63,7 +46,7 @@ export struct ListItemSmall {
                   .textOverflow({ overflow: TextOverflow.Ellipsis })
                   .maxLines(1)
                 // .textAlign(TextAlign.Start)
-                Text(item.getStandardArtist(item.artist))
+                Text(item.artist.join(' & ').toString())
                   .fontSize('13vp')
                   .fontColor(Color.Gray)
                   .textOverflow({ overflow: TextOverflow.Ellipsis })
@@ -72,7 +55,7 @@ export struct ListItemSmall {
               .width('100%')
               .height(31)
               .alignItems(HorizontalAlign.Start)
-              .margin({top: '8vp'})
+              .margin({top: '8vp',left: '4vp'})
 
             }
             .clip(true)
@@ -84,7 +67,7 @@ export struct ListItemSmall {
           .height('100%')
           .width('179vp')
           .onClick(() => {
-            this.listSmallNavStack.pushPathByName('AlbumInfoPage', item.album.toString());
+            this.listSmallNavStack.pushPathByName('AlbumInfoPage', item.album.replace(/\s/g, "%20"));
           })
           // .margin({left: '12vp'})
           // .backgroundColor(Color.Red)

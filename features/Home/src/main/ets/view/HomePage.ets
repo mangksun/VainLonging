@@ -14,52 +14,90 @@ export function HomePageBuilder() {
 // @Entry
 @Component
 export struct HomePage {
-  @State listData: ListData[] = new ListDataViewModel().getListDataList();
-  @State RecentlyPlayedList: ListData[] = new ListDataViewModel().getRecentlyPlayedList();
-  @State FeatureRecommonedList: ListData[] = new ListDataViewModel().getFeaturedRecommendationsList();
-  @State popularList: ListData[] = new ListDataViewModel().getPopularList();
-  @State NewReleasesList: ListData[] = new ListDataViewModel().getNewReleasesList();
-  @State recommonedList: ListData[] = new ListDataViewModel().getRecommendList();
-  @State HisMoreList: ListData[] = new ListDataViewModel().getHisMoreList();
-
-
+  @StorageLink('musicsource') MusicSource: string = 'netease';
+  recentlyList: ListData[] = new ListDataViewModel().getRecentlyPlayedList(new ListDataViewModel().getListDataList(), 10)
   @Provide('navStack') pathStack: NavPathStack = new NavPathStack();
   private scrollerForScroll: Scroller = new Scroller();
   private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   private applicationContext = this.context.getApplicationContext();
   private cacheDir = this.applicationContext.filesDir;
-
-
+  private colorArray: ResourceColor[] = [Color.Black as ResourceColor];
+  private customPopup: boolean = false;
+  @State rotateAngle: number = 0;
+  isRotated = false;
 
   async aboutToAppear(): Promise<void> {
     AppStorage.setOrCreate('songList', songList);
-    // MediaService.getInstance();
+    AppStorage.setOrCreate('musicsource', this.MusicSource);
 
-    //let responseSongList: Array<SongItem> | undefined;
     let httpUtil: HttpUtils = new HttpUtils();
-    let targetUrl: string = 'https://music-api.gdstudio.xyz/api.php?types=search&source=kuwo&count=10&name=晴天';
-    await httpUtil.RedirectSearchRequest(targetUrl).then((value: Array<SongItem> | undefined) => {
-      if(value){
-        console.log('httpSearchRequest ' + JSON.stringify(value[0].artist));
-      }
 
-    });
-  //   await httpUtil.getHttpRequest()
-  //   //   .then((value: string) => {
-  //   //   this.pictureUri = value;
-  //   // })
-  //   ;
-  //   httpUtil.destroyHttpRequest();
   }
 
   @Builder
   NavigationMenus() {
     Row() {
-      SymbolGlyph($r('sys.symbol.gearshape'))
-        .fontSize(24)
-        .fontWeight(FontWeight.Bold)
-        .margin({ top: 14, right: 16 })
+      Button() {
+        SymbolGlyph($r('sys.symbol.gearshape'))
+          .fontSize(25)
+          .fontWeight(FontWeight.Bold)
+          .fontColor(this.colorArray)
+          .rotate({ angle: this.rotateAngle})
+          .transform({x: '50%', y: '50%'})
+      }
+      .margin({ top: 14, right: 16 })
+      .backgroundColor(Color.Transparent)
+      .onClick(() => {
+        animateTo({
+          duration: 400,
+          curve: Curve.EaseOut
+        }, () => {
+          this.rotateAngle = this.isRotated ? 0 : -90; // 切换角度
+          this.isRotated = !this.isRotated;           // 切换状态
+        });
+        this.customPopup = !this.customPopup
+        console.log('customPopup', this.customPopup)
+      })
+      .bindPopup(this.customPopup, {
+        builder: this.PopupBuilder, // Bubble content
+        placement: Placement.TopRight, // The pop position of the bubble
+        onStateChange: (e) => {
+          if (!e.isVisible) {
+            this.customPopup = false;
+          }
+        }
+      })
     }
+  }
+
+  @Builder
+  PopItem(icon : string, title: string, clickHandler: () => void )  {
+    Row() {
+      SymbolGlyph($r(icon))
+        .fontSize(30)
+
+      Text(title)
+        .fontSize(16)
+        .fontColor(Color.Black)
+        .margin({ top: 10, left: 16 })
+
+        .onClick(() => {
+          clickHandler()
+          // this.MusicSource = 'netease';
+          // AppStorage.setOrCreate('musicsource', this.MusicSource);
+        })
+    }
+  }
+  @Builder
+  PopupBuilder() {
+    Row({ space: 2 }) {
+      Text('保存数据')
+        .fontSize(16)
+        .opacity(0.9)
+    }
+    .width(200)
+    .height(50)
+    .padding(16)
   }
 
   @Builder
@@ -79,16 +117,16 @@ export struct HomePage {
       .onClick(() => {
         switch (title){
           case '最近播放':
-            this.pathStack.pushPathByName("GridShow", this.RecentlyPlayedList);
+            this.pathStack.pushPathByName("GridShow", this.recentlyList);
             break;
           case '最新发行':
-            this.pathStack.pushPathByName("GridShow", this.NewReleasesList);
+            this.pathStack.pushPathByName("GridShow", new ListDataViewModel().getNewReleasesList(new ListDataViewModel().getListDataList(), 10));
             break;
           case '为您推荐':
-            this.pathStack.pushPathByName("GridShow", this.recommonedList);
+            this.pathStack.pushPathByName("GridShow", new ListDataViewModel().getRecommendList(new ListDataViewModel().getListDataList(), 10));
             break;
           case '最近热门':
-            this.pathStack.pushPathByName("GridShow", this.popularList);
+            this.pathStack.pushPathByName("GridShow", new ListDataViewModel().getPopularList(new ListDataViewModel().getListDataList(), 10));
         }
       })
       ListItemSmall({listData})
@@ -124,8 +162,8 @@ export struct HomePage {
             }
             .alignItems(HorizontalAlign.Start)
 
-            this.StandardList('最近播放', this.RecentlyPlayedList)
-            this.StandardList('最近热门', this.popularList)
+            this.StandardList('最近播放', new ListDataViewModel().getRecentlyPlayedList(new ListDataViewModel().getListDataList(), 10))
+            this.StandardList('最近热门', new ListDataViewModel().getPopularList(new ListDataViewModel().getListDataList(), 10))
 
             Column() {
               Row({space: 5}){
@@ -153,9 +191,11 @@ export struct HomePage {
             }
             .alignItems(HorizontalAlign.Start)
 
-            this.StandardList('最新发行', this.NewReleasesList)
+            this.StandardList('最新发行', new ListDataViewModel().getNewReleasesList(new ListDataViewModel().getListDataList(), 10))
 
-            this.StandardList('为您推荐', this.recommonedList)
+            this.StandardList('为您推荐', new ListDataViewModel().getRecommendList(new ListDataViewModel().getListDataList(), 10))
+            Blank()
+              .height(70)
           }
           .alignItems(HorizontalAlign.Start)
 
@@ -163,8 +203,9 @@ export struct HomePage {
     }.title('主页',{
         backgroundBlurStyle: BlurStyle.Thin,
         barStyle: BarStyle.STACK,
+        backgroundColor: Color.White,
       })
-      .menus(this.NavigationMenus)
+      .menus(this.NavigationMenus())
       .mode(NavigationMode.Stack)
       // .hideToolBar(true)
       .titleMode(NavigationTitleMode.Free)

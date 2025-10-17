@@ -1,71 +1,107 @@
+import { HttpUtils, SongItem ,MediaService} from 'utils'
+import { router, Router } from '@kit.ArkUI';
+import { FullScreenPlayer } from './FullScreenPlayer';
 
-
-// @Entry
 @Component
 export struct Player {
   @State message: string = 'Hello World';
+  @StorageProp('selectIndex') @Watch('isChange')selectIndex: number = 0;
+  @StorageProp('isPlay') isPlay: boolean = false;
+  @StorageLink('songList') songList: SongItem[] = [];
+  @StorageLink('currentTime') currentTime: number = 0;
+  @StorageLink('progress') progress: number = 0;
+  @StorageLink('progressMax') progressMax: number = 0;
+  name: string = '暂无歌曲';
+  artist: string[] = ['暂无歌曲'];
+  pic: string = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR8tZMv_KFRhv9v8drA2O_0MAJ79vqp4fNNJw&s';
+  isFold: boolean = true;
+
+  aboutToAppear(): void {
+
+  }
 
   build() {
-    // Row(){
+    Stack(){
       Row(){
-        Image($r('app.media.gaomu'))
-          .objectFit(ImageFit.Contain)
-          .width(56)
-          .height(56)
-          .margin({ left: 14 })
-          .borderRadius(8)
-        Column({space: 2}){
-          Text('高木同学')
-            .fontSize(14)
-            .fontColor('#696969')
-            .fontWeight(FontWeight.Bold)
-          Text('西片太太')
-            .fontSize(14)
-            .fontColor('#696969')
+        Row() {
+          Image(this.songList.length > 0 ? this.songList[this.selectIndex].pic_id : this.pic)
+            .objectFit(ImageFit.Contain)
+            .width(56)
+            .height(56)
+            .borderRadius(8)
+          Column({ space: 2 }) {
+            Text(this.songList.length > 0 ? this.songList[this.selectIndex].name : this.name)
+              .fontSize(14)
+              .fontColor('#696969')
+              .fontWeight(FontWeight.Bold)
+            Text(this.songList.length > 0 ? this.songList[this.selectIndex].artist.join('&').toString() : this.artist.join('&').toString())
+              .fontSize(14)
+              .fontColor('#696969')
+          }
+          .margin({left: 7})
+          .alignItems(HorizontalAlign.Start)
         }
-        // .width()
+        .margin({ left: 14 })
         .height('100%')
-        .alignItems(HorizontalAlign.Start)
+        .alignItems(VerticalAlign.Center)
         .justifyContent(FlexAlign.Start)
-        .margin({ left: 7})
-        .padding({top: 14})
+
 
         Row({space: 5}){
           SymbolGlyph($r('sys.symbol.backward_end_fill'))
             .fontSize(30)
-          SymbolGlyph($r('sys.symbol.play_fill'))
+            .onClick(() => {
+              MediaService.getInstance().playPrevious()
+            })
+          SymbolGlyph(this.isPlay ?  $r('sys.symbol.pause_fill') : $r('sys.symbol.play_fill'))
             .fontSize(30)
-          // .border({width: 1, radius: 50})
+            .effectStrategy(SymbolEffectStrategy.SCALE)
+            .onClick(() => {
+              if(this.isPlay){
+                MediaService.getInstance().pause()
+              }else {
+                MediaService.getInstance().play()
+              }
+            })
           SymbolGlyph($r('sys.symbol.forward_end_fill'))
             .fontSize(30)
+            .onClick(() => {
+              MediaService.getInstance().playNextAuto(true)
+            })
         }
-        .margin({left: 110})
-
-        //   .size(24)
-        // .color(Color.White)
-        // .margin({left: 20})
-        // Text('K')
-        //   .fontSize(24)
-        //   // .fontColor(Color.White)
-        //   .margin({left: 160})
-        // Text('N')
-        //   .fontSize(16)
-        //   .fontColor(Color.White)
-        //   .margin({left: 20})
+        .margin({ right: 7})
+        .height('100%')
+        .alignItems(VerticalAlign.Center)
       }
-      .height(70)
-      .width('376vp')
-      .margin({left:6,right:6,bottom:6})
-      .borderRadius(16)
+      .margin({left: 5, right: 5, bottom: 5})
+      .borderRadius(12)
       .border({width: 1,color: '#D3D3D3'})
       .backgroundColor(Color.White)
-      // .backgroundBlurStyle(BlurStyle.Thin)
-      .alignItems(VerticalAlign.Center)
-      .justifyContent(FlexAlign.Start)
-    // }
-    // .alignItems(HorizontalAlign.Center)
-    // .justifyContent(FlexAlign.Center)
-    // .width('100%')
-    // .height('100%')
+      .justifyContent(FlexAlign.SpaceBetween)
+      .onClick(() => {
+        this.isFold = false
+        AppStorage.setOrCreate('isFold', this.isFold)
+
+      })
+      .height(70)
+      .width('376vp')
+
+      Progress({value: this.progress, total: this.progressMax})
+        .width(354)
+        .height(2)
+        .margin({bottom: 5})
+        .zIndex(1)
+        .color(Color.Red)
+    }
+    .height(70)
+    .width('376vp')
+    .alignContent(Alignment.Bottom)
+    }
+
+
+  isChange() {
+    console.log('isChange is called selectIndex:' + this.selectIndex)
   }
+
 }
+

@@ -32,6 +32,7 @@ export class MediaService {
   private songList: SongItem[] = [];
   private formIds: string[] = [];
   private isCurrent: boolean = true;
+  private isManualOperation: boolean = true;
 
   private seekCall: (seekDoneTime: number) => void = (seekDoneTime: number) => {
     this.isCurrent = true;
@@ -59,9 +60,10 @@ export class MediaService {
         // Logger.info(TAG, 'AVPlayer state idle called.');
         console.log('AVPlayer state idle called.');
         this.state = AudioPlayerState.IDLE;
+        console.log('musicindex for idle: ' + this.musicIndex)
         // this.songItem = await this.songItemBuilder.build(this.songList[this.musicIndex]);
-        let url = this.songItem.url_id
-        console.log('AVPlayer state idle with url: ' + url)
+        let url = this.songList[this.musicIndex].url_id
+        console.log('AVPlayer state idle with url: ' + this.songList[this.musicIndex].url_id)
         if (this.avPlayer && url) {
           this.avPlayer.url = url;
         }
@@ -103,7 +105,8 @@ export class MediaService {
       case 'completed':
         Logger.info(TAG, 'AVPlayer state completed called.');
         this.state = AudioPlayerState.COMPLETED;
-        this.playNextAuto(false);
+        // this.playNextAuto(false);
+
         break;
       case 'stopped':
         Logger.info(TAG, 'AVPlayer state stopped called.');
@@ -126,6 +129,7 @@ export class MediaService {
   };
   //以上部分为setAVPlayerCallback参数函数部分
 
+  // for session controller
   private playCall: () =>void = () => {
     Logger.info(TAG, `on play , do play task`);
     if (this.isFirst) {
@@ -190,6 +194,7 @@ export class MediaService {
     this.avPlayer.on('stateChange', this.stateCall)
   }
 
+  //session controller
   async createSession() {
     if (!this.context) {
       return;
@@ -264,6 +269,8 @@ export class MediaService {
        message: ${(error as BusinessError).message}`);
     }
   }
+  //session controller end
+
 
   /**
    * Play music by index.
@@ -271,70 +278,43 @@ export class MediaService {
    * @param musicIndex
    */
   async loadAssent(item: SongItem) {
-    // // if (musicIndex >= this.songList.length) {
-    // //   Logger.error(TAG, `current musicIndex ${musicIndex}`);
-    // //   return;
-    // // }
-    //
-    // BackgroundUtil.startContinuousTask(this.context);
-    // this.updateMusicIndex(musicIndex);
-    // console.log('loadAssent',);
-    // this.avPlayer!.url = 'http://music.163.com/song/media/outer/url?id=447925558.mp3';
-    // this.avPlayer!.prepare()
+
+    BackgroundUtil.startContinuousTask(this.context);
+    this.pauseCall()
+    // 判断歌曲是否在播放列表中
     let isIn: string = item.id
     if(this.songList.some(item => item.id === isIn)){
       //找到歌曲在播放列表中的索引，并修改currentindex的值
-      // console.log('pushToSongList ' + JSON.stringify(this.songList))
-
-      } else {
-
+      this.musicIndex = this.songList.findIndex(item => item.id === isIn)
+      this.updateMusicIndex(this.musicIndex)
+      console.log('Current index of the select song is:' +  this.musicIndex)
+    }else {
+      //存储新歌曲到播放列表
       this.songItem = await this.songItemBuilder.build(item);
       console.log('songItemBuilder ' + JSON.stringify(this.songItem))
       this.songItem.index = this.songList.length
+      console.log('songItemBuilder ' + JSON.stringify(this.songItem))
       this.songList.push(this.songItem)
+      this.updateMusicIndex(this.songItem.index)
+      console.log('Current index of the select song is:' +  this.songItem.index)
+      AppStorage.set('songList', this.songList)
+      // console.log();
+      //调整当前播放音乐索引
+      // this.musicIndex = this.songItem.index
+    }
+
+      //音乐准备播放
       if(this.state != AudioPlayerState.IDLE){
-        this.avPlayer!.reset()
-        this.avPlayer!.prepare()
-        this.avPlayer!.play()
+        //非首次播放，重置avplayer到idle状态
+        this.reset()
       } else{
+        //首次播放，手动绑定url
         let url = this.songItem.url_id
         console.log('AVPlayer state idle with url: ' + url)
         if (this.avPlayer && url) {
           this.avPlayer.url = url;
         }
-        console.log('xuejiayu')
-
-        this.avPlayer!.prepare()
-        this.avPlayer!.play()
       }
-
-      }
-
-    // this.avPlayer!.url = this.songItem.url_id
-    // this.avPlayer!.prepare()
-    // this.avPlayer?.play()
-    //
-    //
-    // // this.songList = AppStorage.get('songList');
-    // if (this.isFirst && this.avPlayer) {
-    //   this.avPlayer.reset(() => {
-    //     this.avPlayer!.url = 'http://music.163.com/song/media/outer/url?id=447925558.mp3';
-    //     this.avPlayer?.prepare()
-    //   })
-    //
-    //   this.isFirst = false;
-    //   this.songItem = await this.songItemBuilder.build(this.songList[this.musicIndex]);
-    //   let url = this.songItemBuilder.getRealUrl();
-    //   if (url) {
-    //     // let avFileDescriptor: media.AVFileDescriptor = { fd: url.fd, offset: url.offset, length: url.length };
-    //     // this.avPlayer.fdSrc = avFileDescriptor;
-    //     // Logger.info(TAG, 'loadAsset avPlayer.url:' + this.avPlayer.fdSrc);
-    //
-    //
-    //   }
-    // } else {
-    //   await this.stop();
-    // }
   }
 
   /**
@@ -479,37 +459,59 @@ export class MediaService {
 
   private playNext() {
 
-    //临时修改
-    Logger.info(TAG, 'playNext Index:' + this.musicIndex + ', length-1:' + (this.songList.length - 1));
-    if (this.musicIndex === this.songList.length - 1) {
-      this.loadAssent(this.songItem);
-    } else {
-      this.loadAssent(this.songItem);
+    if(this.musicIndex === this.songList.length - 1){
+      this.stop()
+      this.reset()
+    }else{
+      this.updateMusicIndex(this.musicIndex + 1);
+      console.log('PlayNext: musicIndex: ' + this.musicIndex + 'musicIndex - 1: ' + (this.musicIndex - 1));
+      this.stop()
+      this.reset()
     }
+
   }
 
   /**
    * Play previous music.
    */
   public playPrevious() {
-    switch (this.playMode) {
-      case MusicPlayMode.RANDOM:
-        this.playRandom();
-        break;
-      case MusicPlayMode.ORDER:
-      case MusicPlayMode.SINGLE_CYCLE:
-        if (this.musicIndex === 0) {
-          this.updateMusicIndex(this.songList.length - 1);
-        } else {
-          this.updateMusicIndex(this.musicIndex - 1);
-        }
-        Logger.info(TAG, 'setLastIndex:' + this.musicIndex);
-        //临时修改
-        this.loadAssent(this.songItem);
-        break;
-      default:
-        break;
+    if(this.getCurrentTime() <= 5000 ){
+      console.log('PlayPrevious: ' + '播放时长不足5s，已为您重新播放当前歌曲');
+      this.stop()
+    }else {
+      switch (this.playMode) {
+        case MusicPlayMode.RANDOM:
+          this.playRandom();
+          break;
+        case MusicPlayMode.ORDER:
+
+          console.log('PlayPrevious: ' + '当前歌曲索引: ' + this.musicIndex);
+          if(this.musicIndex === 0 && this.avPlayer){
+            console.log('PlayPrevious: ' + '已是队列中第一个歌曲');
+          }else{
+            this.musicIndex = (this.musicIndex - 1 + this.songList.length) % this.songList.length;
+            this.updateMusicIndex(this.musicIndex);
+            console.log('0PlayPrevious: musicIndex: ' + this.musicIndex + 'last Index: ' + (this.musicIndex + 1) + '播放列表长度: ' + this.songList.length);
+          }
+          // this.pauseCall()
+          this.reset()
+          break;
+        case MusicPlayMode.SINGLE_CYCLE:
+          if (this.musicIndex === 0) {
+            this.updateMusicIndex(this.songList.length - 1);
+          } else {
+            this.updateMusicIndex(this.musicIndex - 1);
+          }
+          // Logger.info(TAG, 'setLastIndex:' + this.musicIndex);
+          // this.stop()
+          this.reset()
+
+          break;
+        default:
+          break;
+      }
     }
+
   }
 
   private playRandom() {
@@ -518,8 +520,8 @@ export class MediaService {
       this.playRandom();
     } else {
       this.updateMusicIndex(num);
-      //临时修改
-      this.loadAssent(this.songItem);
+      this.stop()
+      this.reset()
     }
     Logger.info(TAG, 'play Random:' + this.musicIndex);
   }
@@ -545,6 +547,7 @@ export class MediaService {
     if (this.avPlayer) {
       await this.avPlayer.reset();
     }
+    console.log('2PlayPrevious: musicIndex: ' + this.musicIndex + 'last Index: ' + (this.musicIndex + 1) + '播放列表长度: ' + this.songList.length);
     this.isPrepared = false;
   }
 

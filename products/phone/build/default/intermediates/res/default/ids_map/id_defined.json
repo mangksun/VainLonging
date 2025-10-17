@@ -125,23 +125,87 @@
 			"id":	"0x0900001E"
 		}, {
 			"type":	"string",
-			"name":	"Internet",
+			"name":	"EntryFormAbility_desc",
 			"id":	"0x0900001F"
 		}, {
 			"type":	"string",
-			"name":	"Network_Available",
+			"name":	"EntryFormAbility_label",
 			"id":	"0x09000020"
 		}, {
 			"type":	"string",
-			"name":	"Network_Lost",
+			"name":	"collect",
 			"id":	"0x09000021"
 		}, {
 			"type":	"string",
-			"name":	"Network_Unavailable",
+			"name":	"collection_num",
 			"id":	"0x09000022"
 		}, {
 			"type":	"string",
-			"name":	"network_info",
+			"name":	"comment",
 			"id":	"0x09000023"
+		}, {
+			"type":	"string",
+			"name":	"download",
+			"id":	"0x09000024"
+		}, {
+			"type":	"string",
+			"name":	"list_name",
+			"id":	"0x09000025"
+		}, {
+			"type":	"string",
+			"name":	"play_all",
+			"id":	"0x09000026"
+		}, {
+			"type":	"string",
+			"name":	"play_list",
+			"id":	"0x09000027"
+		}, {
+			"type":	"string",
+			"name":	"playlist_Introduction",
+			"id":	"0x09000028"
+		}, {
+			"type":	"string",
+			"name":	"share",
+			"id":	"0x09000029"
+		}, {
+			"type":	"string",
+			"name":	"shared_desc",
+			"id":	"0x0900002A"
+		}, {
+			"type":	"string",
+			"name":	"singer",
+			"id":	"0x0900002B"
+		}, {
+			"type":	"string",
+			"name":	"song_name",
+			"id":	"0x0900002C"
+		}, {
+			"type":	"string",
+			"name":	"Internet",
+			"id":	"0x0900002D"
+		}, {
+			"type":	"string",
+			"name":	"Network_Available",
+			"id":	"0x0900002E"
+		}, {
+			"type":	"string",
+			"name":	"Network_Lost",
+			"id":	"0x0900002F"
+		}, {
+			"type":	"string",
+			"name":	"Network_Unavailable",
+			"id":	"0x09000030"
+		}, {
+			"type":	"string",
+			"name":	"network_info",
+			"id":	"0x09000031"
+		}, {
+			"type":	"media",
+			"name":	"arrow_left",
+			"id":	"0x09000032"
+		}, {
+			"type":	"media",
+			"name":	"dot_grid_1x2",
+			"id":	"0x09000033"
 		}]
 }

@@ -1,0 +1,13 @@
+{
+  "routerMap": [
+    {
+      "name": "FullScreeenPlayer",
+      "pageSourceFile": "src/main/ets/view/FullScreenPlayer.ets",
+      "buildFunction": "FullScreeenPlayerBuilder",
+      "data": {
+        "description": "this is homePage"
+      }
+    }
+
+  ]
+}
