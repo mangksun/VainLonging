@@ -1,0 +1,31 @@
+{
+	"app": {
+		"bundleName": "com.example.wangningmei",
+		"debug": true,
+		"versionCode": 1000000,
+		"versionName": "1.0.0",
+		"minAPIVersion": 50100018,
+		"targetAPIVersion": 50100018,
+		"apiReleaseType": "Release",
+		"compileSdkVersion": "5.1.0.110",
+		"compileSdkType": "HarmonyOS",
+		"appEnvironments": [],
+		"bundleType": "app",
+		"buildMode": "debug"
+	},
+	"module": {
+		"name": "MusicPlayer",
+		"type": "har",
+		"deviceTypes": [
+			"default",
+			"tablet",
+			"2in1",
+			"wearable"
+		],
+		"packageName": "musicplayer",
+		"installationFree": false,
+		"virtualMachine": "ark13.0.1.0",
+		"compileMode": "esmodule",
+		"dependencies": []
+	}
+}

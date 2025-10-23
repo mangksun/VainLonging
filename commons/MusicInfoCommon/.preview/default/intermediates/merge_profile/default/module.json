@@ -1,0 +1,50 @@
+{
+	"app": {
+		"bundleName": "com.example.wangningmei",
+		"debug": true,
+		"versionCode": 1000000,
+		"versionName": "1.0.0",
+		"minAPIVersion": 50100018,
+		"targetAPIVersion": 50100018,
+		"apiReleaseType": "Release",
+		"compileSdkVersion": "5.1.0.110",
+		"compileSdkType": "HarmonyOS",
+		"appEnvironments": [],
+		"bundleType": "app",
+		"buildMode": "debug"
+	},
+	"module": {
+		"name": "MusicInfoCommon",
+		"type": "har",
+		"deviceTypes": [
+			"default",
+			"tablet",
+			"2in1",
+			"wearable"
+		],
+		"requestPermissions": [
+			{
+				"name": "ohos.permission.INTERNET",
+				"reason": "$string:Internet",
+				"usedScene": {
+					"abilities": [
+						"EntryAbility"
+					],
+					"when": "inuse"
+				}
+			},
+			{
+				"name": "ohos.permission.GET_NETWORK_INFO",
+				"reason": "$string:network_info",
+				"usedScene": {
+					"abilities": [
+						"EntryAbility"
+					],
+					"when": "inuse"
+				}
+			}
+		],
+		"packageName": "musicinfocommon",
+		"installationFree": false
+	}
+}

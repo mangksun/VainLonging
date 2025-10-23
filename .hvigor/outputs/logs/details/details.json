@@ -1,0 +1,101 @@
+{
+  "HVIGOR_OHOS_PLUGIN": {
+    "MODULES": [
+      {
+        "MODULE_NAME": "f7a42fe7211f98ac7a60a285ac3a9e87",
+        "API_TYPE": "stageMode",
+        "INCREMENTAL_TASKS": {
+          "COMPILE_ARKTS": true
+        }
+      },
+      {
+        "MODULE_NAME": "2b3583e6e17721c54496bd04e57a0c15",
+        "API_TYPE": "stageMode"
+      },
+      {
+        "MODULE_NAME": "4b9fd96ea9bad44c52cdc82569434346",
+        "API_TYPE": "stageMode"
+      },
+      {
+        "MODULE_NAME": "8cf04a9734132302f96da8e113e80ce5",
+        "API_TYPE": "stageMode"
+      },
+      {
+        "MODULE_NAME": "207375964c27a70796b633d00e69aec3",
+        "API_TYPE": "stageMode"
+      },
+      {
+        "MODULE_NAME": "13348442cc6a27032d2b4aa28b75a5d3",
+        "API_TYPE": "stageMode"
+      },
+      {
+        "MODULE_NAME": "ba6da323b9a11993871ee573de24b401",
+        "API_TYPE": "stageMode"
+      },
+      {
+        "MODULE_NAME": "51ac4bf63a0c6a9cefa7ba69b4154ef1",
+        "API_TYPE": "stageMode"
+      },
+      {
+        "MODULE_NAME": "a0f2eaa152ad6f1377047d2e994fdba7",
+        "API_TYPE": "stageMode"
+      },
+      {
+        "MODULE_NAME": "b902cca3eb5ee8ddb665786be43fea8f",
+        "API_TYPE": "stageMode"
+      }
+    ],
+    "BUILD_MODE": "debug"
+  },
+  "HVIGOR": {
+    "IS_INCREMENTAL": true,
+    "IS_DAEMON": true,
+    "IS_PARALLEL": true,
+    "IS_HVIGORFILE_TYPE_CHECK": false,
+    "TASK_TIME": {
+      "f7a42fe7211f98ac7a60a285ac3a9e87": {
+        "CreateModuleInfo": 2047200,
+        "PreCheckSyscap": 728100,
+        "ProcessIntegratedHsp": 3296600,
+        "SyscapTransform": 5588400,
+        "ProcessStartupConfig": 9608300,
+        "ConfigureCmake": 1028200,
+        "BuildNativeWithCmake": 562800,
+        "BuildJS": 6847200,
+        "BuildNativeWithNinja": 6209500,
+        "CompileArkTS": 2344524200,
+        "PackageHap": 1673583600,
+        "SignHap": 3468300,
+        "CollectDebugSymbol": 9252900,
+        "assembleHap": 678200
+      },
+      "b902cca3eb5ee8ddb665786be43fea8f": {
+        "ConfigureCmake": 340800,
+        "BuildNativeWithCmake": 698700,
+        "BuildNativeWithNinja": 2686000
+      },
+      "2b3583e6e17721c54496bd04e57a0c15": {
+        "ConfigureCmake": 876000,
+        "BuildNativeWithCmake": 381900,
+        "BuildNativeWithNinja": 1868500
+      },
+      "8cf04a9734132302f96da8e113e80ce5": {
+        "ConfigureCmake": 520000,
+        "BuildNativeWithCmake": 451700,
+        "BuildNativeWithNinja": 3166400
+      },
+      "a0f2eaa152ad6f1377047d2e994fdba7": {
+        "ConfigureCmake": 351100,
+        "BuildNativeWithCmake": 1031000,
+        "BuildNativeWithNinja": 2074900
+      }
+    },
+    "CONFIG_PROPERTIES": {
+      "enableSignTask": true,
+      "skipNativeIncremental": false,
+      "hvigor_keepDependency": true
+    },
+    "TOTAL_TIME": 5245404300,
+    "BUILD_ID": "202510162357445340"
+  }
+}

@@ -1,0 +1,1155 @@
+{
+  "ohos-module-phone": {
+    "SELECT_TARGET": "default",
+    "MODULE_BUILD_DIR": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\products\\phone\\build",
+    "TARGETS": {
+      "default": {
+        "SOURCE_ROOT": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\products\\phone\\src\\main",
+        "RESOURCES_PATH": [
+          "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\products\\phone\\src\\main\\resources"
+        ],
+        "BUILD_PATH": {
+          "OUTPUT_PATH": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\products\\phone\\build\\default\\outputs\\default",
+          "INTERMEDIA_PATH": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\products\\phone\\build\\default\\intermediates",
+          "JS_ASSETS_PATH": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\products\\phone\\build\\default\\intermediates\\loader_out\\default",
+          "JS_LITE_ASSETS_PATH": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\products\\phone\\build\\default\\intermediates\\loader_out_lite\\default",
+          "RES_PATH": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\products\\phone\\build\\default\\intermediates\\res\\default",
+          "RES_PROFILE_PATH": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\products\\phone\\build\\default\\intermediates\\res\\default\\resources\\base\\profile",
+          "ETS_SUPER_VISUAL_PATH": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\products\\phone\\build\\default\\cache\\default\\default@CompileArkTS\\esmodule",
+          "JS_SUPER_VISUAL_PATH": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\products\\phone\\build\\default\\cache\\default\\default@CompileJS\\jsbundle",
+          "WORKER_LOADER": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\products\\phone\\build\\default\\intermediates\\loader\\default\\loader.json",
+          "MANIFEST_JSON": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\products\\phone\\build\\default\\intermediates\\manifest\\default",
+          "OUTPUT_METADATA_JSON": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\products\\phone\\build\\default\\intermediates\\hap_metadata\\default\\output_metadata.json",
+          "SOURCE_MAP_DIR": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\products\\phone\\build\\default\\intermediates\\source_map\\default"
+        },
+        "BUILD_OPTION": {
+          "debuggable": true
+        }
+      },
+      "ohosTest": {
+        "SOURCE_ROOT": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\products\\phone\\src\\ohosTest",
+        "RESOURCES_PATH": [
+          "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\products\\phone\\src\\ohosTest\\resources"
+        ],
+        "BUILD_PATH": {
+          "OUTPUT_PATH": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\products\\phone\\build\\default\\outputs\\ohosTest",
+          "INTERMEDIA_PATH": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\products\\phone\\build\\default\\intermediates",
+          "JS_ASSETS_PATH": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\products\\phone\\build\\default\\intermediates\\loader_out\\ohosTest",
+          "JS_LITE_ASSETS_PATH": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\products\\phone\\build\\default\\intermediates\\loader_out_lite\\ohosTest",
+          "RES_PATH": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\products\\phone\\build\\default\\intermediates\\res\\ohosTest",
+          "RES_PROFILE_PATH": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\products\\phone\\build\\default\\intermediates\\res\\ohosTest\\resources\\base\\profile",
+          "ETS_SUPER_VISUAL_PATH": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\products\\phone\\build\\default\\cache\\ohosTest\\ohosTest@OhosTestCompileArkTS\\esmodule",
+          "JS_SUPER_VISUAL_PATH": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\products\\phone\\build\\default\\cache\\ohosTest\\ohosTest@OhosTestCompileJS\\jsbundle",
+          "WORKER_LOADER": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\products\\phone\\build\\default\\intermediates\\loader\\ohosTest\\loader.json",
+          "MANIFEST_JSON": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\products\\phone\\build\\default\\intermediates\\manifest\\ohosTest",
+          "OUTPUT_METADATA_JSON": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\products\\phone\\build\\default\\intermediates\\hap_metadata\\ohosTest\\output_metadata.json",
+          "SOURCE_MAP_DIR": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\products\\phone\\build\\default\\intermediates\\source_map\\ohosTest"
+        },
+        "BUILD_OPTION": {
+          "debuggable": true
+        }
+      }
+    },
+    "BUILD_OPTION": {
+      "default-default": {
+        "debuggable": true,
+        "copyFrom": "default",
+        "strictMode": {
+          "caseSensitiveCheck": true,
+          "useNormalizedOHMUrl": true
+        },
+        "name": "debug"
+      }
+    },
+    "BUILD_PROFILE_OPT": {
+      "apiType": "stageMode",
+      "buildOption": {},
+      "buildOptionSet": [
+        {
+          "name": "release",
+          "arkOptions": {
+            "obfuscation": {
+              "ruleOptions": {
+                "enable": false,
+                "files": [
+                  "./obfuscation-rules.txt"
+                ]
+              }
+            }
+          }
+        },
+        {
+          "name": "default"
+        },
+        {
+          "name": "debug"
+        }
+      ],
+      "targets": [
+        {
+          "name": "default"
+        },
+        {
+          "name": "ohosTest"
+        }
+      ]
+    },
+    "BUILD_CACHE_DIR": ""
+  },
+  "ohos-module-utils": {
+    "SELECT_TARGET": "default",
+    "MODULE_BUILD_DIR": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\commons\\utils\\build",
+    "TARGETS": {
+      "default": {
+        "SOURCE_ROOT": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\commons\\utils\\src\\main",
+        "RESOURCES_PATH": [
+          "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\commons\\utils\\src\\main\\resources"
+        ],
+        "BUILD_PATH": {
+          "OUTPUT_PATH": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\commons\\utils\\build\\default\\outputs\\default",
+          "INTERMEDIA_PATH": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\commons\\utils\\build\\default\\intermediates",
+          "JS_ASSETS_PATH": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\commons\\utils\\build\\default\\intermediates\\loader_out\\default",
+          "JS_LITE_ASSETS_PATH": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\commons\\utils\\build\\default\\intermediates\\loader_out_lite\\default",
+          "RES_PATH": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\commons\\utils\\build\\default\\intermediates\\res\\default",
+          "RES_PROFILE_PATH": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\commons\\utils\\build\\default\\intermediates\\res\\default\\resources\\base\\profile",
+          "ETS_SUPER_VISUAL_PATH": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\commons\\utils\\build\\default\\cache\\default\\default@HarCompileArkTS\\esmodule",
+          "JS_SUPER_VISUAL_PATH": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\commons\\utils\\build\\default\\cache\\default\\default@HarCompileJS\\jsbundle",
+          "WORKER_LOADER": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\commons\\utils\\build\\default\\intermediates\\loader\\default\\loader.json",
+          "MANIFEST_JSON": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\commons\\utils\\build\\default\\intermediates\\manifest\\default",
+          "OUTPUT_METADATA_JSON": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\commons\\utils\\build\\default\\intermediates\\hap_metadata\\default\\output_metadata.json",
+          "SOURCE_MAP_DIR": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\commons\\utils\\build\\default\\intermediates\\source_map\\default"
+        },
+        "BUILD_OPTION": {
+          "debuggable": true
+        }
+      },
+      "ohosTest": {
+        "SOURCE_ROOT": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\commons\\utils\\src\\ohosTest",
+        "RESOURCES_PATH": [
+          "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\commons\\utils\\src\\ohosTest\\resources"
+        ],
+        "BUILD_PATH": {
+          "OUTPUT_PATH": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\commons\\utils\\build\\default\\outputs\\ohosTest",
+          "INTERMEDIA_PATH": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\commons\\utils\\build\\default\\intermediates",
+          "JS_ASSETS_PATH": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\commons\\utils\\build\\default\\intermediates\\loader_out\\ohosTest",
+          "JS_LITE_ASSETS_PATH": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\commons\\utils\\build\\default\\intermediates\\loader_out_lite\\ohosTest",
+          "RES_PATH": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\commons\\utils\\build\\default\\intermediates\\res\\ohosTest",
+          "RES_PROFILE_PATH": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\commons\\utils\\build\\default\\intermediates\\res\\ohosTest\\resources\\base\\profile",
+          "ETS_SUPER_VISUAL_PATH": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\commons\\utils\\build\\default\\cache\\ohosTest\\ohosTest@OhosTestCompileArkTS\\esmodule",
+          "JS_SUPER_VISUAL_PATH": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\commons\\utils\\build\\default\\cache\\ohosTest\\ohosTest@OhosTestCompileJS\\jsbundle",
+          "WORKER_LOADER": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\commons\\utils\\build\\default\\intermediates\\loader\\ohosTest\\loader.json",
+          "MANIFEST_JSON": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\commons\\utils\\build\\default\\intermediates\\manifest\\ohosTest",
+          "OUTPUT_METADATA_JSON": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\commons\\utils\\build\\default\\intermediates\\hap_metadata\\ohosTest\\output_metadata.json",
+          "SOURCE_MAP_DIR": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\commons\\utils\\build\\default\\intermediates\\source_map\\ohosTest"
+        },
+        "BUILD_OPTION": {
+          "debuggable": true
+        }
+      }
+    },
+    "BUILD_OPTION": {
+      "default-default": {
+        "debuggable": true,
+        "copyFrom": "default",
+        "strictMode": {
+          "caseSensitiveCheck": true,
+          "useNormalizedOHMUrl": true
+        },
+        "name": "debug"
+      }
+    },
+    "BUILD_PROFILE_OPT": {
+      "apiType": "stageMode",
+      "buildOption": {},
+      "buildOptionSet": [
+        {
+          "name": "release",
+          "arkOptions": {
+            "obfuscation": {
+              "ruleOptions": {
+                "enable": false,
+                "files": [
+                  "./obfuscation-rules.txt"
+                ]
+              },
+              "consumerFiles": [
+                "./consumer-rules.txt"
+              ]
+            }
+          }
+        },
+        {
+          "name": "default"
+        },
+        {
+          "name": "debug"
+        }
+      ],
+      "targets": [
+        {
+          "name": "default"
+        },
+        {
+          "name": "ohosTest"
+        }
+      ]
+    },
+    "BUILD_CACHE_DIR": ""
+  },
+  "ohos-module-uicomponents": {
+    "SELECT_TARGET": "default",
+    "MODULE_BUILD_DIR": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\commons\\uicomponents\\build",
+    "TARGETS": {
+      "default": {
+        "SOURCE_ROOT": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\commons\\uicomponents\\src\\main",
+        "RESOURCES_PATH": [
+          "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\commons\\uicomponents\\src\\main\\resources"
+        ],
+        "BUILD_PATH": {
+          "OUTPUT_PATH": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\commons\\uicomponents\\build\\default\\outputs\\default",
+          "INTERMEDIA_PATH": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\commons\\uicomponents\\build\\default\\intermediates",
+          "JS_ASSETS_PATH": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\commons\\uicomponents\\build\\default\\intermediates\\loader_out\\default",
+          "JS_LITE_ASSETS_PATH": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\commons\\uicomponents\\build\\default\\intermediates\\loader_out_lite\\default",
+          "RES_PATH": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\commons\\uicomponents\\build\\default\\intermediates\\res\\default",
+          "RES_PROFILE_PATH": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\commons\\uicomponents\\build\\default\\intermediates\\res\\default\\resources\\base\\profile",
+          "ETS_SUPER_VISUAL_PATH": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\commons\\uicomponents\\build\\default\\cache\\default\\default@HarCompileArkTS\\esmodule",
+          "JS_SUPER_VISUAL_PATH": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\commons\\uicomponents\\build\\default\\cache\\default\\default@HarCompileJS\\jsbundle",
+          "WORKER_LOADER": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\commons\\uicomponents\\build\\default\\intermediates\\loader\\default\\loader.json",
+          "MANIFEST_JSON": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\commons\\uicomponents\\build\\default\\intermediates\\manifest\\default",
+          "OUTPUT_METADATA_JSON": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\commons\\uicomponents\\build\\default\\intermediates\\hap_metadata\\default\\output_metadata.json",
+          "SOURCE_MAP_DIR": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\commons\\uicomponents\\build\\default\\intermediates\\source_map\\default"
+        },
+        "BUILD_OPTION": {
+          "debuggable": true
+        }
+      },
+      "ohosTest": {
+        "SOURCE_ROOT": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\commons\\uicomponents\\src\\ohosTest",
+        "RESOURCES_PATH": [
+          "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\commons\\uicomponents\\src\\ohosTest\\resources"
+        ],
+        "BUILD_PATH": {
+          "OUTPUT_PATH": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\commons\\uicomponents\\build\\default\\outputs\\ohosTest",
+          "INTERMEDIA_PATH": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\commons\\uicomponents\\build\\default\\intermediates",
+          "JS_ASSETS_PATH": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\commons\\uicomponents\\build\\default\\intermediates\\loader_out\\ohosTest",
+          "JS_LITE_ASSETS_PATH": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\commons\\uicomponents\\build\\default\\intermediates\\loader_out_lite\\ohosTest",
+          "RES_PATH": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\commons\\uicomponents\\build\\default\\intermediates\\res\\ohosTest",
+          "RES_PROFILE_PATH": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\commons\\uicomponents\\build\\default\\intermediates\\res\\ohosTest\\resources\\base\\profile",
+          "ETS_SUPER_VISUAL_PATH": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\commons\\uicomponents\\build\\default\\cache\\ohosTest\\ohosTest@OhosTestCompileArkTS\\esmodule",
+          "JS_SUPER_VISUAL_PATH": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\commons\\uicomponents\\build\\default\\cache\\ohosTest\\ohosTest@OhosTestCompileJS\\jsbundle",
+          "WORKER_LOADER": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\commons\\uicomponents\\build\\default\\intermediates\\loader\\ohosTest\\loader.json",
+          "MANIFEST_JSON": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\commons\\uicomponents\\build\\default\\intermediates\\manifest\\ohosTest",
+          "OUTPUT_METADATA_JSON": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\commons\\uicomponents\\build\\default\\intermediates\\hap_metadata\\ohosTest\\output_metadata.json",
+          "SOURCE_MAP_DIR": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\commons\\uicomponents\\build\\default\\intermediates\\source_map\\ohosTest"
+        },
+        "BUILD_OPTION": {
+          "debuggable": true
+        }
+      }
+    },
+    "BUILD_OPTION": {
+      "default-default": {
+        "debuggable": true,
+        "copyFrom": "default",
+        "strictMode": {
+          "caseSensitiveCheck": true,
+          "useNormalizedOHMUrl": true
+        },
+        "name": "debug"
+      }
+    },
+    "BUILD_PROFILE_OPT": {
+      "apiType": "stageMode",
+      "buildOption": {},
+      "buildOptionSet": [
+        {
+          "name": "release",
+          "arkOptions": {
+            "obfuscation": {
+              "ruleOptions": {
+                "enable": false,
+                "files": [
+                  "./obfuscation-rules.txt"
+                ]
+              },
+              "consumerFiles": [
+                "./consumer-rules.txt"
+              ]
+            }
+          }
+        },
+        {
+          "name": "default"
+        },
+        {
+          "name": "debug"
+        }
+      ],
+      "targets": [
+        {
+          "name": "default"
+        },
+        {
+          "name": "ohosTest"
+        }
+      ]
+    },
+    "BUILD_CACHE_DIR": ""
+  },
+  "ohos-module-Home": {
+    "SELECT_TARGET": "default",
+    "MODULE_BUILD_DIR": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\features\\Home\\build",
+    "TARGETS": {
+      "default": {
+        "SOURCE_ROOT": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\features\\Home\\src\\main",
+        "RESOURCES_PATH": [
+          "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\features\\Home\\src\\main\\resources"
+        ],
+        "BUILD_PATH": {
+          "OUTPUT_PATH": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\features\\Home\\build\\default\\outputs\\default",
+          "INTERMEDIA_PATH": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\features\\Home\\build\\default\\intermediates",
+          "JS_ASSETS_PATH": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\features\\Home\\build\\default\\intermediates\\loader_out\\default",
+          "JS_LITE_ASSETS_PATH": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\features\\Home\\build\\default\\intermediates\\loader_out_lite\\default",
+          "RES_PATH": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\features\\Home\\build\\default\\intermediates\\res\\default",
+          "RES_PROFILE_PATH": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\features\\Home\\build\\default\\intermediates\\res\\default\\resources\\base\\profile",
+          "ETS_SUPER_VISUAL_PATH": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\features\\Home\\build\\default\\cache\\default\\default@HarCompileArkTS\\esmodule",
+          "JS_SUPER_VISUAL_PATH": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\features\\Home\\build\\default\\cache\\default\\default@HarCompileJS\\jsbundle",
+          "WORKER_LOADER": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\features\\Home\\build\\default\\intermediates\\loader\\default\\loader.json",
+          "MANIFEST_JSON": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\features\\Home\\build\\default\\intermediates\\manifest\\default",
+          "OUTPUT_METADATA_JSON": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\features\\Home\\build\\default\\intermediates\\hap_metadata\\default\\output_metadata.json",
+          "SOURCE_MAP_DIR": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\features\\Home\\build\\default\\intermediates\\source_map\\default"
+        },
+        "BUILD_OPTION": {
+          "debuggable": true
+        }
+      },
+      "ohosTest": {
+        "SOURCE_ROOT": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\features\\Home\\src\\ohosTest",
+        "RESOURCES_PATH": [
+          "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\features\\Home\\src\\ohosTest\\resources"
+        ],
+        "BUILD_PATH": {
+          "OUTPUT_PATH": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\features\\Home\\build\\default\\outputs\\ohosTest",
+          "INTERMEDIA_PATH": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\features\\Home\\build\\default\\intermediates",
+          "JS_ASSETS_PATH": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\features\\Home\\build\\default\\intermediates\\loader_out\\ohosTest",
+          "JS_LITE_ASSETS_PATH": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\features\\Home\\build\\default\\intermediates\\loader_out_lite\\ohosTest",
+          "RES_PATH": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\features\\Home\\build\\default\\intermediates\\res\\ohosTest",
+          "RES_PROFILE_PATH": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\features\\Home\\build\\default\\intermediates\\res\\ohosTest\\resources\\base\\profile",
+          "ETS_SUPER_VISUAL_PATH": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\features\\Home\\build\\default\\cache\\ohosTest\\ohosTest@OhosTestCompileArkTS\\esmodule",
+          "JS_SUPER_VISUAL_PATH": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\features\\Home\\build\\default\\cache\\ohosTest\\ohosTest@OhosTestCompileJS\\jsbundle",
+          "WORKER_LOADER": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\features\\Home\\build\\default\\intermediates\\loader\\ohosTest\\loader.json",
+          "MANIFEST_JSON": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\features\\Home\\build\\default\\intermediates\\manifest\\ohosTest",
+          "OUTPUT_METADATA_JSON": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\features\\Home\\build\\default\\intermediates\\hap_metadata\\ohosTest\\output_metadata.json",
+          "SOURCE_MAP_DIR": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\features\\Home\\build\\default\\intermediates\\source_map\\ohosTest"
+        },
+        "BUILD_OPTION": {
+          "debuggable": true
+        }
+      }
+    },
+    "BUILD_OPTION": {
+      "default-default": {
+        "debuggable": true,
+        "copyFrom": "default",
+        "strictMode": {
+          "caseSensitiveCheck": true,
+          "useNormalizedOHMUrl": true
+        },
+        "name": "debug"
+      }
+    },
+    "BUILD_PROFILE_OPT": {
+      "apiType": "stageMode",
+      "buildOption": {},
+      "buildOptionSet": [
+        {
+          "name": "release",
+          "arkOptions": {
+            "obfuscation": {
+              "ruleOptions": {
+                "enable": false,
+                "files": [
+                  "./obfuscation-rules.txt"
+                ]
+              },
+              "consumerFiles": [
+                "./consumer-rules.txt"
+              ]
+            }
+          }
+        },
+        {
+          "name": "default"
+        },
+        {
+          "name": "debug"
+        }
+      ],
+      "targets": [
+        {
+          "name": "default"
+        },
+        {
+          "name": "ohosTest"
+        }
+      ]
+    },
+    "BUILD_CACHE_DIR": ""
+  },
+  "ohos-module-MyMusicLib": {
+    "SELECT_TARGET": "default",
+    "MODULE_BUILD_DIR": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\features\\MyMusicLib\\build",
+    "TARGETS": {
+      "default": {
+        "SOURCE_ROOT": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\features\\MyMusicLib\\src\\main",
+        "RESOURCES_PATH": [
+          "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\features\\MyMusicLib\\src\\main\\resources"
+        ],
+        "BUILD_PATH": {
+          "OUTPUT_PATH": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\features\\MyMusicLib\\build\\default\\outputs\\default",
+          "INTERMEDIA_PATH": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\features\\MyMusicLib\\build\\default\\intermediates",
+          "JS_ASSETS_PATH": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\features\\MyMusicLib\\build\\default\\intermediates\\loader_out\\default",
+          "JS_LITE_ASSETS_PATH": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\features\\MyMusicLib\\build\\default\\intermediates\\loader_out_lite\\default",
+          "RES_PATH": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\features\\MyMusicLib\\build\\default\\intermediates\\res\\default",
+          "RES_PROFILE_PATH": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\features\\MyMusicLib\\build\\default\\intermediates\\res\\default\\resources\\base\\profile",
+          "ETS_SUPER_VISUAL_PATH": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\features\\MyMusicLib\\build\\default\\cache\\default\\default@HarCompileArkTS\\esmodule",
+          "JS_SUPER_VISUAL_PATH": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\features\\MyMusicLib\\build\\default\\cache\\default\\default@HarCompileJS\\jsbundle",
+          "WORKER_LOADER": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\features\\MyMusicLib\\build\\default\\intermediates\\loader\\default\\loader.json",
+          "MANIFEST_JSON": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\features\\MyMusicLib\\build\\default\\intermediates\\manifest\\default",
+          "OUTPUT_METADATA_JSON": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\features\\MyMusicLib\\build\\default\\intermediates\\hap_metadata\\default\\output_metadata.json",
+          "SOURCE_MAP_DIR": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\features\\MyMusicLib\\build\\default\\intermediates\\source_map\\default"
+        },
+        "BUILD_OPTION": {
+          "debuggable": true
+        }
+      },
+      "ohosTest": {
+        "SOURCE_ROOT": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\features\\MyMusicLib\\src\\ohosTest",
+        "RESOURCES_PATH": [
+          "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\features\\MyMusicLib\\src\\ohosTest\\resources"
+        ],
+        "BUILD_PATH": {
+          "OUTPUT_PATH": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\features\\MyMusicLib\\build\\default\\outputs\\ohosTest",
+          "INTERMEDIA_PATH": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\features\\MyMusicLib\\build\\default\\intermediates",
+          "JS_ASSETS_PATH": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\features\\MyMusicLib\\build\\default\\intermediates\\loader_out\\ohosTest",
+          "JS_LITE_ASSETS_PATH": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\features\\MyMusicLib\\build\\default\\intermediates\\loader_out_lite\\ohosTest",
+          "RES_PATH": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\features\\MyMusicLib\\build\\default\\intermediates\\res\\ohosTest",
+          "RES_PROFILE_PATH": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\features\\MyMusicLib\\build\\default\\intermediates\\res\\ohosTest\\resources\\base\\profile",
+          "ETS_SUPER_VISUAL_PATH": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\features\\MyMusicLib\\build\\default\\cache\\ohosTest\\ohosTest@OhosTestCompileArkTS\\esmodule",
+          "JS_SUPER_VISUAL_PATH": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\features\\MyMusicLib\\build\\default\\cache\\ohosTest\\ohosTest@OhosTestCompileJS\\jsbundle",
+          "WORKER_LOADER": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\features\\MyMusicLib\\build\\default\\intermediates\\loader\\ohosTest\\loader.json",
+          "MANIFEST_JSON": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\features\\MyMusicLib\\build\\default\\intermediates\\manifest\\ohosTest",
+          "OUTPUT_METADATA_JSON": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\features\\MyMusicLib\\build\\default\\intermediates\\hap_metadata\\ohosTest\\output_metadata.json",
+          "SOURCE_MAP_DIR": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\features\\MyMusicLib\\build\\default\\intermediates\\source_map\\ohosTest"
+        },
+        "BUILD_OPTION": {
+          "debuggable": true
+        }
+      }
+    },
+    "BUILD_OPTION": {
+      "default-default": {
+        "debuggable": true,
+        "copyFrom": "default",
+        "strictMode": {
+          "caseSensitiveCheck": true,
+          "useNormalizedOHMUrl": true
+        },
+        "name": "debug"
+      }
+    },
+    "BUILD_PROFILE_OPT": {
+      "apiType": "stageMode",
+      "buildOption": {},
+      "buildOptionSet": [
+        {
+          "name": "release",
+          "arkOptions": {
+            "obfuscation": {
+              "ruleOptions": {
+                "enable": false,
+                "files": [
+                  "./obfuscation-rules.txt"
+                ]
+              },
+              "consumerFiles": [
+                "./consumer-rules.txt"
+              ]
+            }
+          }
+        },
+        {
+          "name": "default"
+        },
+        {
+          "name": "debug"
+        }
+      ],
+      "targets": [
+        {
+          "name": "default"
+        },
+        {
+          "name": "ohosTest"
+        }
+      ]
+    },
+    "BUILD_CACHE_DIR": ""
+  },
+  "ohos-module-Search": {
+    "SELECT_TARGET": "default",
+    "MODULE_BUILD_DIR": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\features\\Search\\build",
+    "TARGETS": {
+      "default": {
+        "SOURCE_ROOT": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\features\\Search\\src\\main",
+        "RESOURCES_PATH": [
+          "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\features\\Search\\src\\main\\resources"
+        ],
+        "BUILD_PATH": {
+          "OUTPUT_PATH": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\features\\Search\\build\\default\\outputs\\default",
+          "INTERMEDIA_PATH": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\features\\Search\\build\\default\\intermediates",
+          "JS_ASSETS_PATH": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\features\\Search\\build\\default\\intermediates\\loader_out\\default",
+          "JS_LITE_ASSETS_PATH": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\features\\Search\\build\\default\\intermediates\\loader_out_lite\\default",
+          "RES_PATH": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\features\\Search\\build\\default\\intermediates\\res\\default",
+          "RES_PROFILE_PATH": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\features\\Search\\build\\default\\intermediates\\res\\default\\resources\\base\\profile",
+          "ETS_SUPER_VISUAL_PATH": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\features\\Search\\build\\default\\cache\\default\\default@HarCompileArkTS\\esmodule",
+          "JS_SUPER_VISUAL_PATH": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\features\\Search\\build\\default\\cache\\default\\default@HarCompileJS\\jsbundle",
+          "WORKER_LOADER": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\features\\Search\\build\\default\\intermediates\\loader\\default\\loader.json",
+          "MANIFEST_JSON": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\features\\Search\\build\\default\\intermediates\\manifest\\default",
+          "OUTPUT_METADATA_JSON": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\features\\Search\\build\\default\\intermediates\\hap_metadata\\default\\output_metadata.json",
+          "SOURCE_MAP_DIR": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\features\\Search\\build\\default\\intermediates\\source_map\\default"
+        },
+        "BUILD_OPTION": {
+          "debuggable": true
+        }
+      },
+      "ohosTest": {
+        "SOURCE_ROOT": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\features\\Search\\src\\ohosTest",
+        "RESOURCES_PATH": [
+          "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\features\\Search\\src\\ohosTest\\resources"
+        ],
+        "BUILD_PATH": {
+          "OUTPUT_PATH": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\features\\Search\\build\\default\\outputs\\ohosTest",
+          "INTERMEDIA_PATH": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\features\\Search\\build\\default\\intermediates",
+          "JS_ASSETS_PATH": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\features\\Search\\build\\default\\intermediates\\loader_out\\ohosTest",
+          "JS_LITE_ASSETS_PATH": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\features\\Search\\build\\default\\intermediates\\loader_out_lite\\ohosTest",
+          "RES_PATH": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\features\\Search\\build\\default\\intermediates\\res\\ohosTest",
+          "RES_PROFILE_PATH": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\features\\Search\\build\\default\\intermediates\\res\\ohosTest\\resources\\base\\profile",
+          "ETS_SUPER_VISUAL_PATH": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\features\\Search\\build\\default\\cache\\ohosTest\\ohosTest@OhosTestCompileArkTS\\esmodule",
+          "JS_SUPER_VISUAL_PATH": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\features\\Search\\build\\default\\cache\\ohosTest\\ohosTest@OhosTestCompileJS\\jsbundle",
+          "WORKER_LOADER": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\features\\Search\\build\\default\\intermediates\\loader\\ohosTest\\loader.json",
+          "MANIFEST_JSON": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\features\\Search\\build\\default\\intermediates\\manifest\\ohosTest",
+          "OUTPUT_METADATA_JSON": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\features\\Search\\build\\default\\intermediates\\hap_metadata\\ohosTest\\output_metadata.json",
+          "SOURCE_MAP_DIR": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\features\\Search\\build\\default\\intermediates\\source_map\\ohosTest"
+        },
+        "BUILD_OPTION": {
+          "debuggable": true
+        }
+      }
+    },
+    "BUILD_OPTION": {
+      "default-default": {
+        "debuggable": true,
+        "copyFrom": "default",
+        "strictMode": {
+          "caseSensitiveCheck": true,
+          "useNormalizedOHMUrl": true
+        },
+        "name": "debug"
+      }
+    },
+    "BUILD_PROFILE_OPT": {
+      "apiType": "stageMode",
+      "buildOption": {},
+      "buildOptionSet": [
+        {
+          "name": "release",
+          "arkOptions": {
+            "obfuscation": {
+              "ruleOptions": {
+                "enable": false,
+                "files": [
+                  "./obfuscation-rules.txt"
+                ]
+              },
+              "consumerFiles": [
+                "./consumer-rules.txt"
+              ]
+            }
+          }
+        },
+        {
+          "name": "default"
+        },
+        {
+          "name": "debug"
+        }
+      ],
+      "targets": [
+        {
+          "name": "default"
+        },
+        {
+          "name": "ohosTest"
+        }
+      ]
+    },
+    "BUILD_CACHE_DIR": ""
+  },
+  "ohos-module-PlayDisplay": {
+    "SELECT_TARGET": "default",
+    "MODULE_BUILD_DIR": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\features\\PlayDisplay\\build",
+    "TARGETS": {
+      "default": {
+        "SOURCE_ROOT": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\features\\PlayDisplay\\src\\main",
+        "RESOURCES_PATH": [
+          "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\features\\PlayDisplay\\src\\main\\resources"
+        ],
+        "BUILD_PATH": {
+          "OUTPUT_PATH": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\features\\PlayDisplay\\build\\default\\outputs\\default",
+          "INTERMEDIA_PATH": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\features\\PlayDisplay\\build\\default\\intermediates",
+          "JS_ASSETS_PATH": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\features\\PlayDisplay\\build\\default\\intermediates\\loader_out\\default",
+          "JS_LITE_ASSETS_PATH": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\features\\PlayDisplay\\build\\default\\intermediates\\loader_out_lite\\default",
+          "RES_PATH": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\features\\PlayDisplay\\build\\default\\intermediates\\res\\default",
+          "RES_PROFILE_PATH": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\features\\PlayDisplay\\build\\default\\intermediates\\res\\default\\resources\\base\\profile",
+          "ETS_SUPER_VISUAL_PATH": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\features\\PlayDisplay\\build\\default\\cache\\default\\default@HarCompileArkTS\\esmodule",
+          "JS_SUPER_VISUAL_PATH": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\features\\PlayDisplay\\build\\default\\cache\\default\\default@HarCompileJS\\jsbundle",
+          "WORKER_LOADER": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\features\\PlayDisplay\\build\\default\\intermediates\\loader\\default\\loader.json",
+          "MANIFEST_JSON": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\features\\PlayDisplay\\build\\default\\intermediates\\manifest\\default",
+          "OUTPUT_METADATA_JSON": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\features\\PlayDisplay\\build\\default\\intermediates\\hap_metadata\\default\\output_metadata.json",
+          "SOURCE_MAP_DIR": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\features\\PlayDisplay\\build\\default\\intermediates\\source_map\\default"
+        },
+        "BUILD_OPTION": {
+          "debuggable": true
+        }
+      },
+      "ohosTest": {
+        "SOURCE_ROOT": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\features\\PlayDisplay\\src\\ohosTest",
+        "RESOURCES_PATH": [
+          "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\features\\PlayDisplay\\src\\ohosTest\\resources"
+        ],
+        "BUILD_PATH": {
+          "OUTPUT_PATH": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\features\\PlayDisplay\\build\\default\\outputs\\ohosTest",
+          "INTERMEDIA_PATH": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\features\\PlayDisplay\\build\\default\\intermediates",
+          "JS_ASSETS_PATH": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\features\\PlayDisplay\\build\\default\\intermediates\\loader_out\\ohosTest",
+          "JS_LITE_ASSETS_PATH": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\features\\PlayDisplay\\build\\default\\intermediates\\loader_out_lite\\ohosTest",
+          "RES_PATH": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\features\\PlayDisplay\\build\\default\\intermediates\\res\\ohosTest",
+          "RES_PROFILE_PATH": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\features\\PlayDisplay\\build\\default\\intermediates\\res\\ohosTest\\resources\\base\\profile",
+          "ETS_SUPER_VISUAL_PATH": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\features\\PlayDisplay\\build\\default\\cache\\ohosTest\\ohosTest@OhosTestCompileArkTS\\esmodule",
+          "JS_SUPER_VISUAL_PATH": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\features\\PlayDisplay\\build\\default\\cache\\ohosTest\\ohosTest@OhosTestCompileJS\\jsbundle",
+          "WORKER_LOADER": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\features\\PlayDisplay\\build\\default\\intermediates\\loader\\ohosTest\\loader.json",
+          "MANIFEST_JSON": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\features\\PlayDisplay\\build\\default\\intermediates\\manifest\\ohosTest",
+          "OUTPUT_METADATA_JSON": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\features\\PlayDisplay\\build\\default\\intermediates\\hap_metadata\\ohosTest\\output_metadata.json",
+          "SOURCE_MAP_DIR": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\features\\PlayDisplay\\build\\default\\intermediates\\source_map\\ohosTest"
+        },
+        "BUILD_OPTION": {
+          "debuggable": true
+        }
+      }
+    },
+    "BUILD_OPTION": {
+      "default-default": {
+        "debuggable": true,
+        "copyFrom": "default",
+        "strictMode": {
+          "caseSensitiveCheck": true,
+          "useNormalizedOHMUrl": true
+        },
+        "name": "debug"
+      }
+    },
+    "BUILD_PROFILE_OPT": {
+      "apiType": "stageMode",
+      "buildOption": {},
+      "buildOptionSet": [
+        {
+          "name": "release",
+          "arkOptions": {
+            "obfuscation": {
+              "ruleOptions": {
+                "enable": false,
+                "files": [
+                  "./obfuscation-rules.txt"
+                ]
+              },
+              "consumerFiles": [
+                "./consumer-rules.txt"
+              ]
+            }
+          }
+        },
+        {
+          "name": "default"
+        },
+        {
+          "name": "debug"
+        }
+      ],
+      "targets": [
+        {
+          "name": "default"
+        },
+        {
+          "name": "ohosTest"
+        }
+      ]
+    },
+    "BUILD_CACHE_DIR": ""
+  },
+  "ohos-module-Setting": {
+    "SELECT_TARGET": "default",
+    "MODULE_BUILD_DIR": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\features\\Setting\\build",
+    "TARGETS": {
+      "default": {
+        "SOURCE_ROOT": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\features\\Setting\\src\\main",
+        "RESOURCES_PATH": [
+          "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\features\\Setting\\src\\main\\resources"
+        ],
+        "BUILD_PATH": {
+          "OUTPUT_PATH": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\features\\Setting\\build\\default\\outputs\\default",
+          "INTERMEDIA_PATH": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\features\\Setting\\build\\default\\intermediates",
+          "JS_ASSETS_PATH": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\features\\Setting\\build\\default\\intermediates\\loader_out\\default",
+          "JS_LITE_ASSETS_PATH": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\features\\Setting\\build\\default\\intermediates\\loader_out_lite\\default",
+          "RES_PATH": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\features\\Setting\\build\\default\\intermediates\\res\\default",
+          "RES_PROFILE_PATH": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\features\\Setting\\build\\default\\intermediates\\res\\default\\resources\\base\\profile",
+          "ETS_SUPER_VISUAL_PATH": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\features\\Setting\\build\\default\\cache\\default\\default@HarCompileArkTS\\esmodule",
+          "JS_SUPER_VISUAL_PATH": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\features\\Setting\\build\\default\\cache\\default\\default@HarCompileJS\\jsbundle",
+          "WORKER_LOADER": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\features\\Setting\\build\\default\\intermediates\\loader\\default\\loader.json",
+          "MANIFEST_JSON": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\features\\Setting\\build\\default\\intermediates\\manifest\\default",
+          "OUTPUT_METADATA_JSON": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\features\\Setting\\build\\default\\intermediates\\hap_metadata\\default\\output_metadata.json",
+          "SOURCE_MAP_DIR": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\features\\Setting\\build\\default\\intermediates\\source_map\\default"
+        },
+        "BUILD_OPTION": {
+          "debuggable": true
+        }
+      },
+      "ohosTest": {
+        "SOURCE_ROOT": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\features\\Setting\\src\\ohosTest",
+        "RESOURCES_PATH": [
+          "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\features\\Setting\\src\\ohosTest\\resources"
+        ],
+        "BUILD_PATH": {
+          "OUTPUT_PATH": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\features\\Setting\\build\\default\\outputs\\ohosTest",
+          "INTERMEDIA_PATH": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\features\\Setting\\build\\default\\intermediates",
+          "JS_ASSETS_PATH": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\features\\Setting\\build\\default\\intermediates\\loader_out\\ohosTest",
+          "JS_LITE_ASSETS_PATH": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\features\\Setting\\build\\default\\intermediates\\loader_out_lite\\ohosTest",
+          "RES_PATH": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\features\\Setting\\build\\default\\intermediates\\res\\ohosTest",
+          "RES_PROFILE_PATH": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\features\\Setting\\build\\default\\intermediates\\res\\ohosTest\\resources\\base\\profile",
+          "ETS_SUPER_VISUAL_PATH": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\features\\Setting\\build\\default\\cache\\ohosTest\\ohosTest@OhosTestCompileArkTS\\esmodule",
+          "JS_SUPER_VISUAL_PATH": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\features\\Setting\\build\\default\\cache\\ohosTest\\ohosTest@OhosTestCompileJS\\jsbundle",
+          "WORKER_LOADER": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\features\\Setting\\build\\default\\intermediates\\loader\\ohosTest\\loader.json",
+          "MANIFEST_JSON": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\features\\Setting\\build\\default\\intermediates\\manifest\\ohosTest",
+          "OUTPUT_METADATA_JSON": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\features\\Setting\\build\\default\\intermediates\\hap_metadata\\ohosTest\\output_metadata.json",
+          "SOURCE_MAP_DIR": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\features\\Setting\\build\\default\\intermediates\\source_map\\ohosTest"
+        },
+        "BUILD_OPTION": {
+          "debuggable": true
+        }
+      }
+    },
+    "BUILD_OPTION": {
+      "default-default": {
+        "debuggable": true,
+        "copyFrom": "default",
+        "strictMode": {
+          "caseSensitiveCheck": true,
+          "useNormalizedOHMUrl": true
+        },
+        "name": "debug"
+      }
+    },
+    "BUILD_PROFILE_OPT": {
+      "apiType": "stageMode",
+      "buildOption": {},
+      "buildOptionSet": [
+        {
+          "name": "release",
+          "arkOptions": {
+            "obfuscation": {
+              "ruleOptions": {
+                "enable": false,
+                "files": [
+                  "./obfuscation-rules.txt"
+                ]
+              },
+              "consumerFiles": [
+                "./consumer-rules.txt"
+              ]
+            }
+          }
+        },
+        {
+          "name": "default"
+        },
+        {
+          "name": "debug"
+        }
+      ],
+      "targets": [
+        {
+          "name": "default"
+        },
+        {
+          "name": "ohosTest"
+        }
+      ]
+    },
+    "BUILD_CACHE_DIR": ""
+  },
+  "ohos-module-MusicPlayer": {
+    "SELECT_TARGET": "default",
+    "MODULE_BUILD_DIR": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\features\\MusicPlayer\\build",
+    "TARGETS": {
+      "default": {
+        "SOURCE_ROOT": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\features\\MusicPlayer\\src\\main",
+        "RESOURCES_PATH": [
+          "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\features\\MusicPlayer\\src\\main\\resources"
+        ],
+        "BUILD_PATH": {
+          "OUTPUT_PATH": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\features\\MusicPlayer\\build\\default\\outputs\\default",
+          "INTERMEDIA_PATH": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\features\\MusicPlayer\\build\\default\\intermediates",
+          "JS_ASSETS_PATH": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\features\\MusicPlayer\\build\\default\\intermediates\\loader_out\\default",
+          "JS_LITE_ASSETS_PATH": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\features\\MusicPlayer\\build\\default\\intermediates\\loader_out_lite\\default",
+          "RES_PATH": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\features\\MusicPlayer\\build\\default\\intermediates\\res\\default",
+          "RES_PROFILE_PATH": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\features\\MusicPlayer\\build\\default\\intermediates\\res\\default\\resources\\base\\profile",
+          "ETS_SUPER_VISUAL_PATH": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\features\\MusicPlayer\\build\\default\\cache\\default\\default@HarCompileArkTS\\esmodule",
+          "JS_SUPER_VISUAL_PATH": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\features\\MusicPlayer\\build\\default\\cache\\default\\default@HarCompileJS\\jsbundle",
+          "WORKER_LOADER": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\features\\MusicPlayer\\build\\default\\intermediates\\loader\\default\\loader.json",
+          "MANIFEST_JSON": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\features\\MusicPlayer\\build\\default\\intermediates\\manifest\\default",
+          "OUTPUT_METADATA_JSON": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\features\\MusicPlayer\\build\\default\\intermediates\\hap_metadata\\default\\output_metadata.json",
+          "SOURCE_MAP_DIR": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\features\\MusicPlayer\\build\\default\\intermediates\\source_map\\default"
+        },
+        "BUILD_OPTION": {
+          "debuggable": true
+        }
+      },
+      "ohosTest": {
+        "SOURCE_ROOT": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\features\\MusicPlayer\\src\\ohosTest",
+        "RESOURCES_PATH": [
+          "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\features\\MusicPlayer\\src\\ohosTest\\resources"
+        ],
+        "BUILD_PATH": {
+          "OUTPUT_PATH": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\features\\MusicPlayer\\build\\default\\outputs\\ohosTest",
+          "INTERMEDIA_PATH": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\features\\MusicPlayer\\build\\default\\intermediates",
+          "JS_ASSETS_PATH": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\features\\MusicPlayer\\build\\default\\intermediates\\loader_out\\ohosTest",
+          "JS_LITE_ASSETS_PATH": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\features\\MusicPlayer\\build\\default\\intermediates\\loader_out_lite\\ohosTest",
+          "RES_PATH": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\features\\MusicPlayer\\build\\default\\intermediates\\res\\ohosTest",
+          "RES_PROFILE_PATH": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\features\\MusicPlayer\\build\\default\\intermediates\\res\\ohosTest\\resources\\base\\profile",
+          "ETS_SUPER_VISUAL_PATH": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\features\\MusicPlayer\\build\\default\\cache\\ohosTest\\ohosTest@OhosTestCompileArkTS\\esmodule",
+          "JS_SUPER_VISUAL_PATH": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\features\\MusicPlayer\\build\\default\\cache\\ohosTest\\ohosTest@OhosTestCompileJS\\jsbundle",
+          "WORKER_LOADER": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\features\\MusicPlayer\\build\\default\\intermediates\\loader\\ohosTest\\loader.json",
+          "MANIFEST_JSON": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\features\\MusicPlayer\\build\\default\\intermediates\\manifest\\ohosTest",
+          "OUTPUT_METADATA_JSON": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\features\\MusicPlayer\\build\\default\\intermediates\\hap_metadata\\ohosTest\\output_metadata.json",
+          "SOURCE_MAP_DIR": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\features\\MusicPlayer\\build\\default\\intermediates\\source_map\\ohosTest"
+        },
+        "BUILD_OPTION": {
+          "debuggable": true
+        }
+      }
+    },
+    "BUILD_OPTION": {
+      "default-default": {
+        "debuggable": true,
+        "copyFrom": "default",
+        "strictMode": {
+          "caseSensitiveCheck": true,
+          "useNormalizedOHMUrl": true
+        },
+        "name": "debug"
+      }
+    },
+    "BUILD_PROFILE_OPT": {
+      "apiType": "stageMode",
+      "buildOption": {},
+      "buildOptionSet": [
+        {
+          "name": "release",
+          "arkOptions": {
+            "obfuscation": {
+              "ruleOptions": {
+                "enable": false,
+                "files": [
+                  "./obfuscation-rules.txt"
+                ]
+              },
+              "consumerFiles": [
+                "./consumer-rules.txt"
+              ]
+            }
+          }
+        },
+        {
+          "name": "default"
+        },
+        {
+          "name": "debug"
+        }
+      ],
+      "targets": [
+        {
+          "name": "default"
+        },
+        {
+          "name": "ohosTest"
+        }
+      ]
+    },
+    "BUILD_CACHE_DIR": ""
+  },
+  "ohos-module-MusicInfoCommon": {
+    "SELECT_TARGET": "default",
+    "MODULE_BUILD_DIR": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\commons\\MusicInfoCommon\\build",
+    "TARGETS": {
+      "default": {
+        "SOURCE_ROOT": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\commons\\MusicInfoCommon\\src\\main",
+        "RESOURCES_PATH": [
+          "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\commons\\MusicInfoCommon\\src\\main\\resources"
+        ],
+        "BUILD_PATH": {
+          "OUTPUT_PATH": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\commons\\MusicInfoCommon\\build\\default\\outputs\\default",
+          "INTERMEDIA_PATH": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\commons\\MusicInfoCommon\\build\\default\\intermediates",
+          "JS_ASSETS_PATH": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\commons\\MusicInfoCommon\\build\\default\\intermediates\\loader_out\\default",
+          "JS_LITE_ASSETS_PATH": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\commons\\MusicInfoCommon\\build\\default\\intermediates\\loader_out_lite\\default",
+          "RES_PATH": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\commons\\MusicInfoCommon\\build\\default\\intermediates\\res\\default",
+          "RES_PROFILE_PATH": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\commons\\MusicInfoCommon\\build\\default\\intermediates\\res\\default\\resources\\base\\profile",
+          "ETS_SUPER_VISUAL_PATH": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\commons\\MusicInfoCommon\\build\\default\\cache\\default\\default@HarCompileArkTS\\esmodule",
+          "JS_SUPER_VISUAL_PATH": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\commons\\MusicInfoCommon\\build\\default\\cache\\default\\default@HarCompileJS\\jsbundle",
+          "WORKER_LOADER": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\commons\\MusicInfoCommon\\build\\default\\intermediates\\loader\\default\\loader.json",
+          "MANIFEST_JSON": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\commons\\MusicInfoCommon\\build\\default\\intermediates\\manifest\\default",
+          "OUTPUT_METADATA_JSON": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\commons\\MusicInfoCommon\\build\\default\\intermediates\\hap_metadata\\default\\output_metadata.json",
+          "SOURCE_MAP_DIR": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\commons\\MusicInfoCommon\\build\\default\\intermediates\\source_map\\default"
+        },
+        "BUILD_OPTION": {
+          "debuggable": true
+        }
+      },
+      "ohosTest": {
+        "SOURCE_ROOT": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\commons\\MusicInfoCommon\\src\\ohosTest",
+        "RESOURCES_PATH": [
+          "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\commons\\MusicInfoCommon\\src\\ohosTest\\resources"
+        ],
+        "BUILD_PATH": {
+          "OUTPUT_PATH": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\commons\\MusicInfoCommon\\build\\default\\outputs\\ohosTest",
+          "INTERMEDIA_PATH": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\commons\\MusicInfoCommon\\build\\default\\intermediates",
+          "JS_ASSETS_PATH": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\commons\\MusicInfoCommon\\build\\default\\intermediates\\loader_out\\ohosTest",
+          "JS_LITE_ASSETS_PATH": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\commons\\MusicInfoCommon\\build\\default\\intermediates\\loader_out_lite\\ohosTest",
+          "RES_PATH": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\commons\\MusicInfoCommon\\build\\default\\intermediates\\res\\ohosTest",
+          "RES_PROFILE_PATH": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\commons\\MusicInfoCommon\\build\\default\\intermediates\\res\\ohosTest\\resources\\base\\profile",
+          "ETS_SUPER_VISUAL_PATH": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\commons\\MusicInfoCommon\\build\\default\\cache\\ohosTest\\ohosTest@OhosTestCompileArkTS\\esmodule",
+          "JS_SUPER_VISUAL_PATH": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\commons\\MusicInfoCommon\\build\\default\\cache\\ohosTest\\ohosTest@OhosTestCompileJS\\jsbundle",
+          "WORKER_LOADER": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\commons\\MusicInfoCommon\\build\\default\\intermediates\\loader\\ohosTest\\loader.json",
+          "MANIFEST_JSON": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\commons\\MusicInfoCommon\\build\\default\\intermediates\\manifest\\ohosTest",
+          "OUTPUT_METADATA_JSON": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\commons\\MusicInfoCommon\\build\\default\\intermediates\\hap_metadata\\ohosTest\\output_metadata.json",
+          "SOURCE_MAP_DIR": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\commons\\MusicInfoCommon\\build\\default\\intermediates\\source_map\\ohosTest"
+        },
+        "BUILD_OPTION": {
+          "debuggable": true
+        }
+      }
+    },
+    "BUILD_OPTION": {
+      "default-default": {
+        "debuggable": true,
+        "copyFrom": "default",
+        "strictMode": {
+          "caseSensitiveCheck": true,
+          "useNormalizedOHMUrl": true
+        },
+        "name": "debug"
+      }
+    },
+    "BUILD_PROFILE_OPT": {
+      "apiType": "stageMode",
+      "buildOption": {},
+      "buildOptionSet": [
+        {
+          "name": "release",
+          "arkOptions": {
+            "obfuscation": {
+              "ruleOptions": {
+                "enable": false,
+                "files": [
+                  "./obfuscation-rules.txt"
+                ]
+              },
+              "consumerFiles": [
+                "./consumer-rules.txt"
+              ]
+            }
+          }
+        },
+        {
+          "name": "default"
+        },
+        {
+          "name": "debug"
+        }
+      ],
+      "targets": [
+        {
+          "name": "default"
+        },
+        {
+          "name": "ohosTest"
+        }
+      ]
+    },
+    "BUILD_CACHE_DIR": ""
+  },
+  "ohos-project": {
+    "SELECT_PRODUCT_NAME": "default",
+    "MODULE_BUILD_DIR": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\build",
+    "BUNDLE_NAME": "com.example.wangningmei",
+    "BUILD_PATH": {
+      "OUTPUT_PATH": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\build\\outputs\\default"
+    },
+    "MODULES": [
+      {
+        "name": "phone",
+        "srcPath": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\products\\phone",
+        "targets": [
+          {
+            "name": "default",
+            "applyToProducts": [
+              "default"
+            ]
+          }
+        ],
+        "belongProjectPath": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging"
+      },
+      {
+        "name": "utils",
+        "srcPath": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\commons\\utils",
+        "belongProjectPath": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging"
+      },
+      {
+        "name": "uicomponents",
+        "srcPath": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\commons\\uicomponents",
+        "belongProjectPath": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging"
+      },
+      {
+        "name": "Home",
+        "srcPath": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\features\\Home",
+        "belongProjectPath": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging"
+      },
+      {
+        "name": "MyMusicLib",
+        "srcPath": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\features\\MyMusicLib",
+        "belongProjectPath": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging"
+      },
+      {
+        "name": "Search",
+        "srcPath": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\features\\Search",
+        "belongProjectPath": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging"
+      },
+      {
+        "name": "PlayDisplay",
+        "srcPath": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\features\\PlayDisplay",
+        "belongProjectPath": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging"
+      },
+      {
+        "name": "Setting",
+        "srcPath": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\features\\Setting",
+        "belongProjectPath": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging"
+      },
+      {
+        "name": "MusicPlayer",
+        "srcPath": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\features\\MusicPlayer",
+        "belongProjectPath": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging"
+      },
+      {
+        "name": "MusicInfoCommon",
+        "srcPath": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging\\commons\\MusicInfoCommon",
+        "belongProjectPath": "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging"
+      }
+    ],
+    "PROFILE_OPT": {
+      "app": {
+        "signingConfigs": [],
+        "products": [
+          {
+            "name": "default",
+            "signingConfig": "default",
+            "targetSdkVersion": "5.1.0(18)",
+            "compatibleSdkVersion": "5.1.0(18)",
+            "runtimeOS": "HarmonyOS",
+            "buildOption": {
+              "strictMode": {
+                "caseSensitiveCheck": true,
+                "useNormalizedOHMUrl": true
+              }
+            }
+          }
+        ],
+        "buildModeSet": [
+          {
+            "name": "debug"
+          },
+          {
+            "name": "release"
+          }
+        ]
+      },
+      "modules": [
+        {
+          "name": "phone",
+          "srcPath": "./products/phone",
+          "targets": [
+            {
+              "name": "default",
+              "applyToProducts": [
+                "default"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "utils",
+          "srcPath": "./commons/utils"
+        },
+        {
+          "name": "uicomponents",
+          "srcPath": "./commons/uicomponents"
+        },
+        {
+          "name": "Home",
+          "srcPath": "./features/Home"
+        },
+        {
+          "name": "MyMusicLib",
+          "srcPath": "./features/MyMusicLib"
+        },
+        {
+          "name": "Search",
+          "srcPath": "./features/Search"
+        },
+        {
+          "name": "PlayDisplay",
+          "srcPath": "./features/PlayDisplay"
+        },
+        {
+          "name": "Setting",
+          "srcPath": "./features/Setting"
+        },
+        {
+          "name": "MusicPlayer",
+          "srcPath": "./features/MusicPlayer"
+        },
+        {
+          "name": "MusicInfoCommon",
+          "srcPath": "./commons/MusicInfoCommon"
+        }
+      ]
+    },
+    "CONFIG_PROPERTIES": {
+      "enableSignTask": true,
+      "skipNativeIncremental": false,
+      "hvigor.keepDependency": true
+    },
+    "OVERALL_PROJECT_PATHS": [
+      "C:\\Users\\ASUS\\Desktop\\Harmony\\develop_\\sun\\VainLonging"
+    ],
+    "BUILD_CACHE_DIR": ""
+  },
+  "version": 1
+}
