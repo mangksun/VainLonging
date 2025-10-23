@@ -32,6 +32,7 @@ import { SearchResults } from './SearchResults'
 
 
 
+
 @Component
 export struct SearchPage {
   @State message: string = 'Hello World';
@@ -115,3 +116,4 @@ export struct SearchPage {
 
   }
 }
+
