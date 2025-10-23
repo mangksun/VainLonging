@@ -111,9 +111,11 @@ export struct SearchPage {
       .justifyContent(FlexAlign.Start)
       .alignItems(HorizontalAlign.Start)
 
-      .height('100%')
 
 
   }
 }
+
+
+
 
