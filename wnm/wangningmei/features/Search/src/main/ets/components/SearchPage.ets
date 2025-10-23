@@ -116,13 +116,9 @@ export struct SearchPage {
 
   }
 
-  onShow() {
-    // 获取搜索关键字
-    const keyword = AppStorage.get<string>('SearchKeyword');
-    if (keyword) {
-      this.keyword = keyword;
-    }
-  }
+  
 }
+
+
 
 
