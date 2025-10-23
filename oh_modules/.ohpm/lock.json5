@@ -1,0 +1,180 @@
+{
+  "lockVersion": "1.0",
+  "settings": {
+    "resolveConflict": true,
+    "resolveConflictStrict": false,
+    "installAll": true
+  },
+  "overrides": {},
+  "overrideDependencyMap": {},
+  "modules": {
+    ".": {
+      "name": "",
+      "dependencies": {},
+      "devDependencies": {
+        "@ohos/hypium": {
+          "specifier": "1.0.21",
+          "version": "1.0.21"
+        },
+        "@ohos/hamock": {
+          "specifier": "1.0.0",
+          "version": "1.0.0"
+        }
+      },
+      "dynamicDependencies": {},
+      "maskedByOverrideDependencyMap": false
+    },
+    "commons/MusicInfoCommon": {
+      "name": "MusicInfoCommon",
+      "dependencies": {},
+      "devDependencies": {},
+      "dynamicDependencies": {},
+      "maskedByOverrideDependencyMap": false
+    },
+    "commons/uicomponents": {
+      "name": "uicomponents",
+      "dependencies": {},
+      "devDependencies": {},
+      "dynamicDependencies": {},
+      "maskedByOverrideDependencyMap": false
+    },
+    "commons/utils": {
+      "name": "utils",
+      "dependencies": {
+        "musicinfocommon": {
+          "specifier": "file:commons/MusicInfoCommon",
+          "version": "file:commons/MusicInfoCommon"
+        }
+      },
+      "devDependencies": {},
+      "dynamicDependencies": {},
+      "maskedByOverrideDependencyMap": false
+    },
+    "features/Home": {
+      "name": "Home",
+      "dependencies": {
+        "utils": {
+          "specifier": "file:commons/utils",
+          "version": "file:commons/utils"
+        }
+      },
+      "devDependencies": {},
+      "dynamicDependencies": {},
+      "maskedByOverrideDependencyMap": false
+    },
+    "features/MusicPlayer": {
+      "name": "MusicPlayer",
+      "dependencies": {
+        "utils": {
+          "specifier": "file:commons/utils",
+          "version": "file:commons/utils"
+        }
+      },
+      "devDependencies": {},
+      "dynamicDependencies": {},
+      "maskedByOverrideDependencyMap": false
+    },
+    "features/MyMusicLib": {
+      "name": "MyMusicLib",
+      "dependencies": {},
+      "devDependencies": {},
+      "dynamicDependencies": {},
+      "maskedByOverrideDependencyMap": false
+    },
+    "features/PlayDisplay": {
+      "name": "PlayDisplay",
+      "dependencies": {},
+      "devDependencies": {},
+      "dynamicDependencies": {},
+      "maskedByOverrideDependencyMap": false
+    },
+    "features/Search": {
+      "name": "Search",
+      "dependencies": {},
+      "devDependencies": {},
+      "dynamicDependencies": {},
+      "maskedByOverrideDependencyMap": false
+    },
+    "features/Setting": {
+      "name": "Setting",
+      "dependencies": {},
+      "devDependencies": {},
+      "dynamicDependencies": {},
+      "maskedByOverrideDependencyMap": false
+    },
+    "products/phone": {
+      "name": "phone",
+      "dependencies": {
+        "home": {
+          "specifier": "file:features/Home",
+          "version": "file:features/Home"
+        },
+        "musicplayer": {
+          "specifier": "file:features/MusicPlayer",
+          "version": "file:features/MusicPlayer"
+        }
+      },
+      "devDependencies": {},
+      "dynamicDependencies": {},
+      "maskedByOverrideDependencyMap": false
+    }
+  },
+  "packages": {
+    "@ohos/hypium@1.0.21": {
+      "integrity": "sha512-iyKGMXxE+9PpCkqEwu0VykN/7hNpb+QOeIuHwkmZnxOpI+dFZt6yhPB7k89EgV1MiSK/ieV/hMjr5Z2mWwRfMQ==",
+      "storePath": "oh_modules/.ohpm/@ohos+hypium@1.0.21",
+      "dependencies": {},
+      "dynamicDependencies": {},
+      "dev": true,
+      "dynamic": false,
+      "maskedByOverrideDependencyMap": false
+    },
+    "@ohos/hamock@1.0.0": {
+      "integrity": "sha512-K6lDPYc6VkKe6ZBNQa9aoG+ZZMiwqfcR/7yAVFSUGIuOAhPvCJAo9+t1fZnpe0dBRBPxj2bxPPbKh69VuyAtDg==",
+      "storePath": "oh_modules/.ohpm/@ohos+hamock@1.0.0",
+      "dependencies": {},
+      "dynamicDependencies": {},
+      "dev": true,
+      "dynamic": false,
+      "maskedByOverrideDependencyMap": false
+    },
+    "musicinfocommon@file:commons/MusicInfoCommon": {
+      "storePath": "commons/MusicInfoCommon",
+      "dependencies": {},
+      "dynamicDependencies": {},
+      "dev": false,
+      "dynamic": false,
+      "maskedByOverrideDependencyMap": false
+    },
+    "utils@file:commons/utils": {
+      "storePath": "commons/utils",
+      "dependencies": {
+        "musicinfocommon": "commons/MusicInfoCommon"
+      },
+      "dynamicDependencies": {},
+      "dev": false,
+      "dynamic": false,
+      "maskedByOverrideDependencyMap": false
+    },
+    "musicplayer@file:features/MusicPlayer": {
+      "storePath": "features/MusicPlayer",
+      "dependencies": {
+        "utils": "commons/utils"
+      },
+      "dynamicDependencies": {},
+      "dev": false,
+      "dynamic": false,
+      "maskedByOverrideDependencyMap": false
+    },
+    "home@file:features/Home": {
+      "storePath": "features/Home",
+      "dependencies": {
+        "utils": "commons/utils"
+      },
+      "dynamicDependencies": {},
+      "dev": false,
+      "dynamic": false,
+      "maskedByOverrideDependencyMap": false
+    }
+  }
+}

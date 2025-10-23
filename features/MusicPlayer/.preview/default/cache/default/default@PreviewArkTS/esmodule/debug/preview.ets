@@ -1,0 +1,51 @@
+struct preview{build(){Row(){
+        Image($r('app.media.gaomu'))
+          .objectFit(ImageFit.Contain)
+          .width(56)
+          .height(56)
+          .margin({ left: 14 })
+          .borderRadius(8)
+        Column({space: 2}){
+          Text('高木同学')
+            .fontSize(16)
+            .fontColor(Color.Black)
+          Text('西片太太')
+            .fontSize(16)
+            .fontColor(Color.Grey)
+        }
+        // .width()
+        .height('100%')
+        .alignItems(HorizontalAlign.Start)
+        .justifyContent(FlexAlign.Start)
+        .margin({ left: 7})
+        .padding({top: 14})
+
+        Row({space: 5}){
+          SymbolGlyph($r('sys.symbol.backward_end_fill'))
+            .fontSize(30)
+          SymbolGlyph($r('sys.symbol.play_fill'))
+            .fontSize(30)
+          // .border({width: 1, radius: 50})
+          SymbolGlyph($r('sys.symbol.forward_end_fill'))
+            .fontSize(30)
+        }
+        .margin({left: 110})
+
+        //   .size(24)
+        // .color(Color.White)
+        // .margin({left: 20})
+        // Text('K')
+        //   .fontSize(24)
+        //   // .fontColor(Color.White)
+        //   .margin({left: 160})
+        // Text('N')
+        //   .fontSize(16)
+        //   .fontColor(Color.White)
+        //   .margin({left: 20})
+      }
+      .height(70)
+      .width('364vp')
+      .borderRadius(16)
+      .backgroundColor(Color.Red)
+      .alignItems(VerticalAlign.Center)
+      .justifyContent(FlexAlign.Start)}}

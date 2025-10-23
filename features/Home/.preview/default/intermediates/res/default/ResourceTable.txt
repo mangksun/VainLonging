@@ -1,0 +1,16 @@
+string Internet 0x01000006
+string Network_Available 0x01000007
+string Network_Lost 0x01000008
+string Network_Unavailable 0x01000009
+string network_info 0x0100000a
+string page_show 0x01000003
+float page_text_font_size 0x01000000
+media Davidtao 0x0100000d
+media Plagiarism 0x01000002
+media arrow_left 0x0100000e
+media dot_grid_1x2 0x0100000f
+media gaomu 0x0100000b
+media jinhua 0x01000001
+media lingya 0x01000005
+media wind_and_I 0x0100000c
+profile route_map 0x01000004

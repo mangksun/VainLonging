@@ -1,0 +1,12 @@
+{
+  "musicplayer|musicplayer|1.0.0|src/main/ets/view/Player.js": {
+    "version": 3,
+    "file": "Player.ets",
+    "sources": [
+      "features/MusicPlayer/src/main/ets/view/Player.ets"
+    ],
+    "names": [],
+    "mappings": ";;;AAIA;AADA;;;;;;;;AAHA;;;;;;;;;;;;;;;;;;;;;;AAOE;;;;AACE;AAAA;;;;;;;;;;AACE;AAAA;AAAA;;;;;AACE;;;AAAA;;;;AAMA;;;AAAA;AAAA;AAAA;AAAA;;;AACE;;;AAAA;;;;AAGA;;;AAAA;;;;;AAWF;;AAAA;;;;;;;;;;;;;;;;;;;;;;AAkCL;;;;;",
+    "entry-package-info": "musicplayer|1.0.0"
+  }
+}
