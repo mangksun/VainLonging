@@ -111,11 +111,18 @@ export struct SearchPage {
       .justifyContent(FlexAlign.Start)
       .alignItems(HorizontalAlign.Start)
 
+      .height('100%')
 
 
   }
+
+  onShow() {
+    // 获取搜索关键字
+    const keyword = AppStorage.get<string>('SearchKeyword');
+    if (keyword) {
+      this.keyword = keyword;
+    }
+  }
 }
-
-
 
 
